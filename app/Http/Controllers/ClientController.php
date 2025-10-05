@@ -557,6 +557,8 @@ class ClientController extends Controller
 
 
 
+
+
     public function updateDocuments(Request $request, Client $client)
     {
         $request->validate([
@@ -567,6 +569,8 @@ class ClientController extends Controller
             'new_documents.*.date' => 'nullable|date',
             'new_documents.*.note' => 'nullable|string',
             'updated_documents' => 'nullable|array',
+            'replaced_documents' => 'nullable|array',
+            'replaced_documents.*.file' => 'required|file|mimes:pdf,doc,docx,xls,xlsx,jpg,jpeg,png|max:10240',
             'deleted_documents' => 'nullable|array',
         ]);
 
@@ -576,9 +580,9 @@ class ClientController extends Controller
         if ($request->has('deleted_documents')) {
             foreach ($request->deleted_documents as $index) {
                 if (isset($documents[$index])) {
-                    // Supprimer le fichier physique si nécessaire
-                    if (isset($documents[$index]['path']) && Storage::exists($documents[$index]['path'])) {
-                        Storage::delete($documents[$index]['path']);
+                    // Supprimer le fichier physique
+                    if (isset($documents[$index]['path']) && Storage::disk('private')->exists($documents[$index]['path'])) {
+                        Storage::disk('private')->delete($documents[$index]['path']);
                     }
                     unset($documents[$index]);
                 }
@@ -586,11 +590,35 @@ class ClientController extends Controller
             $documents = array_values($documents);
         }
 
-        // Gérer les mises à jour
+        // Gérer les remplacements
+        if ($request->has('replaced_documents')) {
+            foreach ($request->replaced_documents as $index => $replacement) {
+                if (isset($documents[$index]) && isset($replacement['file'])) {
+                    // Supprimer l'ancien fichier
+                    if (isset($documents[$index]['path']) && Storage::disk('private')->exists($documents[$index]['path'])) {
+                        Storage::disk('private')->delete($documents[$index]['path']);
+                    }
+                    
+                    // Uploader le nouveau fichier
+                    $file = $replacement['file'];
+                    $filename = time() . '_' . $file->getClientOriginalName();
+                    $path = $file->storeAs('documents/clients/' . $client->id, $filename, 'private');
+
+                    // Conserver les métadonnées mais mettre à jour le fichier
+                    $documents[$index]['path'] = $path;
+                    $documents[$index]['size'] = $file->getSize();
+                    $documents[$index]['mime_type'] = $file->getMimeType();
+                    $documents[$index]['replaced_at'] = now()->toDateTimeString();
+                }
+            }
+        }
+
+        // Gérer les mises à jour de métadonnées
         if ($request->has('updated_documents')) {
             foreach ($request->updated_documents as $index => $updates) {
                 if (isset($documents[$index])) {
-                    $documents[$index] = array_merge($documents[$index], $updates);
+                    $documents[$index] = array_merge($documents[$index], array_filter($updates));
+                    $documents[$index]['updated_at'] = now()->toDateTimeString();
                 }
             }
         }
@@ -611,6 +639,7 @@ class ClientController extends Controller
                         'path' => $path,
                         'size' => $file->getSize(),
                         'mime_type' => $file->getMimeType(),
+                        'extension' => $file->getClientOriginalExtension(),
                         'uploaded_at' => now()->toDateTimeString(),
                     ];
                 }
@@ -626,7 +655,6 @@ class ClientController extends Controller
         ]);
     }
 
-
     public function downloadDocument(Client $client, $documentIndex)
     {
         $documents = $client->documents ?? [];
@@ -637,10 +665,10 @@ class ClientController extends Controller
 
         $document = $documents[$documentIndex];
         
-        if (!isset($document['path']) || !Storage::exists($document['path'])) {
-            abort(404, 'Fichier non trouvé');
+        if (!isset($document['path']) || !Storage::disk('private')->exists($document['path'])) {
+            abort(404, 'Fichier non trouvé sur le serveur');
         }
 
-        return Storage::download($document['path'], $document['nom']);
+        return Storage::disk('private')->download($document['path'], $document['nom']);
     }
 }

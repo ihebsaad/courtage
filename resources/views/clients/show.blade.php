@@ -315,7 +315,7 @@
                             <table class="table table-sm table-borderless">
                                 @if($client->adresse)
                                 <tr>
-                                    <td class="font-weight-bold">Adresse:</td>
+                                    <td class="font-weight-bold">Adresse :</td>
                                     <td>{{ $client->adresse }}</td>
                                 </tr>
                                 @endif
@@ -338,7 +338,7 @@
             </div>
 
             <!-- Revenus (Particuliers) -->
-            @if($client->type === 'particulier' && isset($client->revenus) && is_array($client->revenus) && count($client->revenus) > 0)
+            @if($client->type === 'particulier' && isset($client->revenus_details) && is_array($client->revenus_details) && count($client->revenus_details) > 0)
             <div class="card shadow mb-4">
                 <div class="card-header py-3 bg-primary text-white">
                     <h6 class="m-0 font-weight-bold">
@@ -356,7 +356,7 @@
                             </thead>
                             <tbody>
                                 @php $totalRevenus = 0; @endphp
-                                @foreach($client->revenus as $revenu)
+                                @foreach($client->revenus_details as $revenu)
                                 <tr>
                                     <td>
                                         @switch($revenu['type'] ?? '')
@@ -617,14 +617,39 @@
                 <div class="card-body">
                     @if(isset($client->documents) && is_array($client->documents) && count($client->documents) > 0)
                         <div class="list-group list-group-flush">
-                            @foreach(array_slice($client->documents, 0, 5) as $document)
+                            @foreach(array_slice($client->documents, 0, 5) as $index => $document)
+                            @php
+                                $extension = strtolower(pathinfo($document['nom'] ?? '', PATHINFO_EXTENSION));
+                                $iconClass = 'fa-file';
+                                $iconColor = 'text-secondary';
+                                if (in_array($extension, ['pdf'])) {
+                                    $iconClass = 'fa-file-pdf';
+                                    $iconColor = 'text-danger';
+                                } elseif (in_array($extension, ['doc', 'docx'])) {
+                                    $iconClass = 'fa-file-word';
+                                    $iconColor = 'text-primary';
+                                } elseif (in_array($extension, ['xls', 'xlsx'])) {
+                                    $iconClass = 'fa-file-excel';
+                                    $iconColor = 'text-success';
+                                } elseif (in_array($extension, ['jpg', 'jpeg', 'png', 'gif'])) {
+                                    $iconClass = 'fa-file-image';
+                                    $iconColor = 'text-info';
+                                }
+                            @endphp
                             <div class="list-group-item px-0">
                                 <div class="d-flex justify-content-between align-items-center">
-                                    <div>
-                                        <i class="fas fa-file-pdf text-danger mr-2"></i>
+                                    <div class="flex-grow-1">
+                                        <i class="fas {{ $iconClass }} {{ $iconColor }} mr-2"></i>
                                         <small class="font-weight-bold">{{ $document['nom'] ?? 'Document' }}</small>
                                     </div>
-                                    <small class="text-muted">{{ isset($document['date']) ? \Carbon\Carbon::parse($document['date'])->format('d/m/y') : '' }}</small>
+                                    <div class="d-flex align-items-center">
+                                        <small class="text-muted mr-2">{{ isset($document['date']) ? \Carbon\Carbon::parse($document['date'])->format('d/m/y') : '' }}</small>
+                                        <a href="{{ route('clients.download-document', [$client, $index]) }}" 
+                                           class="btn btn-sm btn-outline-info" 
+                                           title="Télécharger">
+                                            <i class="fas fa-download"></i>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                             @endforeach
@@ -722,13 +747,19 @@
                                            value="{{ $document['date'] ?? '' }}">
                                 </div>
                                 <div class="col-md-2 text-right">
-                                    <button class="btn btn-sm btn-info btn-download" title="Télécharger">
+                                    <a href="{{ route('clients.download-document', [$client, $index]) }}" 
+                                       class="btn btn-sm btn-info" 
+                                       title="Télécharger"
+                                       target="_blank">
                                         <i class="fas fa-download"></i>
-                                    </button>
-                                    <button class="btn btn-sm btn-warning btn-replace" title="Remplacer">
+                                    </a>
+                                    <button class="btn btn-sm btn-warning btn-replace" 
+                                            title="Remplacer"
+                                            onclick="replaceDocument({{ $index }})">
                                         <i class="fas fa-exchange-alt"></i>
                                     </button>
-                                    <button class="btn btn-sm btn-danger btn-delete" onclick="deleteDocument({{ $index }})">
+                                    <button class="btn btn-sm btn-danger btn-delete" 
+                                            onclick="deleteDocument({{ $index }})">
                                         <i class="fas fa-trash"></i>
                                     </button>
                                 </div>
@@ -1012,6 +1043,74 @@ function deleteDocument(index, isNew = false) {
     });
 }
 
+function replaceDocument(index) {
+    const input = document.createElement('input');
+    input.type = 'file';
+    input.accept = '.pdf,.doc,.docx,.xls,.xlsx,.jpg,.jpeg,.png';
+    input.onchange = function(event) {
+        const file = event.target.files[0];
+        if (file) {
+            const maxSize = 10 * 1024 * 1024; // 10MB
+            if (file.size > maxSize) {
+                Swal.fire('Erreur', 'Le fichier dépasse 10MB', 'error');
+                return;
+            }
+
+            const allowedTypes = ['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+                                 'application/vnd.ms-excel', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+                                 'image/jpeg', 'image/jpg', 'image/png'];
+            
+            if (!allowedTypes.includes(file.type)) {
+                Swal.fire('Erreur', 'Type de fichier non accepté', 'error');
+                return;
+            }
+
+            // Mise à jour visuelle
+            const element = document.querySelector(`.document-item[data-index="${index}"]`);
+            const nameInput = element.querySelector('.document-name');
+            nameInput.value = file.name;
+            
+            // Mise à jour de l'icône
+            const extension = file.name.split('.').pop().toLowerCase();
+            let iconClass = 'fa-file';
+            let iconColor = 'text-secondary';
+            
+            if (extension === 'pdf') {
+                iconClass = 'fa-file-pdf';
+                iconColor = 'text-danger';
+            } else if (['doc', 'docx'].includes(extension)) {
+                iconClass = 'fa-file-word';
+                iconColor = 'text-primary';
+            } else if (['xls', 'xlsx'].includes(extension)) {
+                iconClass = 'fa-file-excel';
+                iconColor = 'text-success';
+            } else if (['jpg', 'jpeg', 'png', 'gif'].includes(extension)) {
+                iconClass = 'fa-file-image';
+                iconColor = 'text-info';
+            }
+            
+            const icon = element.querySelector('.col-md-1 i');
+            icon.className = `fas ${iconClass} fa-2x ${iconColor}`;
+
+            // Stocker le fichier de remplacement
+            if (!documentsData[index].replacement) {
+                documentsData[index].replacement = file;
+            } else {
+                documentsData[index].replacement = file;
+            }
+
+            Swal.fire({
+                icon: 'success',
+                title: 'Fichier sélectionné',
+                text: 'N\'oubliez pas d\'enregistrer vos modifications',
+                timer: 2000,
+                showConfirmButton: false
+            });
+        }
+    };
+    input.click();
+}
+
 async function saveDocuments() {
     const formData = new FormData();
     
@@ -1034,6 +1133,11 @@ async function saveDocuments() {
             const note = element.querySelector('.document-note');
             if (note) {
                 formData.append(`updated_documents[${index}][note]`, note.value);
+            }
+            
+            // Ajouter le fichier de remplacement si présent
+            if (documentsData[index].replacement) {
+                formData.append(`replaced_documents[${index}][file]`, documentsData[index].replacement);
             }
         }
     });
@@ -1069,25 +1173,7 @@ async function saveDocuments() {
     }
 }
 
-// Boutons de remplacement de document
-document.addEventListener('click', function(e) {
-    if (e.target.closest('.btn-replace')) {
-        const documentItem = e.target.closest('.document-item');
-        const index = documentItem.dataset.index;
-        
-        const input = document.createElement('input');
-        input.type = 'file';
-        input.accept = '.pdf,.doc,.docx,.xls,.xlsx,.jpg,.jpeg,.png';
-        input.onchange = function(event) {
-            const file = event.target.files[0];
-            if (file) {
-                // Logique de remplacement du document
-                Swal.fire('Info', 'Fonctionnalité de remplacement en cours de développement', 'info');
-            }
-        };
-        input.click();
-    }
-});
+// Boutons de remplacement de document - SUPPRIMÉ (fonction intégrée ci-dessus)
 </script>
 
 <style>

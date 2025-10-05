@@ -438,7 +438,7 @@
                                 <div class="row">
                                     <div class="col-md-5">
                                         <label class="form-label font-weight-bold">Type de revenu</label>
-                                        <select name="revenus[{{ $index }}][type]" class="form-control">
+                                        <select name="revenus_details[{{ $index }}][type]" class="form-control">
                                             <option value="">Sélectionner</option>
                                             <option value="salaire" {{ ($revenu['type'] ?? '') == 'salaire' ? 'selected' : '' }}>Salaire</option>
                                             <option value="bic" {{ ($revenu['type'] ?? '') == 'bic' ? 'selected' : '' }}>BIC (Bénéfices Industriels et Commerciaux)</option>
@@ -715,7 +715,7 @@
 <script>
 let enfantIndex = {{ isset($client->enfants) ? count($client->enfants) : 0 }};
 let associeIndex = {{ isset($client->associes) ? count($client->associes) : 0 }};
-let revenuIndex = {{ isset($client->revenus) ? count($client->revenus) : 0 }};
+let revenuIndex = {{ isset($client->revenus_details) ? count($client->revenus_details) : 0 }};
 let immobilierIndex = {{ isset($client->patrimoine_immobilier) ? count($client->patrimoine_immobilier) : 0 }};
 let mobilierIndex = {{ isset($client->patrimoine_mobilier) ? count($client->patrimoine_mobilier) : 0 }};
 let commentaireIndex = {{ isset($client->commentaires) ? count($client->commentaires) : 0 }};
@@ -829,7 +829,7 @@ function addRevenu() {
             <div class="row">
                 <div class="col-md-5">
                     <label class="form-label font-weight-bold">Type de revenu</label>
-                    <select name="revenus[${revenuIndex}][type]" class="form-control">
+                    <select name="revenus_details[${revenuIndex}][type]" class="form-control">
                         <option value="">Sélectionner</option>
                         <option value="salaire">Salaire</option>
                         <option value="bic">BIC (Bénéfices Industriels et Commerciaux)</option>
@@ -841,7 +841,7 @@ function addRevenu() {
                 <div class="col-md-6">
                     <label class="form-label font-weight-bold">Montant annuel (€)</label>
                     <div class="input-group">
-                        <input type="number" name="revenus[${revenuIndex}][montant]" step="0.01" class="form-control">
+                        <input type="number" name="revenus_details[${revenuIndex}][montant]" step="0.01" class="form-control">
                         <div class="input-group-append">
                             <span class="input-group-text">€</span>
                         </div>
