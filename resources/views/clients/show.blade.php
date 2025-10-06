@@ -2,6 +2,20 @@
 
 @section('title', 'Détails du client')
 
+@php
+    function calculateAge($birthDateString) {
+        // Create DateTime objects for the birth date and the current date
+        $birthDate = new DateTime($birthDateString);
+        $currentDate = new DateTime('today');
+
+        // Calculate the difference between the two dates
+        $interval = $currentDate->diff($birthDate);
+
+        // Extract the years from the DateInterval object
+        return $interval->y;
+    }
+@endphp
+@endphp
 @section('content')
 <div class="container-fluid">
     <!-- En-tête -->
@@ -84,7 +98,7 @@
                                     @if($client->date_naissance)
                                     <tr>
                                         <td class="font-weight-bold">Date de naissance :</td>
-                                        <td>{{ $client->date_naissance->format('d/m/Y') }}</td>
+                                        <td>{{ $client->date_naissance->format('d/m/Y') }} - {{(calculateAge($client->date_naissance))}}</td>
                                     </tr>
                                     @endif
                                     @if($client->nationalite)
@@ -96,13 +110,13 @@
                                     @if($client->situation_familiale)
                                     <tr>
                                         <td class="font-weight-bold">Situation familiale :</td>
-                                        <td>{{ ucfirst($client->situation_familiale) }}</td>
+                                        <td>{{ $situations[$client->situation_familiale] }}</td>
                                     </tr>
                                     @endif
                                     @if($client->regime_matrimonial)
                                     <tr>
                                         <td class="font-weight-bold">Régime matrimonial :</td>
-                                        <td>{{ str_replace('_', ' ', ucfirst($client->regime_matrimonial)) }}</td>
+                                        <td>{{ $regimes[$client->regime_matrimonial] }}</td>
                                     </tr>
                                     @endif
                                 </table>
@@ -147,7 +161,7 @@
                                         <th>Civilité</th>
                                         <th>Nom</th>
                                         <th>Prénom</th>
-                                        <th>Date de naissance</th>
+                                        <th>Age</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -156,7 +170,7 @@
                                         <td>{{ $enfant['civilite'] ?? '-' }}</td>
                                         <td>{{ $enfant['nom'] ?? '-' }}</td>
                                         <td>{{ $enfant['prenom'] ?? '-' }}</td>
-                                        <td>{{ isset($enfant['date_naissance']) ? \Carbon\Carbon::parse($enfant['date_naissance'])->format('d/m/Y') : '-' }}</td>
+                                        <td>{{ isset($enfant['date_naissance']) ?  calculateAge($enfant['date_naissance'])  : '-' }}</td>
                                     </tr>
                                     @endforeach
                                 </tbody>

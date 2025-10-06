@@ -173,7 +173,9 @@ class ClientController extends Controller
     public function show(Client $client)
     {
         //$client->load(['contrats', 'dossiers', 'notes', 'documents']);
-        return view('clients.show', compact('client'));
+        $situations=['celibataire'=>'Célibataire', 'marie'=>'Marié(e)', 'pacs'=>'Pacsé(e)', 'divorce'=>'Divorcé(e)', 'veuf'=>'Veuf(ve)' ];     
+        $regimes=['communaute_reduite_acquets'=>'Communauté réduite aux acquêts', 'separation_biens'=>'Séparation de biens', 'communaute_universelle'=>'Communauté universelle', 'participation_acquets'=>'Participation aux acquêts'];
+        return view('clients.show', compact('client','situations','regimes'));
     }
 
     public function edit(Client $client)

@@ -599,7 +599,7 @@ function addRevenu() {
                 <div class="col-md-6">
                     <label class="form-label font-weight-bold">Montant annuel (€)</label>
                     <div class="input-group">
-                        <input type="number" name="revenus[${revenuIndex}][montant]" step="0.01" class="form-control">
+                        <input type="number" name="revenus_details[${revenuIndex}][montant]" step="0.01" class="form-control">
                         <div class="input-group-append">
                             <span class="input-group-text">€</span>
                         </div>
