@@ -98,7 +98,7 @@
                                     @if($client->date_naissance)
                                     <tr>
                                         <td class="font-weight-bold">Date de naissance :</td>
-                                        <td>{{ $client->date_naissance->format('d/m/Y') }} - {{(calculateAge($client->date_naissance))}}</td>
+                                        <td>{{ $client->date_naissance->format('d/m/Y') }} - {{(calculateAge($client->date_naissance).' ans';)}}</td>
                                     </tr>
                                     @endif
                                     @if($client->nationalite)
@@ -170,7 +170,7 @@
                                         <td>{{ $enfant['civilite'] ?? '-' }}</td>
                                         <td>{{ $enfant['nom'] ?? '-' }}</td>
                                         <td>{{ $enfant['prenom'] ?? '-' }}</td>
-                                        <td>{{ isset($enfant['date_naissance']) ?  calculateAge($enfant['date_naissance'])  : '-' }}</td>
+                                        <td>{{ isset($enfant['date_naissance']) ?  calculateAge($enfant['date_naissance']).' ans'  : '-' }}</td>
                                     </tr>
                                     @endforeach
                                 </tbody>
@@ -329,7 +329,7 @@
                             <table class="table table-sm table-borderless">
                                 @if($client->adresse)
                                 <tr>
-                                    <td class="font-weight-bold">Adresse :</td>
+                                    <td class="font-weight-bold">Adresse:</td>
                                     <td>{{ $client->adresse }}</td>
                                 </tr>
                                 @endif
