@@ -252,11 +252,11 @@
                             </th>
                             <th width="10%">Client</th>
                             <th width="20%">Nom/Raison Sociale</th>
+                            <th width="10%">Créé le</th>
                             <th width="15%">Contact</th>
                             <th width="10%">Type</th>
                             <th width="10%">Statut</th>
                             <th width="10%">Ville</th>
-                            <th width="10%">Créé le</th>
                             <th width="10%">Actions</th>
                         </tr>
                     </thead>
@@ -389,6 +389,13 @@ $(document).ready(function() {
                 }
             },
             {
+                data: 'created_at',
+                name: 'created_at',
+                render: function(data, type, row) {
+                    return moment(data).format('DD/MM/YYYY');
+                }
+            },            
+            {
                 data: 'contact',
                 name: 'contact',
                 orderable: false,
@@ -435,13 +442,6 @@ $(document).ready(function() {
                                (row.code_postal ? '<small class="text-muted">' + row.code_postal + '</small>' : '');
                     }
                     return '<span class="text-muted">Non renseigné</span>';
-                }
-            },
-            {
-                data: 'created_at',
-                name: 'created_at',
-                render: function(data, type, row) {
-                    return moment(data).format('DD/MM/YYYY');
                 }
             },
             {
