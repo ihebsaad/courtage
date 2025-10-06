@@ -98,7 +98,7 @@
                                     @if($client->date_naissance)
                                     <tr>
                                         <td class="font-weight-bold">Date de naissance :</td>
-                                        <td>{{ $client->date_naissance->format('d/m/Y') }} - {{(calculateAge($client->date_naissance).' ans';)}}</td>
+                                        <td>{{ $client->date_naissance->format('d/m/Y') }} - ({{calculateAge($client->date_naissance).' ans' }})</td>
                                     </tr>
                                     @endif
                                     @if($client->nationalite)
