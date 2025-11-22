@@ -1,7 +1,8 @@
 @extends('layouts.admin')
 
 @section('title', 'Modifier Client/Prospect')
-
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 @section('content')
 <div class="container-fluid">
     <!-- En-tête -->
