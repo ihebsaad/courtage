@@ -251,7 +251,7 @@
                             <div class="col-md-4 mb-3">
                                 <label for="conjoint_date_naissance" class="form-label font-weight-bold">Date de naissance</label>
                                 <input type="date" name="conjoint_date_naissance" id="conjoint_date_naissance" 
-                                    value="{{ old('conjoint_date_naissance', isset($client->conjoint_date_naissance) ? date('d/m/Y', strtotime($client->conjoint_date_naissance)) : '') }}" 
+                                    value="{{ old('conjoint_date_naissance', isset($client->conjoint_date_naissance) ? $client->conjoint_date_naissance : '') }}" 
                                     class="form-control">
                             </div>
                             <div class="col-md-4 mb-3">
