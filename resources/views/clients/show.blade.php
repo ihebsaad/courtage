@@ -78,6 +78,18 @@
                     </h6>
                 </div>
                 <div class="card-body">
+
+                    @if($client->type === 'particulier' && $client->entreprisesRepresentees->count() > 0)
+                    <div class="alert alert-info mb-4">
+                        <i class="fas fa-building mr-2"></i>
+                        <strong>Représentant légal pour :</strong>
+                        @foreach($client->entreprisesRepresentees as $entreprise)
+                            <a href="{{ route('clients.show', $entreprise) }}" class="alert-link" target="_blank">
+                                {{ $entreprise->raison_sociale }}
+                            </a>{{ !$loop->last ? ', ' : '' }}
+                        @endforeach
+                    </div>
+                    @endif
                     @if($client->type === 'particulier')
                         <div class="row">
                             <div class="col-md-6">
@@ -177,6 +189,54 @@
                             </table>
                         </div>
                         @endif
+
+                        @if($client->type === 'particulier' && in_array($client->situation_familiale, ['marie', 'pacs']) && ($client->conjoint_nom || $client->conjoint_prenom))
+                        <div class="card shadow mb-4">
+                            <div class="card-header py-3 bg-info text-white">
+                                <h6 class="m-0 font-weight-bold">
+                                    <i class="fas fa-heart mr-2"></i>Informations du conjoint
+                                </h6>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label class="font-weight-bold text-muted small">Identité</label>
+                                        <p class="mb-0">
+                                            {{ $client->conjoint_civilite }} {{ $client->conjoint_prenom }} {{ $client->conjoint_nom }}
+                                        </p>
+                                    </div>
+                                    @if($client->conjoint_date_naissance)
+                                    <div class="col-md-3 mb-3">
+                                        <label class="font-weight-bold text-muted small">Date de naissance</label>
+                                        <p class="mb-0">{{ $client->conjoint_date_naissance->format('d/m/Y') }}</p>
+                                    </div>
+                                    @endif
+                                    @if($client->conjoint_nationalite)
+                                    <div class="col-md-3 mb-3">
+                                        <label class="font-weight-bold text-muted small">Nationalité</label>
+                                        <p class="mb-0">{{ $client->conjoint_nationalite }}</p>
+                                    </div>
+                                    @endif
+                                </div>
+                                @if($client->conjoint_profession || $client->conjoint_employeur)
+                                <div class="row">
+                                    @if($client->conjoint_profession)
+                                    <div class="col-md-6 mb-3">
+                                        <label class="font-weight-bold text-muted small">Profession</label>
+                                        <p class="mb-0">{{ $client->conjoint_profession }}</p>
+                                    </div>
+                                    @endif
+                                    @if($client->conjoint_employeur)
+                                    <div class="col-md-6 mb-3">
+                                        <label class="font-weight-bold text-muted small">Employeur</label>
+                                        <p class="mb-0">{{ $client->conjoint_employeur }}</p>
+                                    </div>
+                                    @endif
+                                </div>
+                                @endif
+                            </div>
+                        </div>
+                        @endif                        
                     @else
                         <div class="row">
                             <div class="col-md-6">
@@ -211,6 +271,30 @@
                                     </tr>
                                     @endif
                                 </table>
+
+                                @if($client->type === 'entreprise' && $client->representantLegal)
+                                <div class="row">
+                                    <div class="col-md-12 mb-3">
+                                        <label class="font-weight-bold text-muted small">
+                                            <i class="fas fa-user-tie mr-2"></i>Représentant légal
+                                        </label>
+                                        <p class="mb-0">
+                                            <a href="{{ route('clients.show', $client->representantLegal) }}" class="text-primary" target="_blank">
+                                                {{ $client->representantLegal->civilite }} 
+                                                {{ $client->representantLegal->prenom }} 
+                                                {{ $client->representantLegal->nom }}
+                                                <i class="fas fa-external-link-alt ml-1 small"></i>
+                                            </a>
+                                            @if($client->representantLegal->email)
+                                                <br><small class="text-muted">{{ $client->representantLegal->email }}</small>
+                                            @endif
+                                            @if($client->representantLegal->telephone)
+                                                <br><small class="text-muted">{{ $client->representantLegal->telephone }}</small>
+                                            @endif
+                                        </p>
+                                    </div>
+                                </div>
+                                @endif                                
                             </div>
                             <div class="col-md-6">
                                 @if($client->ca_entreprise || $client->rn_entreprise || $client->valorisation_entreprise)

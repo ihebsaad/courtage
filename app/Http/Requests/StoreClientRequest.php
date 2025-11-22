@@ -65,7 +65,18 @@ class StoreClientRequest extends FormRequest
                 'patrimoine_mobilier' => 'nullable|array',
                 'patrimoine_mobilier.*.type_contrat' => 'nullable|string',
                 'patrimoine_mobilier.*.montant' => 'nullable|numeric|min:0',
-                'patrimoine_mobilier.*.etablissement' => 'nullable|string',                
+                'patrimoine_mobilier.*.etablissement' => 'nullable|string',   
+                
+                'conjoint_civilite' => 'nullable|string|in:M,Mme,Mlle',
+                'conjoint_nom' => 'nullable|string|max:255',
+                'conjoint_prenom' => 'nullable|string|max:255',
+                'conjoint_date_naissance' => 'nullable|date|before:today',
+                'conjoint_nationalite' => 'nullable|string|max:255',
+                'conjoint_profession' => 'nullable|string|max:255',
+                'conjoint_employeur' => 'nullable|string|max:255',
+                
+                // Représentant légal (entreprise)
+                'representant_legal_id' => 'nullable|exists:clients,id',                
             ]);
         } else {
             $rules = array_merge($rules, [

@@ -170,6 +170,65 @@
                         </button>
                     </div>
                     <div id="enfants-container"></div>
+
+                    <!-- Section Conjoint -->
+                    <div id="conjoint-section" style="display: none;">
+                        <hr class="my-4">
+                        <h5 class="text-secondary mb-3">
+                            <i class="fas fa-heart mr-2"></i>Informations du conjoint
+                        </h5>
+                        
+                        <div class="row">
+                            <div class="col-md-2 mb-3">
+                                <label for="conjoint_civilite" class="form-label font-weight-bold">Civilité</label>
+                                <select name="conjoint_civilite" id="conjoint_civilite" class="form-control">
+                                    <option value="">Sélectionner</option>
+                                    <option value="M" {{ old('conjoint_civilite', $client->conjoint_civilite ?? '') == 'M' ? 'selected' : '' }}>M.</option>
+                                    <option value="Mme" {{ old('conjoint_civilite', $client->conjoint_civilite ?? '') == 'Mme' ? 'selected' : '' }}>Mme</option>
+                                    <option value="Mlle" {{ old('conjoint_civilite', $client->conjoint_civilite ?? '') == 'Mlle' ? 'selected' : '' }}>Mlle</option>
+                                </select>
+                            </div>
+                            <div class="col-md-5 mb-3">
+                                <label for="conjoint_nom" class="form-label font-weight-bold">Nom</label>
+                                <input type="text" name="conjoint_nom" id="conjoint_nom" 
+                                    value="{{ old('conjoint_nom', $client->conjoint_nom ?? '') }}" class="form-control">
+                            </div>
+                            <div class="col-md-5 mb-3">
+                                <label for="conjoint_prenom" class="form-label font-weight-bold">Prénom</label>
+                                <input type="text" name="conjoint_prenom" id="conjoint_prenom" 
+                                    value="{{ old('conjoint_prenom', $client->conjoint_prenom ?? '') }}" class="form-control">
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-4 mb-3">
+                                <label for="conjoint_date_naissance" class="form-label font-weight-bold">Date de naissance</label>
+                                <input type="date" name="conjoint_date_naissance" id="conjoint_date_naissance" 
+                                    value="{{ old('conjoint_date_naissance', isset($client->conjoint_date_naissance) ? $client->conjoint_date_naissance->format('Y-m-d') : '') }}" 
+                                    class="form-control">
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label for="conjoint_nationalite" class="form-label font-weight-bold">Nationalité</label>
+                                <input type="text" name="conjoint_nationalite" id="conjoint_nationalite" 
+                                    value="{{ old('conjoint_nationalite', $client->conjoint_nationalite ?? '') }}" 
+                                    class="form-control" placeholder="Française">
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="conjoint_profession" class="form-label font-weight-bold">Profession</label>
+                                <input type="text" name="conjoint_profession" id="conjoint_profession" 
+                                    value="{{ old('conjoint_profession', $client->conjoint_profession ?? '') }}" class="form-control">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="conjoint_employeur" class="form-label font-weight-bold">Employeur</label>
+                                <input type="text" name="conjoint_employeur" id="conjoint_employeur" 
+                                    value="{{ old('conjoint_employeur', $client->conjoint_employeur ?? '') }}" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
 
                 <!-- Champs Entreprise -->
@@ -212,6 +271,32 @@
                         </div>
                     </div>
                     
+                    <div class="row">
+                        <div class="col-md-12 mb-3">
+                            <label for="representant_legal" class="form-label font-weight-bold">
+                                <i class="fas fa-user-tie mr-2"></i>Représentant légal
+                            </label>
+                            <div class="input-group">
+                                <input type="hidden" name="representant_legal_id" id="representant_legal_id" 
+                                    value="{{ old('representant_legal_id', $client->representant_legal_id ?? '') }}">
+                                <input type="text" id="representant_legal" class="form-control" 
+                                    value="{{ old('representant_legal_id') ? '' : ($client->representantLegal ? $client->representantLegal->civilite . ' ' . $client->representantLegal->prenom . ' ' . $client->representantLegal->nom : '') }}"
+                                    placeholder="Rechercher une personne physique...">
+                                <div class="input-group-append">
+                                    <button type="button" class="btn btn-outline-secondary" id="clear-representant" title="Effacer">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                    <a href="{{ route('clients.create') }}?type=particulier" target="_blank" 
+                                    class="btn btn-outline-primary" title="Créer une nouvelle personne">
+                                        <i class="fas fa-plus"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <small class="form-text text-muted">
+                                Recherchez une personne existante ou créez-en une nouvelle dans un nouvel onglet
+                            </small>
+                        </div>
+                    </div>                    
                     <div class="row">
                         <div class="col-md-12 mb-3">
                             <label for="secteur_activite" class="form-label font-weight-bold">Secteur d'activité</label>
@@ -767,6 +852,89 @@ function addCommentaire() {
 
 function removeCommentaire(btn) {
     btn.closest('.commentaire-row').remove();
+}
+
+
+
+// Gestion de l'affichage de la section conjoint
+function toggleConjointSection() {
+    const situationFamiliale = document.getElementById('situation_familiale').value;
+    const conjointSection = document.getElementById('conjoint-section');
+    
+    if (situationFamiliale === 'marie' || situationFamiliale === 'pacs') {
+        conjointSection.style.display = 'block';
+    } else {
+        conjointSection.style.display = 'none';
+    }
+}
+
+// Écouteur sur le changement de situation familiale
+document.getElementById('situation_familiale').addEventListener('change', toggleConjointSection);
+
+// Appeler au chargement pour afficher si nécessaire
+document.addEventListener('DOMContentLoaded', toggleConjointSection);
+
+// Autocomplete pour le représentant légal
+$(document).ready(function() {
+    $('#representant_legal').autocomplete({
+        source: function(request, response) {
+            $.ajax({
+                url: "{{ route('clients.searchPersonnesPhysiques') }}",
+                data: { term: request.term },
+                dataType: 'json',
+                success: function(data) {
+                    response(data);
+                }
+            });
+        },
+        minLength: 2,
+        select: function(event, ui) {
+            $('#representant_legal_id').val(ui.item.id);
+            $('#representant_legal').val(ui.item.label);
+            return false;
+        },
+        focus: function(event, ui) {
+            $('#representant_legal').val(ui.item.label);
+            return false;
+        }
+    }).autocomplete("instance")._renderItem = function(ul, item) {
+        return $("<li>")
+            .append("<div>" + item.label + 
+                   (item.email ? "<br><small class='text-muted'>" + item.email + "</small>" : "") +
+                   "</div>")
+            .appendTo(ul);
+    };
+    
+    // Bouton pour effacer le représentant légal
+    $('#clear-representant').click(function() {
+        $('#representant_legal').val('');
+        $('#representant_legal_id').val('');
+    });
+});
+
+// Mise à jour de la fonction toggleClientType existante
+function toggleClientType() {
+    const type = document.querySelector('input[name="type"]:checked').value;
+    const particulierFields = document.getElementById('particulier-fields');
+    const entrepriseFields = document.getElementById('entreprise-fields');
+    const situationFinanciere = document.getElementById('situation-financiere');
+    const situationPro = document.getElementById('situation-pro');
+    const patrimoine = document.getElementById('patrimoine');
+    
+    if (type === 'particulier') {
+        particulierFields.style.display = 'block';
+        entrepriseFields.style.display = 'none';
+        situationFinanciere.style.display = 'block';
+        situationPro.style.display = 'block';
+        patrimoine.style.display = 'block';
+        toggleConjointSection(); // Vérifier si on doit afficher le conjoint
+    } else {
+        particulierFields.style.display = 'none';
+        entrepriseFields.style.display = 'block';
+        situationFinanciere.style.display = 'none';
+        situationPro.style.display = 'none';
+        patrimoine.style.display = 'none';
+    }
 }
 </script>
 @endsection

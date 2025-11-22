@@ -252,6 +252,37 @@ class ClientController extends Controller
                         ->with('success', 'Client modifié avec succès.');
     }
 
+
+    /**
+     * Recherche de personnes physiques pour liaison comme représentant légal
+     */
+    public function searchPersonnesPhysiques(Request $request)
+    {
+        $term = $request->get('term');
+        
+        $clients = Client::where('type', 'particulier')
+            ->where(function($query) use ($term) {
+                $query->where('nom', 'like', "%{$term}%")
+                    ->orWhere('prenom', 'like', "%{$term}%")
+                    ->orWhere('email', 'like', "%{$term}%");
+            })
+            ->limit(10)
+            ->get()
+            ->map(function($client) {
+                return [
+                    'id' => $client->id,
+                    'label' => trim($client->civilite . ' ' . $client->prenom . ' ' . $client->nom),
+                    'value' => $client->id,
+                    'email' => $client->email,
+                    'telephone' => $client->telephone
+                ];
+            });
+
+        return response()->json($clients);
+    }
+
+
+
     public function destroy(Client $client)
     {
         $client->delete();

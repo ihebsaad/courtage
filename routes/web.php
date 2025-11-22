@@ -78,7 +78,9 @@ Route::post('clients/{client}/update-status', [ClientController::class, 'updateS
 Route::get('clients/{client}/documents/{documentIndex}', [ClientController::class, 'downloadDocument'])->name('clients.download-document');
 Route::get('clients/{client}/documents/{documentIndex}/download', [ClientController::class, 'downloadDocument'])->name('clients.download-document');
 
-
+Route::get('clients/search-personnes-physiques', [ClientController::class, 'searchPersonnesPhysiques'])
+    ->name('clients.searchPersonnesPhysiques');
+    
 // Route pour générer le PDF
 Route::get('/etude-prevoyance/pdf', [EtudePrevoyanceController::class, 'generatePdf'])
     ->name('etude-prevoyance.pdf');

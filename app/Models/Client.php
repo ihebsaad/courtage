@@ -17,6 +17,14 @@ class Client extends Model
         'civilite', 'nom', 'prenom', 'date_naissance', 'situation_familiale', 'nombre_enfants',
         'profession', 'employeur',  'type_contrat',
         'residence_principale', 'immobilier_locatif', 'assurance_vie', 'epargne_retraite',
+        'conjoint_civilite',
+        'conjoint_nom',
+        'conjoint_prenom',
+        'conjoint_date_naissance',
+        'conjoint_nationalite',
+        'conjoint_profession',
+        'conjoint_employeur',
+        'representant_legal_id',
         // Entreprise
         'raison_sociale', 'statut_juridique', 'siren', 'siret', 'chiffre_affaires', 'effectifs', 'secteur_activite',
         'dirigeant_nom', 'dirigeant_prenom', 'dirigeant_fonction',
@@ -50,6 +58,21 @@ class Client extends Model
         'documents' => 'array',
     ];
 
+    /**
+     * Relation : Le représentant légal de l'entreprise
+     */
+    public function representantLegal()
+    {
+        return $this->belongsTo(Client::class, 'representant_legal_id');
+    }
+
+    /**
+     * Relation : Les entreprises dont cette personne est représentant légal
+     */
+    public function entreprisesRepresentees()
+    {
+        return $this->hasMany(Client::class, 'representant_legal_id');
+    }
     // Accesseurs
     public function getNomCompletAttribute()
     {
