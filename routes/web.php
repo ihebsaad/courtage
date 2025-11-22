@@ -76,7 +76,7 @@ Route::get('clients-search', [ClientController::class, 'search'])->name('clients
 Route::post('clients/{client}/update-documents', [ClientController::class, 'updateDocuments'])->name('clients.update-documents');
 Route::post('clients/{client}/update-status', [ClientController::class, 'updateStatus'])->name('clients.update-status');
 Route::get('clients/{client}/documents/{documentIndex}', [ClientController::class, 'downloadDocument'])->name('clients.download-document');
-Route::get('clients/{client}/documents/{documentIndex}/download', [ClientController::class, 'downloadDocument'])->name('clients.download-document');
+//Route::get('clients/{client}/documents/{documentIndex}/download', [ClientController::class, 'downloadDocument'])->name('clients.download-document');
 
 Route::get('clients/search-personnes-physiques', [ClientController::class, 'searchPersonnesPhysiques'])
     ->name('clients.searchPersonnesPhysiques');
