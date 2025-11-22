@@ -208,7 +208,7 @@
                                     @if($client->conjoint_date_naissance)
                                     <div class="col-md-3 mb-3">
                                         <label class="font-weight-bold text-muted small">Date de naissance</label>
-                                        <p class="mb-0">{{ $client->conjoint_date_naissance->format('d/m/Y') }}</p>
+                                        <p class="mb-0">{{ date('d/m/Y', strtotime($client->conjoint_date_naissance)) }}</p>
                                     </div>
                                     @endif
                                     @if($client->conjoint_nationalite)
