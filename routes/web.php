@@ -57,18 +57,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
 });
 
 
-Route::get('clients-datatable', [ClientController::class, 'datatable'])->name('clients.datatable');
-Route::post('clients-bulk-action', [ClientController::class, 'bulkAction'])->name('clients.bulk-action');
-Route::get('clients-cities', [ClientController::class, 'cities'])->name('clients.cities');
-Route::get('clients-search', [ClientController::class, 'search'])->name('clients.search');
-//Route::patch('clients/{client}/status', [ClientController::class, 'updateStatus'])->name('clients.update-status');
-Route::post('clients/{client}/update-documents', [ClientController::class, 'updateDocuments'])->name('clients.update-documents');
-Route::post('clients/{client}/update-status', [ClientController::class, 'updateStatus'])->name('clients.update-status');
-Route::get('clients/{client}/documents/{documentIndex}', [ClientController::class, 'downloadDocument'])->name('clients.download-document');
-//Route::get('clients/{client}/documents/{documentIndex}/download', [ClientController::class, 'downloadDocument'])->name('clients.download-document');
 
-Route::get('clients/search-personnes-physiques', [ClientController::class, 'searchPersonnesPhysiques'])
-    ->name('clients.searchPersonnesPhysiques');
 
 // Route pour générer le PDF
 Route::get('/etude-prevoyance/pdf', [EtudePrevoyanceController::class, 'generatePdf'])
@@ -87,8 +76,21 @@ Route::get('/etude-mutuelle/preview', [EtudeMutuelleController::class, 'showPrev
     ->name('etude-mutuelle.preview');
 
 Route::middleware(['auth'])->group(function () {
-    // Routes clients
-    Route::resource('clients', ClientController::class);
+
+    Route::get('clients-datatable', [ClientController::class, 'datatable'])->name('clients.datatable');
+    Route::post('clients-bulk-action', [ClientController::class, 'bulkAction'])->name('clients.bulk-action');
+    Route::get('clients-cities', [ClientController::class, 'cities'])->name('clients.cities');
+    Route::get('clients-search', [ClientController::class, 'search'])->name('clients.search');
+    //Route::patch('clients/{client}/status', [ClientController::class, 'updateStatus'])->name('clients.update-status');
+    Route::post('clients/{client}/update-documents', [ClientController::class, 'updateDocuments'])->name('clients.update-documents');
+    Route::post('clients/{client}/update-status', [ClientController::class, 'updateStatus'])->name('clients.update-status');
+    Route::get('clients/{client}/documents/{documentIndex}', [ClientController::class, 'downloadDocument'])->name('clients.download-document');
+    //Route::get('clients/{client}/documents/{documentIndex}/download', [ClientController::class, 'downloadDocument'])->name('clients.download-document');
+
+    Route::get('clients/search-personnes-physiques', [ClientController::class, 'searchPersonnesPhysiques'])
+        ->name('clients.searchPersonnesPhysiques');
+
+
     
     // Routes spéciales pour clients
     Route::post('clients/{client}/convert-to-client', [ClientController::class, 'convertToClient'])
@@ -97,4 +99,7 @@ Route::middleware(['auth'])->group(function () {
     // API Routes
     Route::post('api/siren-data', [ClientController::class, 'getSirenData'])
          ->name('api.siren.data');
+
+    // Routes clients en dernier
+    Route::resource('clients', ClientController::class);         
 });    
