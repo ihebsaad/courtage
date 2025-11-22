@@ -72,7 +72,7 @@ Route::get('clients-datatable', [ClientController::class, 'datatable'])->name('c
 Route::post('clients-bulk-action', [ClientController::class, 'bulkAction'])->name('clients.bulk-action');
 Route::get('clients-cities', [ClientController::class, 'cities'])->name('clients.cities');
 Route::get('clients-search', [ClientController::class, 'search'])->name('clients.search');
-Route::patch('clients/{client}/status', [ClientController::class, 'updateStatus'])->name('clients.update-status');
+//Route::patch('clients/{client}/status', [ClientController::class, 'updateStatus'])->name('clients.update-status');
 Route::post('clients/{client}/update-documents', [ClientController::class, 'updateDocuments'])->name('clients.update-documents');
 Route::post('clients/{client}/update-status', [ClientController::class, 'updateStatus'])->name('clients.update-status');
 Route::get('clients/{client}/documents/{documentIndex}', [ClientController::class, 'downloadDocument'])->name('clients.download-document');
@@ -80,7 +80,7 @@ Route::get('clients/{client}/documents/{documentIndex}/download', [ClientControl
 
 Route::get('clients/search-personnes-physiques', [ClientController::class, 'searchPersonnesPhysiques'])
     ->name('clients.searchPersonnesPhysiques');
-    
+
 // Route pour générer le PDF
 Route::get('/etude-prevoyance/pdf', [EtudePrevoyanceController::class, 'generatePdf'])
     ->name('etude-prevoyance.pdf');
