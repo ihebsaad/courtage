@@ -17,7 +17,7 @@ class StoreClientRequest extends FormRequest
             'type' => 'required|in:particulier,entreprise',
             'statut' => 'required|in:client,prospect',
             'nationalite' => 'nullable|string|max:30',
-            'email' => 'nullable|email|unique:clients,email',
+            'email' => 'nullable|email|string|max:100',
             'telephone' => 'nullable|string|max:20',
             'telephone_portable' => 'nullable|string|max:20',
             'adresse' => 'nullable|string',

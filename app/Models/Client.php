@@ -24,7 +24,7 @@ class Client extends Model
         'contact_principal_email', 'contact_principal_telephone',
         'pappers_data', 'pappers_last_update',
 
-        'nationalite', 'regime_matrimonial', 'enfants','revebus_details',
+        'nationalite', 'regime_matrimonial', 'enfants','revenus_details',
         'patrimoine_immobilier', 'patrimoine_mobilier',
         'nombre_associes', 'repartition_capital', 'associes',
         'ca_entreprise', 'rn_entreprise', 'valorisation_entreprise',

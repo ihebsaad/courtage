@@ -533,6 +533,9 @@
                                                 <option value="">Sélectionner</option>
                                                 <option value="maison" {{ ($bien['type_bien'] ?? '') == 'maison' ? 'selected' : '' }}>Maison</option>
                                                 <option value="appartement" {{ ($bien['type_bien'] ?? '') == 'appartement' ? 'selected' : '' }}>Appartement</option>
+                                                <option value="terrain" {{ ($bien['type_bien'] ?? '') == 'terrain' ? 'selected' : '' }}>Terrain</option>
+                                                <option value="studio" {{ ($bien['type_bien'] ?? '') == 'studio' ? 'selected' : '' }}>studio</option>
+                                                <option value="local" {{ ($bien['type_bien'] ?? '') == 'local' ? 'selected' : '' }}>Local professionnel</option>                                                
                                             </select>
                                         </div>
                                         <div class="col-md-2 mb-2">

@@ -632,6 +632,9 @@ function addImmobilier() {
                         <option value="">Sélectionner</option>
                         <option value="maison">Maison</option>
                         <option value="appartement">Appartement</option>
+                        <option value="terrain">Terrain</option>
+                        <option value="studio">Studio</option>
+                        <option value="local">Local professionnel</option>
                     </select>
                 </div>
                 <div class="col-md-2 mb-2">
