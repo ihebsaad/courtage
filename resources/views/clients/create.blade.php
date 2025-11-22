@@ -183,20 +183,20 @@
                                 <label for="conjoint_civilite" class="form-label font-weight-bold">Civilité</label>
                                 <select name="conjoint_civilite" id="conjoint_civilite" class="form-control">
                                     <option value="">Sélectionner</option>
-                                    <option value="M" {{ old('conjoint_civilite', $client->conjoint_civilite ?? '') == 'M' ? 'selected' : '' }}>M.</option>
-                                    <option value="Mme" {{ old('conjoint_civilite', $client->conjoint_civilite ?? '') == 'Mme' ? 'selected' : '' }}>Mme</option>
-                                    <option value="Mlle" {{ old('conjoint_civilite', $client->conjoint_civilite ?? '') == 'Mlle' ? 'selected' : '' }}>Mlle</option>
+                                    <option value="M" {{ old('conjoint_civilite') == 'M' ? 'selected' : '' }}>M.</option>
+                                    <option value="Mme" {{ old('conjoint_civilite') == 'Mme' ? 'selected' : '' }}>Mme</option>
+                                    <option value="Mlle" {{ old('conjoint_civilite') == 'Mlle' ? 'selected' : '' }}>Mlle</option>
                                 </select>
                             </div>
                             <div class="col-md-5 mb-3">
                                 <label for="conjoint_nom" class="form-label font-weight-bold">Nom</label>
                                 <input type="text" name="conjoint_nom" id="conjoint_nom" 
-                                    value="{{ old('conjoint_nom', $client->conjoint_nom ?? '') }}" class="form-control">
+                                    value="{{ old('conjoint_nom') }}" class="form-control">
                             </div>
                             <div class="col-md-5 mb-3">
                                 <label for="conjoint_prenom" class="form-label font-weight-bold">Prénom</label>
                                 <input type="text" name="conjoint_prenom" id="conjoint_prenom" 
-                                    value="{{ old('conjoint_prenom', $client->conjoint_prenom ?? '') }}" class="form-control">
+                                    value="{{ old('conjoint_prenom') }}" class="form-control">
                             </div>
                         </div>
                         
@@ -210,7 +210,7 @@
                             <div class="col-md-4 mb-3">
                                 <label for="conjoint_nationalite" class="form-label font-weight-bold">Nationalité</label>
                                 <input type="text" name="conjoint_nationalite" id="conjoint_nationalite" 
-                                    value="{{ old('conjoint_nationalite', $client->conjoint_nationalite ?? '') }}" 
+                                    value="{{ old('conjoint_nationalite') }}" 
                                     class="form-control" placeholder="Française">
                             </div>
                         </div>
@@ -219,12 +219,12 @@
                             <div class="col-md-6 mb-3">
                                 <label for="conjoint_profession" class="form-label font-weight-bold">Profession</label>
                                 <input type="text" name="conjoint_profession" id="conjoint_profession" 
-                                    value="{{ old('conjoint_profession', $client->conjoint_profession ?? '') }}" class="form-control">
+                                    value="{{ old('conjoint_profession') }}" class="form-control">
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label for="conjoint_employeur" class="form-label font-weight-bold">Employeur</label>
                                 <input type="text" name="conjoint_employeur" id="conjoint_employeur" 
-                                    value="{{ old('conjoint_employeur', $client->conjoint_employeur ?? '') }}" class="form-control">
+                                    value="{{ old('conjoint_employeur') }}" class="form-control">
                             </div>
                         </div>
                     </div>
@@ -278,9 +278,9 @@
                             </label>
                             <div class="input-group">
                                 <input type="hidden" name="representant_legal_id" id="representant_legal_id" 
-                                    value="{{ old('representant_legal_id', $client->representant_legal_id ?? '') }}">
+                                    value="{{ old('representant_legal_id') }}">
                                 <input type="text" id="representant_legal" class="form-control" 
-                                    value="{{ old('representant_legal_id') ? '' : ($client->representantLegal ? $client->representantLegal->civilite . ' ' . $client->representantLegal->prenom . ' ' . $client->representantLegal->nom : '') }}"
+                                    value="{{ old('representant_legal_id') }}"
                                     placeholder="Rechercher une personne physique...">
                                 <div class="input-group-append">
                                     <button type="button" class="btn btn-outline-secondary" id="clear-representant" title="Effacer">
