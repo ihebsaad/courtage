@@ -46,18 +46,7 @@ Route::post('/desactiver/{id}', [UsersController::class, 'desactiver'])->name('d
 
 
 
-Route::middleware(['auth'])->group(function () {
-    // Routes clients
-    Route::resource('clients', ClientController::class);
-    
-    // Routes spéciales pour clients
-    Route::post('clients/{client}/convert-to-client', [ClientController::class, 'convertToClient'])
-         ->name('clients.convert');
-    
-    // API Routes
-    Route::post('api/siren-data', [ClientController::class, 'getSirenData'])
-         ->name('api.siren.data');
-});
+
 
 // routes/api.php (si vous voulez séparer les routes API)
 
@@ -96,3 +85,16 @@ Route::get('/etude-mutuelle/pdf', [EtudeMutuelleController::class, 'generatePdf'
 // Route pour prévisualiser l'étude mutuelle (optionnel)
 Route::get('/etude-mutuelle/preview', [EtudeMutuelleController::class, 'showPreview'])
     ->name('etude-mutuelle.preview');
+
+Route::middleware(['auth'])->group(function () {
+    // Routes clients
+    Route::resource('clients', ClientController::class);
+    
+    // Routes spéciales pour clients
+    Route::post('clients/{client}/convert-to-client', [ClientController::class, 'convertToClient'])
+         ->name('clients.convert');
+    
+    // API Routes
+    Route::post('api/siren-data', [ClientController::class, 'getSirenData'])
+         ->name('api.siren.data');
+});    
