@@ -327,7 +327,12 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
 
 <script>
+
+
 $(document).ready(function() {
+
+    $.fn.dataTable.ext.errMode = 'throw';
+    
     // Configuration du DataTable
     var table = $('#clients-table').DataTable({
         processing: true,
