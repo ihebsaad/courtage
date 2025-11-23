@@ -27,7 +27,6 @@ class StoreClientRequest extends FormRequest
             'commentaires' => 'nullable|array',
             'commentaires.*.date' => 'nullable|date',
             'commentaires.*.texte' => 'nullable|string',
-
         ];
 
         if ($this->type === 'particulier') {
@@ -37,6 +36,7 @@ class StoreClientRequest extends FormRequest
                 'prenom' => 'required|string|max:100',
                 'date_naissance' => 'nullable|date|before:today',
                 'situation_familiale' => 'nullable|in:celibataire,marie,pacs,divorce,veuf',
+                'regime_matrimonial' => 'nullable|in:communaute_reduite_acquets,separation_biens,communaute_universelle,participation_acquets',
                 'nombre_enfants' => 'integer|min:0|max:20',
                 'profession' => 'nullable|string|max:100',
                 'employeur' => 'nullable|string|max:100',
@@ -59,14 +59,20 @@ class StoreClientRequest extends FormRequest
                 'patrimoine_immobilier' => 'nullable|array',
                 'patrimoine_immobilier.*.type_bien' => 'nullable|string',
                 'patrimoine_immobilier.*.usage' => 'nullable|string',
+                'patrimoine_immobilier.*.destination' => 'nullable|string',
+                'patrimoine_immobilier.*.date_achat' => 'nullable|date',
                 'patrimoine_immobilier.*.valeur_achat' => 'nullable|numeric|min:0',
                 'patrimoine_immobilier.*.valeur_actuelle' => 'nullable|numeric|min:0',
+                'patrimoine_immobilier.*.capital_restant' => 'nullable|numeric|min:0',
+                'patrimoine_immobilier.*.annuite' => 'nullable|numeric|min:0',
+                'patrimoine_immobilier.*.date_fin_pret' => 'nullable|date',
                 
                 'patrimoine_mobilier' => 'nullable|array',
                 'patrimoine_mobilier.*.type_contrat' => 'nullable|string',
                 'patrimoine_mobilier.*.montant' => 'nullable|numeric|min:0',
                 'patrimoine_mobilier.*.etablissement' => 'nullable|string',   
                 
+                // Conjoint - Pour les particuliers mariés/pacsés
                 'conjoint_civilite' => 'nullable|string|in:M,Mme,Mlle',
                 'conjoint_nom' => 'nullable|string|max:255',
                 'conjoint_prenom' => 'nullable|string|max:255',
@@ -74,19 +80,22 @@ class StoreClientRequest extends FormRequest
                 'conjoint_nationalite' => 'nullable|string|max:255',
                 'conjoint_profession' => 'nullable|string|max:255',
                 'conjoint_employeur' => 'nullable|string|max:255',
-                
-                // Représentant légal (entreprise)
-                'representant_legal_id' => 'nullable|integer|exists:clients,id',
             ]);
         } else {
+            // Règles pour les entreprises
             $rules = array_merge($rules, [
                 'raison_sociale' => 'required|string|max:200',
                 'statut_juridique' => 'nullable|in:SARL,SAS,SA,EURL,Auto-entrepreneur,SCI,Autre',
                 'siren' => 'nullable|string|size:9|unique:clients,siren',
                 'siret' => 'nullable|string|size:14',
+                'nombre_associes' => 'nullable|integer|min:1',
                 'chiffre_affaires' => 'nullable|numeric|min:0',
+                'ca_entreprise' => 'nullable|numeric|min:0',
+                'rn_entreprise' => 'nullable|numeric',
+                'valorisation_entreprise' => 'nullable|numeric|min:0',
                 'effectifs' => 'nullable|integer|min:0',
                 'secteur_activite' => 'nullable|string|max:200',
+                'repartition_capital' => 'nullable|string|max:255',
                 'dirigeant_nom' => 'nullable|string|max:100',
                 'dirigeant_prenom' => 'nullable|string|max:100',
                 'dirigeant_fonction' => 'nullable|string|max:100',
@@ -100,7 +109,10 @@ class StoreClientRequest extends FormRequest
                 'associes.*.nom' => 'nullable|string',
                 'associes.*.prenom' => 'nullable|string',
                 'associes.*.date_naissance' => 'nullable|date',
-                'associes.*.adresse' => 'nullable|string',                
+                'associes.*.adresse' => 'nullable|string',
+                
+                // IMPORTANT : Représentant légal - POUR LES ENTREPRISES
+                'representant_legal_id' => 'nullable|integer|exists:clients,id',
             ]);
         }
 
@@ -120,6 +132,7 @@ class StoreClientRequest extends FormRequest
             'prenom.required' => 'Le prénom est obligatoire.',
             'raison_sociale.required' => 'La raison sociale est obligatoire.',
             'date_naissance.before' => 'La date de naissance doit être antérieure à aujourd\'hui.',
+            'representant_legal_id.exists' => 'Le représentant légal sélectionné n\'existe pas.',
         ];
     }
 
@@ -147,21 +160,17 @@ class StoreClientRequest extends FormRequest
 
         $this->replace($input);
     }
-}
 
-class UpdateClientRequest extends StoreClientRequest
-{
-    public function rules()
+    public function withValidator($validator)
     {
-        $rules = parent::rules();
-        
-        // Modifier les règles d'unicité pour l'update
-        $rules['email'] = 'nullable|email|unique:clients,email,' . $this->client->id;
-        
-        if ($this->type === 'entreprise') {
-            $rules['siren'] = 'nullable|string|size:9|unique:clients,siren,' . $this->client->id;
-        }
-
-        return $rules;
+        $validator->after(function ($validator) {
+            // Vérifier que le représentant légal est bien une personne physique
+            if ($this->filled('representant_legal_id')) {
+                $client = \App\Models\Client::find($this->representant_legal_id);
+                if ($client && $client->type !== 'particulier') {
+                    $validator->errors()->add('representant_legal_id', 'Le représentant légal doit être une personne physique.');
+                }
+            }
+        });
     }
 }

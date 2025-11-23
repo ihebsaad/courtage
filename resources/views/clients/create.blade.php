@@ -278,9 +278,9 @@
                             </label>
                             <div class="input-group">
                                 <input type="hidden" name="representant_legal_id" id="representant_legal_id" 
-                                    value="{{ old('representant_legal_id', $client->representant_legal_id ?? '') }}">
+                                    value="{{ old('representant_legal_id') }}">
                                 <input type="text" id="representant_legal" class="form-control" 
-                                    value="{{ isset($client) && $client->representantLegal ? $client->representantLegal->civilite . ' ' . $client->representantLegal->prenom . ' ' . $client->representantLegal->nom : '' }}"
+                                    value="{{ old('representant_legal') }}"
                                     placeholder="Rechercher une personne physique..." autocomplete="off">
                                 <div class="input-group-append">
                                     <button type="button" class="btn btn-outline-secondary" id="clear-representant" title="Effacer">
