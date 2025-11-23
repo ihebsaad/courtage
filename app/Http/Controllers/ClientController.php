@@ -210,7 +210,14 @@ class ClientController extends Controller
     {
         $data = $request->validated();
         
-        // Convertir les tableaux JSON et filtrer les entrées vides
+        // DEBUG - À retirer après test
+        \Log::info('Données reçues pour création client:', [
+            'type' => $data['type'] ?? 'non défini',
+            'representant_legal_id' => $data['representant_legal_id'] ?? 'non défini',
+            'all_data' => $request->all()
+        ]);
+
+         // Convertir les tableaux JSON et filtrer les entrées vides
         if (isset($data['enfants'])) {
             $data['enfants'] = array_values(array_filter($data['enfants'], function($enfant) {
                 return !empty($enfant['nom']) || !empty($enfant['prenom']);
@@ -264,6 +271,11 @@ class ClientController extends Controller
             $data['documents'] = $client->documents ?? [];
         }
         
+        // S'assurer que representant_legal_id est null si vide
+        if (isset($data['representant_legal_id']) && empty($data['representant_legal_id'])) {
+            $data['representant_legal_id'] = null;
+        }
+
         $client->update($data);
 
         // Si c'est une entreprise avec SIREN, rafraîchir les données Pappers si le SIREN a changé
