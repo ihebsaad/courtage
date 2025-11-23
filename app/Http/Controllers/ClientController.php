@@ -117,6 +117,13 @@ class ClientController extends Controller
     {
         $data = $request->validated();
         
+        // DEBUG - À retirer après test
+        \Log::info('Données reçues pour création client:', [
+            'type' => $data['type'] ?? 'non défini',
+            'representant_legal_id' => $data['representant_legal_id'] ?? 'non défini',
+            'all_data' => $request->all()
+        ]);
+        
         // Convertir les tableaux JSON si nécessaire
         if (isset($data['enfants'])) {
             $data['enfants'] = array_values(array_filter($data['enfants'], function($enfant) {
@@ -159,7 +166,23 @@ class ClientController extends Controller
             $data['documents'] = [];
         }
         
+        // S'assurer que representant_legal_id est null si vide
+        if (isset($data['representant_legal_id']) && empty($data['representant_legal_id'])) {
+            $data['representant_legal_id'] = null;
+        }
+        
+        // DEBUG - À retirer après test
+        \Log::info('Données avant création:', [
+            'representant_legal_id' => $data['representant_legal_id'] ?? 'null'
+        ]);
+        
         $client = Client::create($data);
+
+        // DEBUG - À retirer après test
+        \Log::info('Client créé:', [
+            'id' => $client->id,
+            'representant_legal_id' => $client->representant_legal_id
+        ]);
 
         // Si c'est une entreprise avec SIREN, récupérer les données Pappers
         if ($client->type === 'entreprise' && $client->siren) {

@@ -74,7 +74,7 @@ class UpdateClientRequest extends FormRequest
                 'conjoint_employeur' => 'nullable|string|max:255',
                 
                 // Représentant légal (entreprise)
-                'representant_legal_id' => 'nullable|exists:clients,id',                 
+                'representant_legal_id' => 'nullable|integer|exists:clients,id',
             ]);
         } else {
             $rules = array_merge($rules, [
