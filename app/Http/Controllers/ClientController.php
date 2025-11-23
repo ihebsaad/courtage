@@ -112,7 +112,7 @@ class ClientController extends Controller
     {
         return view('clients.create');
     }
-
+/*
     public function store(StoreClientRequest $request)
     {
         $data = $request->validated();
@@ -192,7 +192,7 @@ class ClientController extends Controller
         return redirect()->route('clients.show', $client)
                         ->with('success', 'Client créé avec succès.');
     }
-
+*/
     public function show(Client $client)
     {
         //$client->load(['contrats', 'dossiers', 'notes', 'documents']);
@@ -206,18 +206,84 @@ class ClientController extends Controller
         return view('clients.edit', compact('client'));
     }
 
+    public function store(StoreClientRequest $request)
+    {
+        // Utiliser validated() mais ajouter manuellement les champs manquants
+        $data = $request->validated();
+        
+        // Ajouter explicitement representant_legal_id s'il est présent dans la requête
+        if ($request->has('representant_legal_id')) {
+            $data['representant_legal_id'] = $request->input('representant_legal_id') ?: null;
+        }
+        
+        // DEBUG - À retirer après test
+        \Log::info('Données après correction:', [
+            'representant_legal_id' => $data['representant_legal_id'] ?? 'non présent'
+        ]);
+        
+        // Convertir les tableaux JSON si nécessaire
+        if (isset($data['enfants'])) {
+            $data['enfants'] = array_values(array_filter($data['enfants'], function($enfant) {
+                return !empty($enfant['nom']) || !empty($enfant['prenom']);
+            }));
+        }
+        
+        if (isset($data['associes'])) {
+            $data['associes'] = array_values(array_filter($data['associes'], function($associe) {
+                return !empty($associe['nom']) || !empty($associe['prenom']);
+            }));
+        }
+        
+        if (isset($data['revenus_details'])) {
+            $data['revenus_details'] = array_values(array_filter($data['revenus_details'], function($revenu) {
+                return !empty($revenu['type']) && !empty($revenu['montant']);
+            }));
+        }
+        
+        if (isset($data['patrimoine_immobilier'])) {
+            $data['patrimoine_immobilier'] = array_values(array_filter($data['patrimoine_immobilier'], function($bien) {
+                return !empty($bien['type_bien']);
+            }));
+        }
+        
+        if (isset($data['patrimoine_mobilier'])) {
+            $data['patrimoine_mobilier'] = array_values(array_filter($data['patrimoine_mobilier'], function($contrat) {
+                return !empty($contrat['type_contrat']);
+            }));
+        }
+        
+        if (isset($data['commentaires'])) {
+            $data['commentaires'] = array_values(array_filter($data['commentaires'], function($commentaire) {
+                return !empty($commentaire['texte']);
+            }));
+        }
+        
+        // Initialiser documents comme tableau vide si non présent
+        if (!isset($data['documents'])) {
+            $data['documents'] = [];
+        }
+        
+        $client = Client::create($data);
+
+        // Si c'est une entreprise avec SIREN, récupérer les données Pappers
+        if ($client->type === 'entreprise' && $client->siren) {
+            $client->updatePappersData();
+        }
+
+        return redirect()->route('clients.show', $client)
+                        ->with('success', 'Client créé avec succès.');
+    }
+
     public function update(UpdateClientRequest $request, Client $client)
     {
         $data = $request->validated();
         
-        // DEBUG - À retirer après test
-        \Log::info('Données reçues pour création client:', [
-            'type' => $data['type'] ?? 'non défini',
-            'representant_legal_id' => $data['representant_legal_id'] ?? 'non défini',
-            'all_data' => $request->all()
-        ]);
-
-         // Convertir les tableaux JSON et filtrer les entrées vides
+        // Ajouter explicitement representant_legal_id s'il est présent dans la requête
+        if ($request->has('representant_legal_id')) {
+            $data['representant_legal_id'] = $request->input('representant_legal_id') ?: null;
+        }
+        
+        // Convertir les tableaux JSON et filtrer les entrées vides
         if (isset($data['enfants'])) {
             $data['enfants'] = array_values(array_filter($data['enfants'], function($enfant) {
                 return !empty($enfant['nom']) || !empty($enfant['prenom']);
@@ -271,11 +337,6 @@ class ClientController extends Controller
             $data['documents'] = $client->documents ?? [];
         }
         
-        // S'assurer que representant_legal_id est null si vide
-        if (isset($data['representant_legal_id']) && empty($data['representant_legal_id'])) {
-            $data['representant_legal_id'] = null;
-        }
-
         $client->update($data);
 
         // Si c'est une entreprise avec SIREN, rafraîchir les données Pappers si le SIREN a changé
