@@ -327,8 +327,8 @@
                                 <input type="hidden" name="representant_legal_id" id="representant_legal_id" 
                                     value="{{ old('representant_legal_id', $client->representant_legal_id ?? '') }}">
                                 <input type="text" id="representant_legal" class="form-control" 
-                                    value="{{ old('representant_legal_id') ? '' : ($client->representantLegal ? $client->representantLegal->civilite . ' ' . $client->representantLegal->prenom . ' ' . $client->representantLegal->nom : '') }}"
-                                    placeholder="Rechercher une personne physique...">
+                                    value="{{ isset($client) && $client->representantLegal ? $client->representantLegal->civilite . ' ' . $client->representantLegal->prenom . ' ' . $client->representantLegal->nom : '' }}"
+                                    placeholder="Rechercher une personne physique..." autocomplete="off">
                                 <div class="input-group-append">
                                     <button type="button" class="btn btn-outline-secondary" id="clear-representant" title="Effacer">
                                         <i class="fas fa-times"></i>
@@ -340,7 +340,10 @@
                                 </div>
                             </div>
                             <small class="form-text text-muted">
-                                Recherchez une personne existante ou créez-en une nouvelle dans un nouvel onglet
+                                Recherchez une personne existante ou créez-en une nouvelle dans un nouvel onglet.
+                                <span id="representant-selected" class="text-success" style="display: none;">
+                                    <i class="fas fa-check-circle"></i> Représentant sélectionné
+                                </span>
                             </small>
                         </div>
                     </div>
