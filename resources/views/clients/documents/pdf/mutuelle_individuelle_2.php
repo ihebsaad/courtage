@@ -19,9 +19,6 @@
 <body>
     <div class="header">
         <h2>DOCUMENT DE RECUEIL DES EXIGENCES ET DES BESOINS</h2>
-        <p>ParFiPro au capital de 1000 €<br>
-        Siège social 173 Boulevard Pereire 75017 Paris<br>
-        SIREN – 880 874 466 RCS de Paris – ORIAS 200 01 570</p>
     </div>
 
     <p style="margin-bottom: 15px;">
@@ -198,5 +195,11 @@
             </table>
         </div>
     </div>
+    <footer>
+        <p style="font-size: 8px; text-align: center; margin-top: 20px;">
+            ParFiPro - Courtier en assurances - au capital de 1000 € - Siège social : 173 Boulevard Pereire 75017 Paris - 
+            SIREN : 880 874 466 RCS de Paris - ORIAS : 200 01 570 - www.parfipro.fr
+        </p>
+    </footer>
 </body>
 </html>
