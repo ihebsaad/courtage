@@ -247,22 +247,34 @@
                                     value="{{ old('conjoint_prenom', $client->conjoint_prenom ?? '') }}" class="form-control">
                             </div>
                         </div>
-                        
+                                               
                         <div class="row">
-                            <div class="col-md-4 mb-3">
+                            <div class="col-md-3 mb-3">
                                 <label for="conjoint_date_naissance" class="form-label font-weight-bold">Date de naissance</label>
                                 <input type="date" name="conjoint_date_naissance" id="conjoint_date_naissance" 
                                     value="{{ old('conjoint_date_naissance', isset($client->conjoint_date_naissance) ? $client->conjoint_date_naissance : '') }}" 
                                     class="form-control">
                             </div>
-                            <div class="col-md-4 mb-3">
+                            <div class="col-md-3 mb-3">
                                 <label for="conjoint_nationalite" class="form-label font-weight-bold">Nationalité</label>
                                 <input type="text" name="conjoint_nationalite" id="conjoint_nationalite" 
-                                    value="{{ old('conjoint_nationalite', $client->conjoint_nationalite ?? '') }}" 
+                                    value="{{ old('conjoint_nationalite', isset($client->conjoint_nationalite) ? $client->conjoint_nationalite : '' ) }}" 
                                     class="form-control" placeholder="Française">
                             </div>
+                            <div class="col-md-3 mb-3">
+                                <label for="conjoint_date_mariage" class="form-label font-weight-bold">Date de naissance</label>
+                                <input type="date" name="conjoint_date_mariage" id="conjoint_date_mariage" 
+                                    value="{{ old('conjoint_date_mariage', isset($client->conjoint_date_mariage) ? $client->conjoint_date_mariage : '') }}" 
+                                    class="form-control">
+                            </div>  
+                            <div class="col-md-3 mb-3">
+                                <label for="conjoint_lieu_mariage" class="form-label font-weight-bold"> Lieu de mariage</label>
+                                <input type="text" name="conjoint_lieu_mariage" id="conjoint_lieu_mariage" 
+                                    value="{{ old('conjoint_lieu_mariage' , isset($client->conjoint_lieu_mariage) ? $client->conjoint_lieu_mariage : '') }}" 
+                                    class="form-control" placeholder="">
+                            </div>                                                      
                         </div>
-                        
+
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label for="conjoint_profession" class="form-label font-weight-bold">Profession</label>
@@ -535,6 +547,7 @@
                                             <option value="bnc" {{ ($revenu['type'] ?? '') == 'bnc' ? 'selected' : '' }}>BNC (Bénéfices Non Commerciaux)</option>
                                             <option value="remuneration_gerance" {{ ($revenu['type'] ?? '') == 'remuneration_gerance' ? 'selected' : '' }}>Rémunération de gérance</option>
                                             <option value="revenus_fonciers" {{ ($revenu['type'] ?? '') == 'revenus_fonciers' ? 'selected' : '' }}>Revenus fonciers</option>
+                                            <option value="dividendes" {{ ($revenu['type'] ?? '') == 'dividendes' ? 'selected' : '' }}>Dividendes</option>
                                         </select>
                                     </div>
                                     <div class="col-md-6">
@@ -588,6 +601,7 @@
                             <option value="freelance" {{ old('type_contrat', $client->type_contrat) == 'freelance' ? 'selected' : '' }}>Freelance</option>
                             <option value="retraite" {{ old('type_contrat', $client->type_contrat) == 'retraite' ? 'selected' : '' }}>Retraité</option>
                             <option value="chomage" {{ old('type_contrat', $client->type_contrat) == 'chomage' ? 'selected' : '' }}>Chômage</option>
+                            <option value="liberal-independant" {{ old('type_contrat', $client->type_contrat) == 'liberal-independant' ? 'selected' : '' }}>Libéral / Indépendant</option> 
                         </select>
                     </div>
                 </div>
@@ -624,8 +638,11 @@
                                                 <option value="maison" {{ ($bien['type_bien'] ?? '') == 'maison' ? 'selected' : '' }}>Maison</option>
                                                 <option value="appartement" {{ ($bien['type_bien'] ?? '') == 'appartement' ? 'selected' : '' }}>Appartement</option>
                                                 <option value="terrain" {{ ($bien['type_bien'] ?? '') == 'terrain' ? 'selected' : '' }}>Terrain</option>
-                                                <option value="studio" {{ ($bien['type_bien'] ?? '') == 'studio' ? 'selected' : '' }}>studio</option>
+                                                <option value="studio" {{ ($bien['type_bien'] ?? '') == 'studio' ? 'selected' : '' }}>Studio</option>
                                                 <option value="local" {{ ($bien['type_bien'] ?? '') == 'local' ? 'selected' : '' }}>Local professionnel</option>                                                
+                                                <option value="entrepot" {{ ($bien['type_bien'] ?? '') == 'entrepot' ? 'selected' : '' }}>Entrepôt</option>
+                                                <option value="ferme" {{ ($bien['type_bien'] ?? '') == 'ferme' ? 'selected' : '' }}>Ferme</option>
+                                                <option value="autre" {{ ($bien['type_bien'] ?? '') == 'autre' ? 'selected' : '' }}>Autre</option>
                                             </select>
                                         </div>
                                         <div class="col-md-2 mb-2">
@@ -929,6 +946,7 @@ function addRevenu() {
                         <option value="bnc">BNC (Bénéfices Non Commerciaux)</option>
                         <option value="remuneration_gerance">Rémunération de gérance</option>
                         <option value="revenus_fonciers">Revenus fonciers</option>
+                        <option value="dividendes">Dividendes</option>
                     </select>
                 </div>
                 <div class="col-md-6">
@@ -967,6 +985,13 @@ function addImmobilier() {
                         <option value="">Sélectionner</option>
                         <option value="maison">Maison</option>
                         <option value="appartement">Appartement</option>
+                        <option value="terrain">Terrain</option>
+                        <option value="studio">Studio</option>
+                        <option value="local">Local professionnel</option>
+                        <option value="entrepot">Entrepôt</option>
+                        <option value="ferme">Ferme</option>
+                        <option value="autre">Autre</option>
+                         
                     </select>
                 </div>
                 <div class="col-md-2 mb-2">

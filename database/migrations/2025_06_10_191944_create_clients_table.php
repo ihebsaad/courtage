@@ -43,7 +43,7 @@ class CreateClientsTable extends Migration
             $table->string('profession')->nullable();
             $table->string('employeur')->nullable();
             //$table->decimal('revenus', 10, 2)->nullable();
-            $table->enum('type_contrat', ['cdi', 'cdd', 'interim', 'freelance', 'retraite', 'chomage'])->nullable();
+            $table->enum('type_contrat', ['cdi', 'cdd', 'interim', 'freelance', 'retraite', 'chomage','liberal-independant'])->nullable();
             
             // Patrimoine (particulier)
             $table->boolean('residence_principale')->default(false);

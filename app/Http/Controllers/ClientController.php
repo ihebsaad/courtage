@@ -216,11 +216,7 @@ class ClientController extends Controller
             $data['representant_legal_id'] = $request->input('representant_legal_id') ?: null;
         }
         
-        // DEBUG - À retirer après test
-        \Log::info('Données après correction:', [
-            'representant_legal_id' => $data['representant_legal_id'] ?? 'non présent'
-        ]);
-        
+ 
         // Convertir les tableaux JSON si nécessaire
         if (isset($data['enfants'])) {
             $data['enfants'] = array_values(array_filter($data['enfants'], function($enfant) {

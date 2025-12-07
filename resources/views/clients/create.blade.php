@@ -179,7 +179,7 @@
                         </h5>
                         
                         <div class="row">
-                            <div class="col-md-2 mb-3">
+                            <div class="col-md-3 mb-3">
                                 <label for="conjoint_civilite" class="form-label font-weight-bold">Civilité</label>
                                 <select name="conjoint_civilite" id="conjoint_civilite" class="form-control">
                                     <option value="">Sélectionner</option>
@@ -188,12 +188,17 @@
                                     <option value="Mlle" {{ old('conjoint_civilite') == 'Mlle' ? 'selected' : '' }}>Mlle</option>
                                 </select>
                             </div>
-                            <div class="col-md-5 mb-3">
+                            <div class="col-md-3 mb-3">
                                 <label for="conjoint_nom" class="form-label font-weight-bold">Nom</label>
                                 <input type="text" name="conjoint_nom" id="conjoint_nom" 
                                     value="{{ old('conjoint_nom') }}" class="form-control">
                             </div>
-                            <div class="col-md-5 mb-3">
+                            <div class="col-md-3 mb-3">
+                                <label for="conjoint_nom2" class="form-label font-weight-bold">Nom jeune fille</label>
+                                <input type="text" name="conjoint_nom2" id="conjoint_nom2" 
+                                    value="{{ old('conjoint_nom2') }}" class="form-control">
+                            </div>                            
+                            <div class="col-md-3 mb-3">
                                 <label for="conjoint_prenom" class="form-label font-weight-bold">Prénom</label>
                                 <input type="text" name="conjoint_prenom" id="conjoint_prenom" 
                                     value="{{ old('conjoint_prenom') }}" class="form-control">
@@ -201,18 +206,30 @@
                         </div>
                         
                         <div class="row">
-                            <div class="col-md-4 mb-3">
+                            <div class="col-md-3 mb-3">
                                 <label for="conjoint_date_naissance" class="form-label font-weight-bold">Date de naissance</label>
                                 <input type="date" name="conjoint_date_naissance" id="conjoint_date_naissance" 
-                                    value="{{ old('conjoint_date_naissance', isset($client->conjoint_date_naissance) ? $client->conjoint_date_naissance->format('Y-m-d') : '') }}" 
+                                    value="{{ old('conjoint_date_naissance') }}" 
                                     class="form-control">
                             </div>
-                            <div class="col-md-4 mb-3">
+                            <div class="col-md-3 mb-3">
                                 <label for="conjoint_nationalite" class="form-label font-weight-bold">Nationalité</label>
                                 <input type="text" name="conjoint_nationalite" id="conjoint_nationalite" 
                                     value="{{ old('conjoint_nationalite') }}" 
                                     class="form-control" placeholder="Française">
                             </div>
+                            <div class="col-md-3 mb-3">
+                                <label for="conjoint_date_mariage" class="form-label font-weight-bold">Date de naissance</label>
+                                <input type="date" name="conjoint_date_mariage" id="conjoint_date_mariage" 
+                                    value="{{ old('conjoint_date_mariage') }}" 
+                                    class="form-control">
+                            </div>  
+                            <div class="col-md-3 mb-3">
+                                <label for="conjoint_lieu_mariage" class="form-label font-weight-bold"> Lieu de mariage</label>
+                                <input type="text" name="conjoint_lieu_mariage" id="conjoint_lieu_mariage" 
+                                    value="{{ old('conjoint_lieu_mariage') }}" 
+                                    class="form-control" placeholder="">
+                            </div>                                                      
                         </div>
                         
                         <div class="row">
@@ -476,6 +493,7 @@
                             <option value="freelance" {{ old('type_contrat') == 'freelance' ? 'selected' : '' }}>Freelance</option>
                             <option value="retraite" {{ old('type_contrat') == 'retraite' ? 'selected' : '' }}>Retraité</option>
                             <option value="chomage" {{ old('type_contrat') == 'chomage' ? 'selected' : '' }}>Chômage</option>
+                            <option value="liberal-independant" {{ old('type_contrat') == 'liberal-independant' ? 'selected' : '' }}>Libéral / Indépendant</option> 
                         </select>
                     </div>
                 </div>
@@ -681,7 +699,8 @@ function addRevenu() {
                         <option value="bic">BIC (Bénéfices Industriels et Commerciaux)</option>
                         <option value="bnc">BNC (Bénéfices Non Commerciaux)</option>
                         <option value="remuneration_gerance">Rémunération de gérance</option>
-                        <option value="revenus_fonciers">Revenus fonciers</option>
+                        <option value="revenus_fonciers">Revenus fonciers</option>Dividendes 
+                        <option value="dividendes">Dividendes</option> 
                     </select>
                 </div>
                 <div class="col-md-6">
@@ -723,6 +742,9 @@ function addImmobilier() {
                         <option value="terrain">Terrain</option>
                         <option value="studio">Studio</option>
                         <option value="local">Local professionnel</option>
+                        <option value="entrepot">Entrepôt</option>
+                        <option value="ferme">Ferme</option>
+                        <option value="autre">Autre</option>
                     </select>
                 </div>
                 <div class="col-md-2 mb-2">

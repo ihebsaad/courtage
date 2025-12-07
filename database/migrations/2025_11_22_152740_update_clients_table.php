@@ -22,7 +22,10 @@ class UpdateClientsTable extends Migration
             $table->string('conjoint_nationalite')->nullable()->after('conjoint_date_naissance');
             $table->string('conjoint_profession')->nullable()->after('conjoint_nationalite');
             $table->string('conjoint_employeur')->nullable()->after('conjoint_profession');
-            
+            $table->string('conjoint_nom2')->nullable()->after('conjoint_employeur');
+            $table->date('conjoint_date_mariage')->nullable()->after('conjoint_nom2');
+            $table->string('conjoint_lieu_mariage')->nullable()->after('conjoint_date_mariage');
+
             // Champ pour le représentant légal (entreprises)
             $table->unsignedBigInteger('representant_legal_id')->nullable()->after('repartition_capital');
             

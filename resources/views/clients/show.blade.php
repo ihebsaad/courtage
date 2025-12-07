@@ -463,6 +463,7 @@
                                             @case('bnc') BNC @break
                                             @case('remuneration_gerance') Rémunération de gérance @break
                                             @case('revenus_fonciers') Revenus fonciers @break
+                                            @case('dividendes') Dividendes @break
                                             @default {{ $revenu['type'] ?? '-' }}
                                         @endswitch
                                     </td>
