@@ -220,11 +220,13 @@
                                         <p class="mb-0">{{ $client->conjoint_nationalite }}</p>
                                     </div>
                                     @endif 
+                                    @if($client->conjoint_date_mariage)
                                     <div class="col-md-3 mb-3">
                                         <label class="font-weight-bold text-muted small">Date de mariage</label>
                                         <p class="mb-0">{{ date('d/m/Y', strtotime($client->conjoint_date_mariage)) }}</p>
                                     </div>
                                     @endif 
+                                    @if($client->conjoint_lieu_mariage)
                                     <div class="col-md-3 mb-3">
                                         <label class="font-weight-bold text-muted small">Lieu de mariage</label>
                                         <p class="mb-0">{{ $client->conjoint_lieu_mariage }}</p>
