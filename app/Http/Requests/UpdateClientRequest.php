@@ -16,7 +16,7 @@ class UpdateClientRequest extends FormRequest
         $rules = [
             'type' => 'required|in:particulier,entreprise',
             'statut' => 'required|in:client,prospect',
-            'email' => 'nullable|email|unique:clients,email,' . $this->client->id,
+            'email' => 'nullable|email|string|max:100',
             'nationalite' => 'nullable|string|max:30',
             'telephone' => 'nullable|string|max:20',
             'telephone_portable' => 'nullable|string|max:20',
