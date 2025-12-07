@@ -148,27 +148,5 @@ class Client extends Model
 
         return false;
     }
-/*
-    // Relations
-    public function contrats()
-    {
-        return $this->hasMany(Contrat::class);
-    }
 
-    public function dossiers()
-    {
-        return $this->hasMany(Dossier::class);
-    }
-
-    public function notes()
-    {
-        return $this->morphMany(Note::class, 'notable');
-    }
-
-    public function documents()
-    {
-        return $this->morphMany(Document::class, 'documentable');
-    }
-
-    */
 }

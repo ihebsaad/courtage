@@ -11,17 +11,19 @@
 
     <div class="row">
         @foreach($templates as $code => $nom)
-        <div class="col-md-6 mb-3">
+        @if($nom!='')
+        <div class="col-md-4 mb-3">
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">{{ $nom }}</h5>
                     <a href="{{ route('clients.documents.create', [$client, $code]) }}" 
-                       class="btn btn-primary">
+                       class="btn btn-primary mt-2">
                         Créer ce document
                     </a>
                 </div>
             </div>
         </div>
+        @endif
         @endforeach
     </div>
 </div>

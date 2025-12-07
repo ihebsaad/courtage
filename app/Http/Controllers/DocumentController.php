@@ -9,7 +9,24 @@ use Barryvdh\DomPDF\Facade\Pdf;
 class DocumentController extends Controller
 {
     private $templates = [
-        'recueil_prevoyance' => 'Document de Recueil des Exigences - Prévoyance',
+        'mutuelle_individuelle_1' => 'Document DOCUMENT D’ENTREE EN RELATION',
+        'mutuelle_individuelle_2' => 'Document de Recueil des Exigences - Prévoyance',
+        'mutuelle_individuelle_3' => 'FICHE CONSEIL',
+        'mandat_immo_1' => '',
+        'mandat_immo_2' => '',
+        'mandat_immo_3' => '',
+        'mandat_financement_1' => '',
+        'mandat_financement_2' => '',
+        'mandat_financement_3' => '',
+        'prevoyance_collective_1' => '',
+        'prevoyance_collective_2' => '',
+        'prevoyance_collective_3' => '',
+        'mutuelle_collective_1' => '',
+        'mutuelle_collective_2' => '',
+        'mutuelle_collective_3' => '',
+        'prevoyance_individuelle_1' => '',
+        'prevoyance_individuelle_2' => '',
+        'prevoyance_individuelle_3' => '',
     ];
 
     public function index(Client $client)
