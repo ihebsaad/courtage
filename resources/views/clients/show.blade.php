@@ -41,7 +41,7 @@
                     </p>
                 </div>
                 <div>
-                    <a class="btn btn-secondary mr-2" href="{{ route("clients.documents", $client) }}">
+                    <a class="btn btn-secondary mr-2" href="{{ route("clients.index", $client) }}">
                         <i class="fas fa-arrow-left mr-2"></i>Retour
                     </a>
                     <a class="btn btn-primary mr-2" href="{{ route("clients.documents.index", $client) }}">
