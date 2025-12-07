@@ -17,6 +17,7 @@ use App\Http\Controllers\UsersController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\EtudePrevoyanceController;
 use App\Http\Controllers\EtudeMutuelleController;
+use App\Http\Controllers\DocumentController;
 
 //Route::resource('categories', CategoriesController::class);
 Route::resource('users', UsersController::class);
@@ -74,6 +75,12 @@ Route::get('/etude-mutuelle/pdf', [EtudeMutuelleController::class, 'generatePdf'
 // Route pour prévisualiser l'étude mutuelle (optionnel)
 Route::get('/etude-mutuelle/preview', [EtudeMutuelleController::class, 'showPreview'])
     ->name('etude-mutuelle.preview');
+
+Route::prefix('clients/{client}')->group(function () {
+    Route::get('/documents', [DocumentController::class, 'index'])->name('clients.documents.index');
+    Route::get('/documents/create/{template}', [DocumentController::class, 'create'])->name('clients.documents.create');
+    Route::post('/documents/generate/{template}', [DocumentController::class, 'generate'])->name('clients.documents.generate');
+});
 
 Route::middleware(['auth'])->group(function () {
 
