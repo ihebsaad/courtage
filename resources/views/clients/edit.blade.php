@@ -581,17 +581,16 @@
             </div>
             <div class="card-body">
                 <div class="row">
-                    <div class="col-md-6 mb-3">
+                    <div class="col-md-4 mb-3">
                         <label for="profession" class="form-label font-weight-bold">Profession</label>
                         <input type="text" name="profession" id="profession" value="{{ old('profession', $client->profession) }}" class="form-control">
                     </div>
-                    <div class="col-md-6 mb-3">
+                    <div class="col-md-4 mb-3">
                         <label for="employeur" class="form-label font-weight-bold">Employeur</label>
                         <input type="text" name="employeur" id="employeur" value="{{ old('employeur', $client->employeur) }}" class="form-control">
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6 mb-3">
+
+                    <div class="col-md-4 mb-3">
                         <label for="type_contrat" class="form-label font-weight-bold">Type de contrat</label>
                         <select name="type_contrat" id="type_contrat" class="form-control">
                             <option value="">Sélectionner</option>
