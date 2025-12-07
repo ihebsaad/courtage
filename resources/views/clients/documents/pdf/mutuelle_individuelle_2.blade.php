@@ -14,6 +14,18 @@
         .footer { font-size: 9px; border-top: 1px solid #000; padding-top: 10px; margin-top: 30px; }
         table { width: 100%; border-collapse: collapse; }
         td { padding: 5px; vertical-align: top; }
+        footer {
+		   position: fixed;
+		   bottom: -120px;
+		   left: 0px;
+		   right: 0px;
+		   height: 100px;
+		   text-align: center;
+		   font-size:10px;
+		   line-height:11px;
+		   font-weight:normal;
+		   page-break-inside: avoid;
+	   }
     </style>
 </head>
 <body>
