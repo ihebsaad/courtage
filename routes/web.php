@@ -77,7 +77,7 @@ Route::get('/etude-mutuelle/preview', [EtudeMutuelleController::class, 'showPrev
     ->name('etude-mutuelle.preview');
 
 Route::prefix('clients/{client}')->group(function () {
-    Route::get('/documents', [DocumentController::class, 'index'])->name('clients.documents.index');
+    Route::get('/documents', [DocumentController::class, 'index'])->name('documents_home');
     Route::get('/documents/create/{template}', [DocumentController::class, 'create'])->name('clients.documents.create');
     Route::post('/documents/generate/{template}', [DocumentController::class, 'generate'])->name('clients.documents.generate');
 });
