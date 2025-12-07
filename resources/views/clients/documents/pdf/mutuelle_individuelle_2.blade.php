@@ -16,7 +16,7 @@
         td { padding: 5px; vertical-align: top; }
         footer {
 		   position: fixed;
-		   bottom: 00px;
+		   bottom: -100px;
 		   left: 0px;
 		   right: 0px;
 		   height: 100px;
