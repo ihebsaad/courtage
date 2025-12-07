@@ -41,8 +41,11 @@
                     </p>
                 </div>
                 <div>
-                    <a class="btn btn-secondary mr-2" href="{{ route('clients.index') }}">
+                    <a class="btn btn-secondary mr-2" href="{{ route("clients.documents", $client) }}">
                         <i class="fas fa-arrow-left mr-2"></i>Retour
+                    </a>
+                    <a class="btn btn-primary mr-2" href="{{ route("clients.documents.index", $client) }}">
+                        <i class="fas fa-edit mr-2"></i> Générer des Documents
                     </a>
                     @if($client->statut === 'prospect')
                         <form method="POST" action="{{ route('clients.convert', $client) }}" class="d-inline">
