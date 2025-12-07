@@ -227,7 +227,7 @@
                         </h5>
                         
                         <div class="row">
-                            <div class="col-md-2 mb-3">
+                            <div class="col-md-3 mb-3">
                                 <label for="conjoint_civilite" class="form-label font-weight-bold">Civilité</label>
                                 <select name="conjoint_civilite" id="conjoint_civilite" class="form-control">
                                     <option value="">Sélectionner</option>
@@ -236,17 +236,17 @@
                                     <option value="Mlle" {{ old('conjoint_civilite', $client->conjoint_civilite ?? '') == 'Mlle' ? 'selected' : '' }}>Mlle</option>
                                 </select>
                             </div>
-                            <div class="col-md-5 mb-3">
+                            <div class="col-md-3 mb-3">
                                 <label for="conjoint_nom" class="form-label font-weight-bold">Nom</label>
                                 <input type="text" name="conjoint_nom" id="conjoint_nom" 
                                     value="{{ old('conjoint_nom', $client->conjoint_nom ?? '') }}" class="form-control">
                             </div>
-                            <div class="col-md-5 mb-3">
+                            <div class="col-md-3 mb-3">
                                 <label for="conjoint_nom" class="form-label font-weight-bold">Nom jeune fille</label>
                                 <input type="text" name="conjoint_nom2" id="conjoint_nom" 
                                     value="{{ old('conjoint_nom2', $client->conjoint_nom2 ?? '') }}" class="form-control">
                             </div>                            
-                            <div class="col-md-5 mb-3">
+                            <div class="col-md-3 mb-3">
                                 <label for="conjoint_prenom" class="form-label font-weight-bold">Prénom</label>
                                 <input type="text" name="conjoint_prenom" id="conjoint_prenom" 
                                     value="{{ old('conjoint_prenom', $client->conjoint_prenom ?? '') }}" class="form-control">
