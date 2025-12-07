@@ -6,7 +6,7 @@
     <h2>{{ $templateName }}</h2>
     <p class="text-muted">Client : {{ $client->nom_complet }}</p>
 
-    <form action="{{ route('clients.documents.generate', [$client, 'mutuelle_individuelle_1']) }}" method="POST">
+    <form action="{{ route('clients.documents.generate', [$client, 'mutuelle_individuelle_2']) }}" method="POST">
         @csrf
 
         <div class="card mb-3">
