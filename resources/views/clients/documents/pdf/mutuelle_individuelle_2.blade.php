@@ -16,13 +16,13 @@
         td { padding: 5px; vertical-align: top; }
         footer {
 		   position: fixed;
-		   bottom: 100px;
+		   bottom: 00px;
 		   left: 0px;
 		   right: 0px;
 		   height: 100px;
 		   text-align: center;
-		   font-size:10px;
-		   line-height:11px;
+		   font-size:12px;
+		   line-height:14px;
 		   font-weight:normal;
 		   page-break-inside: avoid;
 	   }
