@@ -219,7 +219,7 @@
                                     class="form-control" placeholder="Française">
                             </div>
                             <div class="col-md-3 mb-3">
-                                <label for="conjoint_date_mariage" class="form-label font-weight-bold">Date de naissance</label>
+                                <label for="conjoint_date_mariage" class="form-label font-weight-bold">Date de mariage</label>
                                 <input type="date" name="conjoint_date_mariage" id="conjoint_date_mariage" 
                                     value="{{ old('conjoint_date_mariage') }}" 
                                     class="form-control">

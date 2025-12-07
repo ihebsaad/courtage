@@ -205,7 +205,7 @@
                                     <div class="col-md-6 mb-3">
                                         <label class="font-weight-bold text-muted small">Identité</label>
                                         <p class="mb-0">
-                                            {{ $client->conjoint_civilite }} {{ $client->conjoint_prenom }} {{ $client->conjoint_nom }}
+                                            {{ $client->conjoint_civilite }} {{ $client->conjoint_prenom }}  {{ $client->conjoint_nom2 ?? '' }} {{ $client->conjoint_nom }}
                                         </p>
                                     </div>
                                     @if($client->conjoint_date_naissance)
@@ -219,7 +219,18 @@
                                         <label class="font-weight-bold text-muted small">Nationalité</label>
                                         <p class="mb-0">{{ $client->conjoint_nationalite }}</p>
                                     </div>
-                                    @endif
+                                    @endif 
+                                    <div class="col-md-3 mb-3">
+                                        <label class="font-weight-bold text-muted small">Date de mariage</label>
+                                        <p class="mb-0">{{ date('d/m/Y', strtotime($client->conjoint_date_mariage)) }}</p>
+                                    </div>
+                                    @endif 
+                                    <div class="col-md-3 mb-3">
+                                        <label class="font-weight-bold text-muted small">Lieu de mariage</label>
+                                        <p class="mb-0">{{ $client->conjoint_lieu_mariage }}</p>
+                                    </div>
+                                    @endif                                     
+                                      
                                 </div>
                                 @if($client->conjoint_profession || $client->conjoint_employeur)
                                 <div class="row">

@@ -242,6 +242,11 @@
                                     value="{{ old('conjoint_nom', $client->conjoint_nom ?? '') }}" class="form-control">
                             </div>
                             <div class="col-md-5 mb-3">
+                                <label for="conjoint_nom" class="form-label font-weight-bold">Nom jeune fille</label>
+                                <input type="text" name="conjoint_nom2" id="conjoint_nom" 
+                                    value="{{ old('conjoint_nom2', $client->conjoint_nom2 ?? '') }}" class="form-control">
+                            </div>                            
+                            <div class="col-md-5 mb-3">
                                 <label for="conjoint_prenom" class="form-label font-weight-bold">Prénom</label>
                                 <input type="text" name="conjoint_prenom" id="conjoint_prenom" 
                                     value="{{ old('conjoint_prenom', $client->conjoint_prenom ?? '') }}" class="form-control">
@@ -262,7 +267,7 @@
                                     class="form-control" placeholder="Française">
                             </div>
                             <div class="col-md-3 mb-3">
-                                <label for="conjoint_date_mariage" class="form-label font-weight-bold">Date de naissance</label>
+                                <label for="conjoint_date_mariage" class="form-label font-weight-bold">Date de mariage</label>
                                 <input type="date" name="conjoint_date_mariage" id="conjoint_date_mariage" 
                                     value="{{ old('conjoint_date_mariage', isset($client->conjoint_date_mariage) ? $client->conjoint_date_mariage : '') }}" 
                                     class="form-control">
