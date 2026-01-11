@@ -51,23 +51,23 @@
                 <div class="mb-3">
                     <label>3/ Documents remis au client</label>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="doc_etude_comparative" id="doc1" value="1"  {{ $data['doc_etude_comparative']   ? 'checked' : '' }}>
+                        <input class="form-check-input" type="checkbox" name="doc_etude_comparative" id="doc1" value="1"  {{ isset($data['doc_etude_comparative']) && ($data['doc_etude_comparative'] ==1)   ? 'checked' : '' }}>
                         <label class="form-check-label" for="doc1">Étude comparative</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="doc_devis" id="doc2" value="1"  {{ $data['doc_devis']   ? 'checked' : '' }}>
+                        <input class="form-check-input" type="checkbox" name="doc_devis" id="doc2" value="1"  {{ isset($data['doc_devis']) && ($data['doc_devis'] ==1)   ? 'checked' : '' }}>
                         <label class="form-check-label" for="doc2">Devis</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="doc_conditions_generales" id="doc3" value="1"  {{ $data['doc_conditions_generales']   ? 'checked' : '' }}>
+                        <input class="form-check-input" type="checkbox" name="doc_conditions_generales" id="doc3" value="1"  {{ isset($data['doc_conditions_generales']) && ($data['doc_conditions_generales'] ==1)  ? 'checked' : '' }}>
                         <label class="form-check-label" for="doc3">Conditions générales</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="doc_ipid" id="doc4" value="1" {{ $data['doc_ipid']   ? 'checked' : '' }}>
+                        <input class="form-check-input" type="checkbox" name="doc_ipid" id="doc4" value="1" {{isset($data['doc_ipid']) && ($data['doc_ipid'] ==1)  ? 'checked' : '' }}>
                         <label class="form-check-label" for="doc4">IPID</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="doc_fsi" id="doc5" value="1" {{ $data['doc_fsi']   ? 'checked' : '' }}>
+                        <input class="form-check-input" type="checkbox" name="doc_fsi" id="doc5" value="1" {{ isset($data['doc_fsi']) && ($data['doc_fsi'] ==1)    ? 'checked' : '' }}>
                         <label class="form-check-label" for="doc5">FSI</label>
                     </div>
                 </div>
