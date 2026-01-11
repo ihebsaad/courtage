@@ -28,7 +28,7 @@
                     </div>
                     <div class="col-md-12 mb-3">
                         <label>Nom du client</label>
-                        <input type="text" name="nom_client" class="form-control" value="{{ $data['nom_client'] ?? $client->nom_complet }}" required>
+                        <input type="text" name="nom_client" class="form-control" value="{{  $client->nom_complet }}" required>
                     </div>
                 </div>
             </div>
