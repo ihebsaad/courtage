@@ -139,8 +139,21 @@ class DocumentController extends Controller
             ],
             'mutuelle_individuelle_3' => [
                 'besoins_specifiques' => '',
-
             ],
+            'mandat_immo_1' => [
+                'civilite' => '',
+                'type_client' => 'PARTICULIER',
+                'nom_client' => '',
+                'nom_conseiller' => 'Raphaël JACOB',
+                'fait_a' => 'Paris',
+                'date_document' => now()->format('Y-m-d'),
+            ],
+            'mandat_immo_2' => [
+                'besoins_specifiques' => '',
+            ],
+            'mandat_immo_3' => [
+                'besoins_specifiques' => '',
+            ],                        
             // Ajoutez d'autres templates ici...
         ];
 
