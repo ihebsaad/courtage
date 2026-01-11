@@ -20,7 +20,7 @@
 
                 <div class="mb-3">
                     <label>2/ Produit(s) préconisé(s)</label>
-                    <input type="text" name="produit_preconise" class="form-control" required placeholder="Ex: Contrat Santé TNS" value="{{ $data['produit_preconise']  }}" >
+                    <input type="text" name="produit_preconise" class="form-control" required placeholder="Ex: Contrat Santé TNS" value="{{ $data['produit_preconise'] ?? '' }}" >
                 </div>
 
                 <div class="mb-3">

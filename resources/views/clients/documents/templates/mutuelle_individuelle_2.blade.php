@@ -71,15 +71,15 @@
                     </div>
                     <div class="col-md-6 mb-3">
                         <label>Fonction exercée (si PPE)</label>
-                        <input type="text" name="fonction_exercee" class="form-control" value="{{ $data['fonction_exercee']  }}"> 
+                        <input type="text" name="fonction_exercee" class="form-control" value="{{ $data['fonction_exercee'] ?? '' }}"> 
                     </div>
                     <div class="col-md-6 mb-3">
                         <label>Date de cessation (si PPE)</label>
-                        <input type="date" name="date_cessation" class="form-control" value="{{ $data['date_cessation']  }}">
+                        <input type="date" name="date_cessation" class="form-control" value="{{ $data['date_cessation'] ?? ''  }}">
                     </div>
                     <div class="col-md-6 mb-3">
                         <label>Lien avec la PPE</label>
-                        <input type="text" name="lien_ppe" class="form-control" value="{{ $data['lien_ppe']  }}">
+                        <input type="text" name="lien_ppe" class="form-control" value="{{ $data['lien_ppe'] ?? ''   }}">
                     </div>
                     <div class="col-md-6 mb-3">
                         <label>Régime social</label>
