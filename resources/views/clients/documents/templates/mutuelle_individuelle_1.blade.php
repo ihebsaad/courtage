@@ -14,11 +14,11 @@
                 <div class="row">
                     <div class="col-md-12 mb-3">
                         <label>Nom complet</label>
-                        <input type="text" name="nom_complet" class="form-control" value="{{ $client->nom_complet }}" readonly>
+                        <input type="text" name="nom_complet" class="form-control" value="{{ $data['nom_complet'] ?? $client->nom_complet }}" readonly>
                     </div>
                     <div class="col-md-6 mb-3">
                         <label>Date d'entrée en relation</label>
-                        <input type="date" name="date_entree_relation" class="form-control" value="{{ now()->format('Y-m-d') }}" required>
+                        <input type="date" name="date_entree_relation" class="form-control" value="{{ $data['date_entree_relation'] ?? now()->format('Y-m-d') }}" required>
                     </div>
                 </div>
             </div>
@@ -29,13 +29,15 @@
             <div class="card-body">
                 <div class="mb-3">
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="type_remuneration" id="commission" value="commission" checked>
+                        <input class="form-check-input" type="radio" name="type_remuneration" id="commission" value="commission" 
+                            {{ ($data['type_remuneration'] ?? 'commission') === 'commission' ? 'checked' : '' }}>
                         <label class="form-check-label" for="commission">
                             Commission (rémunération incluse dans la prime d'assurance)
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="type_remuneration" id="honoraires" value="honoraires">
+                        <input class="form-check-input" type="radio" name="type_remuneration" id="honoraires" value="honoraires"
+                            {{ ($data['type_remuneration'] ?? '') === 'honoraires' ? 'checked' : '' }}>
                         <label class="form-check-label" for="honoraires">
                             Honoraires
                         </label>
@@ -46,12 +48,18 @@
 
         <div class="mb-3">
             <button type="submit" class="btn btn-success btn-lg">
-                Télécharger en PDF
+                <i class="fas fa-download"></i> Télécharger en PDF
             </button>
             <a href="{{ route('clients.documents.index', $client) }}" class="btn btn-secondary btn-lg">
-                Annuler
+                <i class="fas fa-times"></i> Annuler
             </a>
         </div>
+        
+        @if(!empty($data) && isset($data['date_entree_relation']))
+            <div class="alert alert-info">
+                <i class="fas fa-info-circle"></i> Des données ont été sauvegardées précédemment pour ce document.
+            </div>
+        @endif
     </form>
 </div>
 @endsection

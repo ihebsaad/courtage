@@ -61,6 +61,19 @@ class Client extends Model
         'documents' => 'array',
     ];
 
+
+    public function documentData()
+    {
+        return $this->hasMany(ClientDocumentData::class);
+    }
+    
+    public function getDocumentData(string $templateKey)
+    {
+        return $this->documentData()
+            ->where('template_key', $templateKey)
+            ->first()?->data ?? [];
+    }
+    
     /**
      * Relation : Le représentant légal de l'entreprise
      */

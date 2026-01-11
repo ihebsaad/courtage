@@ -65,38 +65,39 @@
                         <label>Personne Politiquement Exposée (PPE)</label>
                         <select name="ppe" class="form-control" required>
                             <option value="">Sélectionner</option>
-                            <option value="Oui">Oui</option>
-                            <option value="Non">Non</option>
+                            <option value="Oui" @selected($data['ppe'] == "Oui" )>Oui</option>
+                            <option value="Non" @selected($data['ppe'] == "Non" )>Non</option>
                         </select>
                     </div>
                     <div class="col-md-6 mb-3">
                         <label>Fonction exercée (si PPE)</label>
-                        <input type="text" name="fonction_exercee" class="form-control">
+                        <input type="text" name="fonction_exercee" class="form-control" value="{{ $data['fonction_exercee']  }}"> 
                     </div>
                     <div class="col-md-6 mb-3">
                         <label>Date de cessation (si PPE)</label>
-                        <input type="date" name="date_cessation" class="form-control">
+                        <input type="date" name="date_cessation" class="form-control" value="{{ $data['date_cessation']  }}">
                     </div>
                     <div class="col-md-6 mb-3">
                         <label>Lien avec la PPE</label>
-                        <input type="text" name="lien_ppe" class="form-control">
+                        <input type="text" name="lien_ppe" class="form-control" value="{{ $data['lien_ppe']  }}">
                     </div>
                     <div class="col-md-6 mb-3">
                         <label>Régime social</label>
                         <select name="regime_social" class="form-control" required>
                             <option value="">Sélectionner</option>
-                            <option value="SSI">Sécurité sociale pour les indépendants (SSI)</option>
-                            <option value="CPAM">Caisse Primaire d'Assurance Maladie (CPAM)</option>
-                            <option value="Alsace Moselle">Régime local Alsace Moselle</option>
-                            <option value="CARMF">Caisse Autonome de Retraite des Médecins de France (CARMF)</option>
+                            <option value="SSI" @selected($data['regime_social'] == "SSI" )>Sécurité sociale pour les indépendants (SSI)</option>
+                            <option value="CPAM" @selected($data['regime_social'] == "CPAM" )>Caisse Primaire d'Assurance Maladie (CPAM)</option>
+                            <option value="Alsace Moselle"  @selected($data['regime_social'] == "Alsace Moselle" )>Régime local Alsace Moselle</option>
+                            <option value="CARMF"  @selected($data['regime_social'] == "CARMF" )>Caisse Autonome de Retraite des Médecins de France (CARMF)</option>
+                            <option value="Aurte"  @selected($data['regime_social'] == "Aurte" )>Autre</option>
                         </select>
                     </div>
                     <div class="col-md-6 mb-3">
                         <label>Avantages Madelin</label>
                         <select name="madelin" class="form-control" required>
                             <option value="">Sélectionner</option>
-                            <option value="Oui">Oui</option>
-                            <option value="Non">Non</option>
+                            <option value="Oui"  @selected($data['madelin'] == "Oui" )>Oui</option>
+                            <option value="Non"  @selected($data['madelin'] == "Non" )>Non</option>
                         </select>
                     </div>
                 </div>
@@ -122,8 +123,8 @@
                     <label>Besoins spécifiques</label>
                     <select name="besoins_specifiques" class="form-control" required>
                         <option value="">Sélectionner</option>
-                        <option value="Oui">Oui</option>
-                        <option value="Non">Non</option>
+                        <option value="Oui"  @selected($data['besoins_specifiques'] == "Oui" )>Oui</option>
+                        <option value="Non"  @selected($data['besoins_specifiques'] == "Non" )>Non</option>
                     </select>
                 </div>
                 <div class="mb-3">
@@ -134,8 +135,9 @@
                     <label>Type de souscription</label>
                     <select name="type_souscription" class="form-control" required>
                         <option value="">Sélectionner</option>
-                        <option value="première souscription">Première souscription</option>
-                        <option value="renouvellement">Renouvellement</option>
+                        <option value="première souscription" @selected($data['type_souscription'] == "première souscription" )>Première souscription</option>
+                        <option value="remplacement d'un contrat existant" @selected($data['type_souscription'] == "remplacement d'un contrat existant" )>Remplacement d'un contrat existant</option>
+                        <option value="renouvellement" @selected($data['type_souscription'] == "renouvellement" )>Renouvellement</option>
                     </select>
                 </div>
             </div>
@@ -149,6 +151,12 @@
                 Annuler
             </a>
         </div>
+
+        @if(!empty($data) )
+            <div class="alert alert-info">
+                <i class="fas fa-info-circle"></i> Des données ont été sauvegardées précédemment pour ce document.
+            </div>
+        @endif
     </form>
 </div>
 @endsection

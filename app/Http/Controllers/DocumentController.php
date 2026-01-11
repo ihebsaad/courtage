@@ -3,13 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\Client;
+use App\Models\ClientDocumentData;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
 
 class DocumentController extends Controller
 {
     private $templates = [
-        'mutuelle_individuelle_1' => 'Document DOCUMENT D’ENTREE EN RELATION',
+        'mutuelle_individuelle_1' => 'Document DOCUMENT D\'ENTREE EN RELATION',
         'mutuelle_individuelle_2' => 'Document de Recueil des Exigences - Prévoyance',
         'mutuelle_individuelle_3' => 'FICHE CONSEIL',
         'mandat_immo_1' => '',
@@ -43,12 +44,16 @@ class DocumentController extends Controller
             abort(404);
         }
 
-        // Préremplir les données depuis le client
-        $data = $this->prepareData($client, $template);
-
+        // Récupérer les données sauvegardées ou préparer des données par défaut
+        $savedData = $client->getDocumentData($template);
+        $data = !empty($savedData) ? $savedData : $this->prepareDefaultData($client, $template);
+        
+        $besoins_spec = $data['besoins_specifiques'] ?? '';
+        
         return view("clients.documents.templates.{$template}", [
             'client' => $client,
             'data' => $data,
+            'besoins_specifiques' => $besoins_spec,
             'templateName' => $this->templates[$template]
         ]);
     }
@@ -61,6 +66,17 @@ class DocumentController extends Controller
 
         $data = $request->all();
         
+        // Sauvegarder les données pour ce client et ce template
+        ClientDocumentData::updateOrCreate(
+            [
+                'client_id' => $client->id,
+                'template_key' => $template,
+            ],
+            [
+                'data' => $data,
+            ]
+        );
+        
         $pdf = Pdf::loadView("clients.documents.pdf.{$template}", [
             'client' => $client,
             'data' => $data
@@ -71,7 +87,7 @@ class DocumentController extends Controller
         return $pdf->download($filename);
     }
 
-    private function prepareData(Client $client, string $template)
+    private function prepareDefaultData(Client $client, string $template)
     {
         $data = [
             'civilite' => $client->civilite,
@@ -86,7 +102,7 @@ class DocumentController extends Controller
             'profession' => $client->profession,
         ];
 
-        // Champs à remplir manuellement
+        // Champs à remplir manuellement (valeurs par défaut vides)
         $data['ppe'] = '';
         $data['fonction_exercee'] = '';
         $data['date_cessation'] = '';
@@ -99,6 +115,9 @@ class DocumentController extends Controller
         $data['besoins_specifiques'] = '';
         $data['description_besoin'] = '';
         $data['type_souscription'] = '';
+        $data['nom_complet'] = $client->nom_complet;
+        $data['date_entree_relation'] = now()->format('Y-m-d');
+        $data['type_remuneration'] = 'commission';
 
         return $data;
     }

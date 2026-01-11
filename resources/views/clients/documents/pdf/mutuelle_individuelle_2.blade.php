@@ -35,7 +35,7 @@
 
     <p style="margin-bottom: 15px;">
         Dans le cadre de son activité réglementée, votre courtier / intermédiaire doit recueillir un certain 
-        nombre de renseignements concernant votre situation et votre besoin en assurance.
+        nombre de renseignements concernant votre situation et votre besoin en assurance. Il est de votre intérêt de répondre avec complétude afin de vous proposer un contrat cohérent.
     </p>
 
     <div class="section">
@@ -182,9 +182,14 @@
     <div class="footer">
         <p><strong>PROTECTION DES DONNÉES PERSONNELLES</strong></p>
         <p style="font-size: 8px;">
-            Les données personnelles recueillies dans le cadre du présent questionnaire font l'objet d'un traitement informatisé.
-            Conformément à la loi Informatique et Libertés du 6 janvier 1978 modifiée et au Règlement européen n°2016/679/UE 
-            du 27 avril 2016 dit RGPD, vous disposez d'un droit d'accès, de communication, rectification, d'effacement de vos données.
+            Les données personnelles recueillies dans le cadre du présent questionnaire font l'objet d'un traitement informatisé.<br>
+            Le responsable de traitement est : Monsieur Raphaël JACOB<br>
+            Vos données sont collectées pour répondre au besoin en assurance exprimé et pour permettre à votre intermédiaire de répondre à ses obligations légales notamment la lutte contre le blanchiment et le financement du terrorisme.<br>
+            Les données personnelles sont destinées exclusivement aux services internes de gestion du courtier.<br>
+            Le courtier / le mandataire conserve les données personnelles collectées tant que celles-ci lui sont nécessaires, ce délai pouvant dépendre des délais de prescription applicables ou des délais de conservation imposés par la Loi.<br>
+            Conformément à la loi Informatique et Libertés du 6 janvier 1978 modifiée et au Règlement européen n°2016/679/UE du 27 avril 2016 dit RGPD, vous disposez d’un droit d’accès, de communication, rectification, d’effacement de vos données, d’un droit à la limitation ou à l’opposition du traitement de vos données et de portabilité des données vous concernant. Vous pouvez exercer ces droits, ou ceux du défunt en tant qu’ayant droit, en vous adressant à Monsieur Raphaël JACOB, 173 Boulevard Pereire 75017 Paris – rjacob.pafipro@gmail.com . En cas de doute, l’intermédiaire pourra vous demander de justifier de votre identité.<br><br>
+            Pour toute réclamation ou information, vous pouvez également contacter la Commission Nationale de  l’Informatique et des Libertés (www.cnil.fr) par courrier postal adressé à CNIL, 3, place de Fontenoy, TSA 80715, 75334 Paris cedex 07.<br><br>
+            Après vérification de l’ensemble des informations communiquées, je certifie par la présente leur exactitude.<br>
         </p>
         
         <div style="margin-top: 30px;">
@@ -210,7 +215,7 @@
     <footer>
         <p style="font-size: 8px; text-align: center; margin-top: 20px;">
             ParFiPro - Courtier en assurances - au capital de 1000 € - Siège social : 173 Boulevard Pereire 75017 Paris - 
-            SIREN : 880 874 466 RCS de Paris - ORIAS : 200 01 570 - www.parfipro.fr
+            SIREN : 880 874 466 RCS de Paris - ORIAS : 200 01 570 - www.parfipro.com
         </p>
     </footer>
 </body>
