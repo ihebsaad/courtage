@@ -24,14 +24,6 @@
 </head>
 <body>
 
-    <div class="header-box">
-        ParFiPro au capital de 1000 €<br>
-        Siège social 173 Boulevard Pereire 75017 Paris<br>
-        SIREN – 880 874 466 RCS de Paris –<br>
-        ORIAS 200 01 570 – www.orias.fr<br>
-        Sous le contrôle de l'ACPR – 4 place de Budapest CS 92459 75346 Paris cedex 9
-    </div>
-
     <div class="title">Document d'entrée en relation</div>
 
     <p style="margin-bottom: 10px;">
