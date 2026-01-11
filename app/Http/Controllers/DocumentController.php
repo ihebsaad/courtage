@@ -116,6 +116,7 @@ class DocumentController extends Controller
 
     private function getTemplateDefaults(string $template)
     {
+       
         // Définir les champs par défaut selon le template
         $defaults = [
             'mutuelle_individuelle_1' => [
@@ -135,6 +136,10 @@ class DocumentController extends Controller
                 'besoins_specifiques' => '',
                 'description_besoin' => '',
                 'type_souscription' => '',
+            ],
+            'mutuelle_individuelle_3' => [
+                'besoins_specifiques' => '',
+
             ],
             // Ajoutez d'autres templates ici...
         ];

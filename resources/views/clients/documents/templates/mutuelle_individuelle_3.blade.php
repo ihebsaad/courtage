@@ -7,7 +7,9 @@
 
     <form action="{{ route('clients.documents.generate', [$client, 'mutuelle_individuelle_3']) }}" method="POST">
         @csrf
-
+        @php        
+            $data2=\App\Models\ClientDocumentData::where('client_id',$client->id)->where('template_key','mutuelle_individuelle_2')->first();
+        @endphp
         <input type="hidden" name="nom_complet" value="{{ $client->nom_complet }}">
 
         <div class="card mb-3">
@@ -15,7 +17,7 @@
             <div class="card-body">
                 <div class="mb-3">
                     <label>1/ Rappel des exigences et besoins exprimés</label>
-                    <textarea name="rappel_besoins" class="form-control" rows="4" required placeholder="Ex: Mr présente un besoin spécifique lié à son changement de statut...">{{ $besoins_spec ?? '' }}</textarea>
+                    <textarea name="rappel_besoins" class="form-control" rows="4" required placeholder="Ex: Mr présente un besoin spécifique lié à son changement de statut...">{{  $data2['besoins_specifiques'] ?? '' }}</textarea>
                 </div>
 
                 <div class="mb-3">
