@@ -44,17 +44,20 @@ class DocumentController extends Controller
             abort(404);
         }
 
-        // Récupérer les données sauvegardées ou préparer des données par défaut
-        $savedData = $client->getDocumentData($template);
-        $data = !empty($savedData) ? $savedData : $this->prepareDefaultData($client, $template);
+        // Préparer les données par défaut depuis le client
+        $defaultData = $this->prepareDefaultData($client, $template);
         
-        $besoins_spec = $data['besoins_specifiques'] ?? '';
+        // Récupérer les données sauvegardées
+        $savedData = $client->getDocumentData($template);
+        
+        // Fusionner : les données sauvegardées écrasent les valeurs par défaut
+        $data = array_merge($defaultData, $savedData);
         
         return view("clients.documents.templates.{$template}", [
             'client' => $client,
             'data' => $data,
-            'besoins_specifiques' => $besoins_spec,
-            'templateName' => $this->templates[$template]
+            'templateName' => $this->templates[$template],
+            'hasSavedData' => !empty($savedData)
         ]);
     }
 
@@ -64,7 +67,8 @@ class DocumentController extends Controller
             abort(404);
         }
 
-        $data = $request->all();
+        // Récupérer TOUTES les données du formulaire
+        $data = $request->except(['_token', '_method']);
         
         // Sauvegarder les données pour ce client et ce template
         ClientDocumentData::updateOrCreate(
@@ -89,36 +93,52 @@ class DocumentController extends Controller
 
     private function prepareDefaultData(Client $client, string $template)
     {
-        $data = [
-            'civilite' => $client->civilite,
-            'nom_usage' => $client->nom,
-            'nom_naissance' => $client->nom,
-            'prenoms' => $client->prenom,
-            'date_naissance' => $client->date_naissance?->format('d/m/Y'),
-            'situation_familiale' => $client->situation_familiale,
-            'adresse' => $client->adresse_complete,
-            'email' => $client->email,
-            'telephone_mobile' => $client->telephone_portable,
-            'profession' => $client->profession,
+        // Données de base du client (toujours les mêmes)
+        $baseData = [
+            'civilite' => $client->civilite ?? '',
+            'nom_usage' => $client->nom ?? '',
+            'nom_naissance' => $client->nom ?? '',
+            'prenoms' => $client->prenom ?? '',
+            'date_naissance' => $client->date_naissance?->format('d/m/Y') ?? '',
+            'situation_familiale' => $client->situation_familiale ?? '',
+            'adresse' => $client->adresse_complete ?? '',
+            'email' => $client->email ?? '',
+            'telephone_mobile' => $client->telephone_portable ?? '',
+            'profession' => $client->profession ?? '',
+            'nom_complet' => $client->nom_complet ?? '',
         ];
 
-        // Champs à remplir manuellement (valeurs par défaut vides)
-        $data['ppe'] = '';
-        $data['fonction_exercee'] = '';
-        $data['date_cessation'] = '';
-        $data['lien_ppe'] = '';
-        $data['regime_social'] = '';
-        $data['madelin'] = '';
-        $data['besoins_deces'] = '';
-        $data['besoins_incapacite'] = '';
-        $data['besoins_dependance'] = '';
-        $data['besoins_specifiques'] = '';
-        $data['description_besoin'] = '';
-        $data['type_souscription'] = '';
-        $data['nom_complet'] = $client->nom_complet;
-        $data['date_entree_relation'] = now()->format('Y-m-d');
-        $data['type_remuneration'] = 'commission';
+        // Données spécifiques par template (valeurs par défaut vides)
+        $templateDefaults = $this->getTemplateDefaults($template);
+        
+        return array_merge($baseData, $templateDefaults);
+    }
 
-        return $data;
+    private function getTemplateDefaults(string $template)
+    {
+        // Définir les champs par défaut selon le template
+        $defaults = [
+            'mutuelle_individuelle_1' => [
+                'date_entree_relation' => now()->format('Y-m-d'),
+                'type_remuneration' => 'commission',
+            ],
+            'mutuelle_individuelle_2' => [
+                'ppe' => '',
+                'fonction_exercee' => '',
+                'date_cessation' => '',
+                'lien_ppe' => '',
+                'regime_social' => '',
+                'madelin' => '',
+                'besoins_deces' => '',
+                'besoins_incapacite' => '',
+                'besoins_dependance' => '',
+                'besoins_specifiques' => '',
+                'description_besoin' => '',
+                'type_souscription' => '',
+            ],
+            // Ajoutez d'autres templates ici...
+        ];
+
+        return $defaults[$template] ?? [];
     }
 }

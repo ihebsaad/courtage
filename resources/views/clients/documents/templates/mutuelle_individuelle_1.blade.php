@@ -54,12 +54,7 @@
                 <i class="fas fa-times"></i> Annuler
             </a>
         </div>
-        
-        @if(!empty($data) && isset($data['date_entree_relation']))
-            <div class="alert alert-info">
-                <i class="fas fa-info-circle"></i> Des données ont été sauvegardées précédemment pour ce document.
-            </div>
-        @endif
+
     </form>
 </div>
 @endsection
