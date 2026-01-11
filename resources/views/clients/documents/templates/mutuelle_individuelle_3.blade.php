@@ -17,7 +17,7 @@
             <div class="card-body">
                 <div class="mb-3">
                     <label>1/ Rappel des exigences et besoins exprimés</label>
-                    <textarea name="rappel_besoins" class="form-control" rows="4" required placeholder="Ex: Mr présente un besoin spécifique lié à son changement de statut...">{{  $data2['besoins_specifiques'] ?? '' }}</textarea>
+                    <textarea name="rappel_besoins" class="form-control" rows="4" required placeholder="Ex: Mr présente un besoin spécifique lié à son changement de statut...">{{  $data2->data['besoins_specifiques'] ?? '' }}</textarea>
                 </div>
 
                 <div class="mb-3">
