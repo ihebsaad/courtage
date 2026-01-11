@@ -13,7 +13,7 @@ class DocumentController extends Controller
         'mutuelle_individuelle_1' => 'Document DOCUMENT D\'ENTREE EN RELATION',
         'mutuelle_individuelle_2' => 'Document de Recueil des Exigences - Prévoyance',
         'mutuelle_individuelle_3' => 'FICHE CONSEIL',
-        'mandat_immo_1' => '',
+        'mandat_immo_1' => 'Document d’entrée en relation - Mandat Immobilier',
         'mandat_immo_2' => '',
         'mandat_immo_3' => '',
         'mandat_financement_1' => '',
