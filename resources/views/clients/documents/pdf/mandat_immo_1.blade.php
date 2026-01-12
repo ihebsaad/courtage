@@ -6,8 +6,8 @@
     <style>
         @page { margin: 80px 50px 100px 50px; }
         body { font-family: Arial, sans-serif; font-size: 9px; line-height: 1.3; }
-        .header-box { padding: 8px; margin-bottom: 15px; text-align: center; font-size: 8px; line-height: 1.4; }
-        .title { font-size: 20px; font-weight: bold; text-align: center; margin: 15px 0; }
+        .header-box { padding: 8px; margin-bottom: 15px; text-align: center; font-size: 8px; line-height: 1.4;margin-top:-80px; }
+        .title { font-size: 20px; font-weight: bold; text-align: center; margin: 15px 0;border-bottom: 2px solid #000; padding-bottom: 5px; }
         .section { margin-bottom: 12px; }
         .section-title { font-weight: bold; background-color: #e0e0e0; padding: 5px; margin-bottom: 10px; }
         .checkbox { display: inline-block; width: 12px; height: 12px; border: 1px solid #000; margin-right: 5px; vertical-align: middle; }
