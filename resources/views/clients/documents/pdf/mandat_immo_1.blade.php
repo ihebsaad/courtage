@@ -326,10 +326,10 @@
     </div>
 
     <footer>
-        <table>
+        <table style="text-align: center; width: 100%; ;">
             <tr>
                 <td style="width: 40%;">
-                    <img src="{!! public_path('img/cncef.png')!!}"  width="200" style="text-align:center"></img><br>
+                    <img src="{!! public_path('img/cncef.png')!!}"  width="180" style="text-align:center"></img><br>
                 </td>
                 <td style="width: 60%;">
                     ParFiPro au capital de 1000 €  - Siège social 173 Boulevard Pereire 75017 Paris<br>
