@@ -109,6 +109,26 @@ class DocumentController extends Controller
             'telephone_mobile' => $client->telephone_portable ?? '',
             'profession' => $client->profession ?? '',
             'nom_complet' => $client->nom_complet ?? '',
+            'raison_sociale' => $client->raison_sociale ?? '',
+            'siren' => $client->siren ?? '',
+            'siret' => $client->siret ?? '',
+            'date_document' => now()->format('Y-m-d'),
+            'conjoint_civilite' => $client->conjoint_civilite ?? '',
+            'conjoint_nom' => $client->conjoint_nom ?? '',
+            'conjoint_prenom' => $client->conjoint_prenom ?? '',
+            'conjoint_date_naissance' => $client->conjoint_date_naissance?->format('d/m/Y') ?? '',
+            'conjoint_nationalite' => $client->conjoint_nationalite ?? '',
+            'conjoint_nom2' => $client->conjoint_nom2 ?? '',
+            'conjoint_date_mariage' => $client->conjoint_date_mariage?->format('d/m/Y') ?? '',
+            'conjoint_lieu_mariage' => $client->conjoint_lieu_mariage ?? '',       
+            'conjoint_profession'   => $client->conjoint_profession ?? '', 
+            'conjoint_employeur' => $client->conjoint_employeur ?? '',
+            'type_contrat' => $client->type_contrat ?? '', 
+            'residence_principale' => $client->residence_principale ? 'Oui' : 'Non', 
+            'immobilier_locatif' => $client->immobilier_locatif ? 'Oui' : 'Non', 
+            'assurance_vie' => $client->assurance_vie ? 'Oui' : 'Non', 
+            'epargne_retraite'  => $client->epargne_retraite ? 'Oui' : 'Non',
+ 
         ];
 
         // Données spécifiques par template (valeurs par défaut vides)

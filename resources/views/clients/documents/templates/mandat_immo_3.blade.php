@@ -42,19 +42,19 @@
                 <div class="row">
                     <div class="col-md-6 mb-3">
                         <label>Civilité du conjoint</label>
-                        <input type="text" name="conjoint_civilite" class="form-control" value="{{ $data['conjoint_civilite'] ?? $client->conjoint_civilite ?? '' }}">
+                        <input type="text" name="conjoint_civilite" class="form-control" value="{{   $client->conjoint_civilite ?? '' }}">
                     </div>
                     <div class="col-md-6 mb-3">
                         <label>Nom du conjoint</label>
-                        <input type="text" name="conjoint_nom" class="form-control" value="{{ $data['conjoint_nom'] ?? $client->conjoint_nom ?? '' }}">
+                        <input type="text" name="conjoint_nom" class="form-control" value="{{   $client->conjoint_nom ?? '' }}">
                     </div>
                     <div class="col-md-6 mb-3">
                         <label>Prénom du conjoint</label>
-                        <input type="text" name="conjoint_prenom" class="form-control" value="{{ $data['conjoint_prenom'] ?? $client->conjoint_prenom ?? '' }}">
+                        <input type="text" name="conjoint_prenom" class="form-control" value="{{  $client->conjoint_prenom ?? '' }}">
                     </div>
                     <div class="col-md-6 mb-3">
                         <label>Date de naissance du conjoint</label>
-                        <input type="date" name="conjoint_date_naissance" class="form-control" value="{{ $data['conjoint_date_naissance'] ?? ($client->conjoint_date_naissance ? \Carbon\Carbon::parse($client->conjoint_date_naissance)->format('Y-m-d') : '') }}">
+                        <input type="date" name="conjoint_date_naissance" class="form-control" value="{{   ($client->conjoint_date_naissance ? \Carbon\Carbon::parse($client->conjoint_date_naissance)->format('Y-m-d') : '') }}">
                     </div>
                 </div>
             </div>
