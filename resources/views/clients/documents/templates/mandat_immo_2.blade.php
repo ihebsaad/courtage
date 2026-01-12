@@ -14,23 +14,23 @@
                 <div class="row">
                     <div class="col-md-4 mb-3">
                         <label>Civilité Client 1</label>
-                        <input type="text" name="civilite_client1" class="form-control" value="{{ $data['civilite_client1'] ?? ($client->civilite === 'M' ? 'Monsieur' : 'Madame') }}" readonly>
+                        <input type="text" name="civilite_client1" class="form-control" value="{{ ($client->civilite === 'M' ? 'Monsieur' : 'Madame') }}" readonly>
                     </div>
                     <div class="col-md-4 mb-3">
                         <label>Nom Client 1</label>
-                        <input type="text" name="nom_client1" class="form-control" value="{{ $data['nom_client1'] ?? $client->nom }}" readonly>
+                        <input type="text" name="nom_client1" class="form-control" value="{{   $client->nom }}" readonly>
                     </div>
                     <div class="col-md-4 mb-3">
                         <label>Prénom Client 1</label>
-                        <input type="text" name="prenom_client1" class="form-control" value="{{ $data['prenom_client1'] ?? $client->prenom }}" readonly>
+                        <input type="text" name="prenom_client1" class="form-control" value="{{   $client->prenom }}" readonly>
                     </div>
                     <div class="col-md-6 mb-3">
                         <label>Adresse Client 1</label>
-                        <input type="text" name="adresse_client1" class="form-control" value="{{ $data['adresse_client1'] ?? $client->adresse_complete }}" readonly>
+                        <input type="text" name="adresse_client1" class="form-control" value="{{   $client->adresse_complete }}" readonly>
                     </div>
                     <div class="col-md-6 mb-3">
                         <label>Date de naissance Client 1</label>
-                        <input type="text" name="date_naissance_client1" class="form-control" value="{{ $data['date_naissance_client1'] ?? ($client->date_naissance ? $client->date_naissance->format('d/m/Y') : '') }}" readonly>
+                        <input type="text" name="date_naissance_client1" class="form-control" value="{{   ($client->date_naissance ? $client->date_naissance->format('d/m/Y') : '') }}" readonly>
                     </div>
                 </div>
 
@@ -40,23 +40,23 @@
                 <div class="row">
                     <div class="col-md-4 mb-3">
                         <label>Civilité Conjoint</label>
-                        <input type="text" name="civilite_client2" class="form-control" value="{{ $data['civilite_client2'] ?? ($client->conjoint_civilite === 'M' ? 'Monsieur' : 'Madame') }}" readonly>
+                        <input type="text" name="civilite_client2" class="form-control" value="{{   ($client->conjoint_civilite === 'M' ? 'Monsieur' : 'Madame') }}" readonly>
                     </div>
                     <div class="col-md-4 mb-3">
                         <label>Nom Conjoint</label>
-                        <input type="text" name="nom_client2" class="form-control" value="{{ $data['nom_client2'] ?? $client->conjoint_nom }}" readonly>
+                        <input type="text" name="nom_client2" class="form-control" value="{{  $client->conjoint_nom }}" readonly>
                     </div>
                     <div class="col-md-4 mb-3">
                         <label>Prénom Conjoint</label>
-                        <input type="text" name="prenom_client2" class="form-control" value="{{ $data['prenom_client2'] ?? $client->conjoint_prenom }}" readonly>
+                        <input type="text" name="prenom_client2" class="form-control" value="{{  $client->conjoint_prenom }}" readonly>
                     </div>
                     <div class="col-md-6 mb-3">
                         <label>Adresse Conjoint</label>
-                        <input type="text" name="adresse_client2" class="form-control" value="{{ $data['adresse_client2'] ?? $client->adresse_complete }}" readonly>
+                        <input type="text" name="adresse_client2" class="form-control" value="{{   $client->adresse_complete }}" readonly>
                     </div>
                     <div class="col-md-6 mb-3">
                         <label>Date de naissance Conjoint</label>
-                        <input type="text" name="date_naissance_client2" class="form-control" value="{{ $data['date_naissance_client2'] ?? ($client->conjoint_date_naissance ? \Carbon\Carbon::parse($client->conjoint_date_naissance)->format('d/m/Y') : '') }}" readonly>
+                        <input type="text" name="date_naissance_client2" class="form-control" value="{{  ($client->conjoint_date_naissance ? \Carbon\Carbon::parse($client->conjoint_date_naissance)->format('d/m/Y') : '') }}" readonly>
                     </div>
                 </div>
                 @endif
