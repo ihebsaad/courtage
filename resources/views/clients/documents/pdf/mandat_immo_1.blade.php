@@ -23,7 +23,7 @@
     </style>
 </head>
 <body>
-
+    <div class="header-box"><img src="{{ asset('img/logo.png')}}" width="100" /></div>
     <div class="title">Document d'entrée en relation</div>
 
     <p style="margin-bottom: 10px;">
