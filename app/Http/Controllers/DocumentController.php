@@ -10,9 +10,9 @@ use Barryvdh\DomPDF\Facade\Pdf;
 class DocumentController extends Controller
 {
     private $templates = [
-        'mutuelle_individuelle_1' => 'Document DOCUMENT D\'ENTREE EN RELATION',
-        'mutuelle_individuelle_2' => 'Document de Recueil des Exigences - Prévoyance',
-        'mutuelle_individuelle_3' => 'FICHE CONSEIL',
+        'mutuelle_individuelle_1' => 'Document d\'entrée en Relation - Mutuelle Individuelle',
+        'mutuelle_individuelle_2' => 'Document de Recueil des Exigences - Prévoyance - Mutuelle Individuelle',
+        'mutuelle_individuelle_3' => 'Fiche Conseil - Mutuelle Individuelle',
         'mandat_immo_1' => 'Document d’entrée en relation - Mandat Immobilier',
         'mandat_immo_2' => '',
         'mandat_immo_3' => '',
