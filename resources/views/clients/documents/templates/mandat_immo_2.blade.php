@@ -30,7 +30,7 @@
                     </div>
                     <div class="col-md-6 mb-3">
                         <label>Date de naissance Client 1</label>
-                        <input type="text" name="date_naissance_client1" class="form-control" value="{{   ($client->date_naissance ? $client->date_naissance->format('d/m/Y') : '') }}" readonly>
+                        <input type="text" name="date_naissance_client1" class="form-control" value="{{   $client->date_naissance   }}" readonly>
                     </div>
                 </div>
 
