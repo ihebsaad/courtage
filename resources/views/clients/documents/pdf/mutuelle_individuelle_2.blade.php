@@ -4,33 +4,28 @@
     <meta charset="utf-8">
     <title>Document de Recueil des Exigences et des Besoins</title>
     <style>
-        body { font-family: Arial, sans-serif; font-size: 11px; line-height: 1.4; }
-        .header { text-align: center; margin-bottom: 20px; border-bottom: 2px solid #000; padding-bottom: 10px; }
-        .section { margin-bottom: 20px; }
+        @page { margin: 80px 50px 100px 50px; }
+        body { font-family: Arial, sans-serif; font-size: 9px; line-height: 1.3; }
+        .header-box { padding: 8px; margin-bottom: 15px; text-align: center; font-size: 8px; line-height: 1.4;margin-top:-80px; }
+        .title { font-size: 20px; font-weight: bold; text-align: center; margin: 15px 0;border-bottom: 2px solid #000; padding-bottom: 5px; }
+        .section { margin-bottom: 12px; }
         .section-title { font-weight: bold; background-color: #e0e0e0; padding: 5px; margin-bottom: 10px; }
+        footer { position: fixed; bottom: -80px; left: 0; right: 0; text-align: center; font-size: 7px; line-height: 1.3; }
+
         .field { margin-bottom: 8px; }
         .field-label { font-weight: bold; display: inline-block; width: 200px; }
         .field-value { display: inline-block; border-bottom: 1px solid #000; min-width: 300px; }
-        .footer { font-size: 9px; border-top: 1px solid #000; padding-top: 10px; margin-top: 30px; }
         table { width: 100%; border-collapse: collapse; }
         td { padding: 5px; vertical-align: top; }
-        footer {
-		   position: fixed;
-		   bottom: -100px;
-		   left: 0px;
-		   right: 0px;
-		   height: 100px;
-		   text-align: center;
-		   font-size:12px;
-		   line-height:14px;
-		   font-weight:normal;
-		   page-break-inside: avoid;
-	   }
+
     </style>
 </head>
 <body>
-    <div class="header">
-        <h2>DOCUMENT DE RECUEIL DES EXIGENCES ET DES BESOINS</h2>
+    <div class="header-box">
+        <img src="{{ asset('img/logo.png')}}" width="80" />
+    </div>
+    <div class="title">
+        DOCUMENT DE RECUEIL DES EXIGENCES ET DES BESOINS
     </div>
 
     <p style="margin-bottom: 15px;">
@@ -213,10 +208,10 @@
         </div>
     </div>
     <footer>
-        <p style="font-size: 8px; text-align: center; margin-top: 20px;">
-            ParFiPro - Courtier en assurances - au capital de 1000 € - Siège social : 173 Boulevard Pereire 75017 Paris - 
-            SIREN : 880 874 466 RCS de Paris - ORIAS : 200 01 570 - www.parfipro.com
-        </p>
+        ParFiPro au capital de 1000 €  - Siège social 173 Boulevard Pereire 75017 Paris<br>
+        SIREN – 880 874 466 RCS de Paris – ORIAS 200 01 570 – www.orias.fr<br>
+        Sous le contrôle de l'ACPR – 4 place de Budapest CS 92459 75346 Paris cedex 9<br>
+        www.parfipro.com – Tel : 06-34-68-07-95 – contact@parfipro.com
     </footer>
 </body>
 </html>

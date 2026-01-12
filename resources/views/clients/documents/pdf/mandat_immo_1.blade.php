@@ -10,6 +10,8 @@
         .title { font-size: 20px; font-weight: bold; text-align: center; margin: 15px 0;border-bottom: 2px solid #000; padding-bottom: 5px; }
         .section { margin-bottom: 12px; }
         .section-title { font-weight: bold; background-color: #e0e0e0; padding: 5px; margin-bottom: 10px; }
+        footer { position: fixed; bottom: -80px; left: 0; right: 0; text-align: center; font-size: 7px; line-height: 1.3; }
+
         .checkbox { display: inline-block; width: 12px; height: 12px; border: 1px solid #000; margin-right: 5px; vertical-align: middle; }
         .checkbox.checked::before { content: 'X'; font-weight: bold; font-size: 11px; }
         ul { margin: 5px 0 5px 20px; padding: 0; }
@@ -19,11 +21,11 @@
         .signature-area { margin-top: 30px; }
         table.signatures { width: 100%; }
         table.signatures td { width: 33.33%; text-align: center; padding: 5px; }
-        footer { position: fixed; bottom: -80px; left: 0; right: 0; text-align: center; font-size: 7px; line-height: 1.3; }
     </style>
 </head>
 <body>
-    <div class="header-box"><img src="{{ asset('img/logo.png')}}" width="80" />
+    <div class="header-box">
+        <img src="{{ asset('img/logo.png')}}" width="80" />
     </div>
     <div class="title">Document d'entrée en relation</div>
 
@@ -324,6 +326,7 @@
     </div>
 
     <footer>
+        <img src="{!! public_path('img/cncef.png')!!}"  width="200" style="text-align:center"></img><br>
         ParFiPro au capital de 1000 €  - Siège social 173 Boulevard Pereire 75017 Paris<br>
         SIREN – 880 874 466 RCS de Paris – ORIAS 200 01 570 – www.orias.fr<br>
         Sous le contrôle de l'ACPR – 4 place de Budapest CS 92459 75346 Paris cedex 9<br>

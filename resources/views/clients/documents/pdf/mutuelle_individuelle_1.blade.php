@@ -4,13 +4,14 @@
     <meta charset="utf-8">
     <title>Document d'Entrée en Relation</title>
     <style>
-        @page { margin: 130px 50px 120px 50px; }
-        body { font-family: Arial, sans-serif; font-size: 10px; line-height: 1.4; }
-        header { position: fixed; top: -100px; left: 0; right: 0; height: 100px; text-align: center; }
-        footer { position: fixed; bottom: -100px; left: 0; right: 0; height: 100px; text-align: center; font-size: 8px; line-height: 14px; page-break-inside: avoid; }
-        .title { font-size: 16px; font-weight: bold; text-align: center; margin: 20px 0; }
-        .section { margin-bottom: 15px; }
-        .section-title { font-weight: bold; font-size: 11px; margin-bottom: 8px; text-decoration: underline; }
+        @page { margin: 80px 50px 100px 50px; }
+        body { font-family: Arial, sans-serif; font-size: 9px; line-height: 1.3; }
+        .header-box { padding: 8px; margin-bottom: 15px; text-align: center; font-size: 8px; line-height: 1.4;margin-top:-80px; }
+        .title { font-size: 20px; font-weight: bold; text-align: center; margin: 15px 0;border-bottom: 2px solid #000; padding-bottom: 5px; }
+        .section { margin-bottom: 12px; }
+        .section-title { font-weight: bold; background-color: #e0e0e0; padding: 5px; margin-bottom: 10px; }
+        footer { position: fixed; bottom: -80px; left: 0; right: 0; text-align: center; font-size: 7px; line-height: 1.3; }
+
         .field { margin-bottom: 5px; }
         .compagnies { columns: 3; -webkit-columns: 3; -moz-columns: 3; font-size: 9px; margin: 10px 0; }
         .signature-block { margin-top: 40px; }
@@ -20,13 +21,9 @@
 </head>
 <body>
     <header>
-        <p style="font-size: 9px; margin: 0;">
-            ParFiPro au capital de 1000 €<br>
-            Siège social 173 Boulevard Pereire 75017 Paris<br>
-            SIREN – 880 874 466 RCS de Paris – ORIAS 200 01 570
-        </p>
-    </header>
-
+    <div class="header-box">
+        <img src="{{ asset('img/logo.png')}}" width="80" />
+    </div>
     <div class="title">DOCUMENT D'ENTRÉE EN RELATION</div>
 
     <p style="margin-bottom: 15px; font-style: italic;">
@@ -146,8 +143,10 @@
     </div>
 
     <footer>
-        <p>ParFiPro - Courtier en assurances - au capital de 1000 € - Siège social : 173 Boulevard Pereire 75017 Paris - 
-        SIREN : 880 874 466 RCS de Paris - ORIAS : 200 01 570 - www.parfipro.com</p>
+        ParFiPro au capital de 1000 €  - Siège social 173 Boulevard Pereire 75017 Paris<br>
+        SIREN – 880 874 466 RCS de Paris – ORIAS 200 01 570 – www.orias.fr<br>
+        Sous le contrôle de l'ACPR – 4 place de Budapest CS 92459 75346 Paris cedex 9<br>
+        www.parfipro.com – Tel : 06-34-68-07-95 – contact@parfipro.com
     </footer>
 </body>
 </html>
