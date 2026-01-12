@@ -326,7 +326,7 @@
     </div>
 
     <footer>
-        <table style="text-align: center; width: 70%; ;">
+        <table style="text-align: center; width: 70%;margin-left:15% ;">
             <tr>
                 <td style="width: 40%;">
                     <img src="{!! public_path('img/cncef.png')!!}"  width="180" style="text-align:center"></img><br>
@@ -339,7 +339,6 @@
                 </td>
             </tr>
         </table>
-
     </footer>
 
 </body>
