@@ -56,7 +56,7 @@
                     </div>
                     <div class="col-md-6 mb-3">
                         <label>Date de naissance Conjoint</label>
-                        <input type="text" name="date_naissance_client2" class="form-control" value="{{  ($client->conjoint_date_naissance ? \Carbon\Carbon::parse($client->conjoint_date_naissance)->format('d/m/Y') : '') }}" readonly>
+                        <input type="text" name="date_naissance_client2" class="form-control" value="{{  ($client->conjoint_date_naissance  }}" readonly>
                     </div>
                 </div>
                 @endif
