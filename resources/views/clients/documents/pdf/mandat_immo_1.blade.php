@@ -326,7 +326,7 @@
     </div>
 
     <footer>
-        <table style="text-align: center; width: 100%; ;">
+        <table style="text-align: center; width: 70%; ;">
             <tr>
                 <td style="width: 40%;">
                     <img src="{!! public_path('img/cncef.png')!!}"  width="180" style="text-align:center"></img><br>
