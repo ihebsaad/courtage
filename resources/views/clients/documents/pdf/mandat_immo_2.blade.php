@@ -9,7 +9,7 @@
         .header-box { padding: 8px; margin-bottom: 15px; text-align: center; font-size: 8px; line-height: 1.4; margin-top: -80px; }
         .title { font-size: 16px; font-weight: bold; text-align: center; margin: 15px 0; border-bottom: 2px solid #000; padding-bottom: 5px; }
         .section { margin-bottom: 15px; }
-        .section-title { font-weight: bold; background-color: #000; color: #fff; padding: 5px; margin: 10px 0 8px 0; font-size: 10px; }
+        .section-title { font-weight: bold; background-color: #e0e0e0; color: #fff; padding: 5px; margin: 10px 0 8px 0; font-size: 10px; }
         .subsection-title { font-weight: bold; margin: 8px 0 5px 0; font-size: 9px; }
         footer { position: fixed; bottom: -80px; left: 0; right: 0; text-align: center; font-size: 7px; line-height: 1.3; }
         .checkbox { display: inline-block; width: 12px; height: 12px; border: 1px solid #000; margin-right: 5px; vertical-align: middle; }

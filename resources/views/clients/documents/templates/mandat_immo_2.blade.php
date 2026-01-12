@@ -30,7 +30,7 @@
                     </div>
                     <div class="col-md-6 mb-3">
                         <label>Date de naissance Client 1</label>
-                        <input type="text" name="date_naissance_client1" class="form-control" value="{{   $client->date_naissance   }}" readonly>
+                        <input type="text" name="date_naissance_client1" class="form-control" value="{{   ($client->date_naissance ? $client->date_naissance->format('Y-m-d') : '') }}" readonly>
                     </div>
                 </div>
 
@@ -56,7 +56,7 @@
                     </div>
                     <div class="col-md-6 mb-3">
                         <label>Date de naissance Conjoint</label>
-                        <input type="text" name="date_naissance_client2" class="form-control" value="{{  ($client->conjoint_date_naissance ) }}" readonly>
+                        <input type="text" name="date_naissance_client2" class="form-control" value="{{  ($client->conjoint_date_naissance ? \Carbon\Carbon::parse($client->conjoint_date_naissance)->format('Y-m-m') : '') }}" readonly>
                     </div>
                 </div>
                 @endif
