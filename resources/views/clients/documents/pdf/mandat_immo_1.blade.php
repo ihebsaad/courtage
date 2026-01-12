@@ -6,7 +6,7 @@
     <style>
         @page { margin: 80px 50px 100px 50px; }
         body { font-family: Arial, sans-serif; font-size: 9px; line-height: 1.3; }
-        .header-box { border: 1px solid #000; padding: 8px; margin-bottom: 15px; text-align: left; font-size: 8px; line-height: 1.4; }
+        .header-box { padding: 8px; margin-bottom: 15px; text-align: center; font-size: 8px; line-height: 1.4; }
         .title { font-size: 14px; font-weight: bold; text-align: center; margin: 15px 0; }
         .section { margin-bottom: 12px; }
         .section-title { font-weight: bold; font-size: 10px; margin-bottom: 6px; }
@@ -24,8 +24,9 @@
 </head>
 <body>
     <div class="header-box"><img src="{{ asset('img/logo.png')}}" width="80" />
-        <div class="title">Document d'entrée en relation</div>
     </div>
+    <div class="title">Document d'entrée en relation</div>
+
     <p style="margin-bottom: 10px;">
         En application des différentes législations auxquelles nos activités sont soumises, nous vous prions de trouver ci-après les 
         informations réglementaires qui régiront l'ensemble de nos relations contractuelles.
