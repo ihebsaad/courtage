@@ -93,6 +93,9 @@ class DocumentController extends Controller
 
     private function prepareDefaultData(Client $client, string $template)
     {
+        $situations=['celibataire'=>'Célibataire', 'marie'=>'Marié(e)', 'pacs'=>'Pacsé(e)', 'divorce'=>'Divorcé(e)', 'veuf'=>'Veuf(ve)' ];     
+        //$regimes=['communaute_reduite_acquets'=>'Communauté réduite aux acquêts', 'separation_biens'=>'Séparation de biens', 'communaute_universelle'=>'Communauté universelle', 'participation_acquets'=>'Participation aux acquêts'];
+
         // Données de base du client (toujours les mêmes)
         $baseData = [
             'civilite' => $client->civilite ?? '',
@@ -100,7 +103,7 @@ class DocumentController extends Controller
             'nom_naissance' => $client->nom ?? '',
             'prenoms' => $client->prenom ?? '',
             'date_naissance' => $client->date_naissance?->format('d/m/Y') ?? '',
-            'situation_familiale' => $client->situation_familiale ?? '',
+            'situation_familiale' => $situations[$client->situation_familiale] ?? '',
             'adresse' => $client->adresse_complete ?? '',
             'email' => $client->email ?? '',
             'telephone_mobile' => $client->telephone_portable ?? '',
@@ -142,7 +145,7 @@ class DocumentController extends Controller
             ],
             'mandat_immo_1' => [
                 'civilite' => '',
-                'type_client' => 'PARTICULIER',
+                'type_client' => '',
                 'nom_client' => '',
                 'nom_conseiller' => 'Raphaël JACOB',
                 'fait_a' => 'Paris',
