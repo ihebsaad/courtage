@@ -93,8 +93,20 @@ class DocumentController extends Controller
 
     private function prepareDefaultData(Client $client, string $template)
     {
-        $situations=['celibataire'=>'Célibataire', 'marie'=>'Marié(e)', 'pacs'=>'Pacsé(e)', 'divorce'=>'Divorcé(e)', 'veuf'=>'Veuf(ve)' ];     
-        //$regimes=['communaute_reduite_acquets'=>'Communauté réduite aux acquêts', 'separation_biens'=>'Séparation de biens', 'communaute_universelle'=>'Communauté universelle', 'participation_acquets'=>'Participation aux acquêts'];
+        $situations = [
+            'celibataire' => 'Célibataire', 
+            'marie' => 'Marié(e)', 
+            'pacs' => 'Pacsé(e)', 
+            'divorce' => 'Divorcé(e)', 
+            'veuf' => 'Veuf(ve)'
+        ];
+
+        $regimes = [
+            'communaute_reduite_acquets' => 'Communauté réduite aux acquêts',
+            'separation_biens' => 'Séparation de biens',
+            'communaute_universelle' => 'Communauté universelle',
+            'participation_acquets' => 'Participation aux acquêts'
+        ];
 
         // Données de base du client (toujours les mêmes)
         $baseData = [
@@ -103,49 +115,79 @@ class DocumentController extends Controller
             'nom_naissance' => $client->nom ?? '',
             'prenoms' => $client->prenom ?? '',
             'date_naissance' => $client->date_naissance?->format('d/m/Y') ?? '',
+            'lieu_naissance' => $client->lieu_naissance ?? '',
             'situation_familiale' => $situations[$client->situation_familiale] ?? '',
+            'regime_matrimonial' => $regimes[$client->regime_matrimonial] ?? '',
             'adresse' => $client->adresse_complete ?? '',
             'email' => $client->email ?? '',
             'telephone_mobile' => $client->telephone_portable ?? '',
+            'telephone' => $client->telephone ?? '',
             'profession' => $client->profession ?? '',
             'nom_complet' => $client->nom_complet ?? '',
             'raison_sociale' => $client->raison_sociale ?? '',
             'siren' => $client->siren ?? '',
             'siret' => $client->siret ?? '',
             'date_document' => now()->format('Y-m-d'),
+            
+            // Informations conjoint
             'conjoint_civilite' => $client->conjoint_civilite ?? '',
             'conjoint_nom' => $client->conjoint_nom ?? '',
             'conjoint_prenom' => $client->conjoint_prenom ?? '',
-            'conjoint_date_naissance' => $client->conjoint_date_naissance ?? $client->conjoint_date_naissance?->format('d/m/Y') ?? '',
+            'conjoint_date_naissance' => $client->conjoint_date_naissance ? 
+                (is_string($client->conjoint_date_naissance) ? $client->conjoint_date_naissance : $client->conjoint_date_naissance->format('d/m/Y')) : '',
             'conjoint_nationalite' => $client->conjoint_nationalite ?? '',
             'conjoint_nom2' => $client->conjoint_nom2 ?? '',
-            'conjoint_date_mariage' => $client->conjoint_date_mariage ?? $client->conjoint_date_mariage?->format('d/m/Y') ?? '',
-            'conjoint_lieu_mariage' => $client->conjoint_lieu_mariage ?? '',       
-            'conjoint_profession'   => $client->conjoint_profession ?? '', 
+            'conjoint_date_mariage' => $client->conjoint_date_mariage ? 
+                (is_string($client->conjoint_date_mariage) ? $client->conjoint_date_mariage : $client->conjoint_date_mariage->format('d/m/Y')) : '',
+            'conjoint_lieu_mariage' => $client->conjoint_lieu_mariage ?? '',
+            'conjoint_profession' => $client->conjoint_profession ?? '',
             'conjoint_employeur' => $client->conjoint_employeur ?? '',
-            'type_contrat' => $client->type_contrat ?? '', 
-            'residence_principale' => $client->residence_principale ? 'Oui' : 'Non', 
-            'immobilier_locatif' => $client->immobilier_locatif ? 'Oui' : 'Non', 
-            'assurance_vie' => $client->assurance_vie ? 'Oui' : 'Non', 
-            'epargne_retraite'  => $client->epargne_retraite ? 'Oui' : 'Non',
-            'employeur'=> $client->employeur ?? '', 
-            'statut_juridique'=> $client->statut_juridique  ?? '', 
-            'chiffre_affaires'=> $client->chiffre_affaires ?? '',  
-            'effectifs'=> $client->effectifs ?? '', 
-            'secteur_activite'=> $client->secteur_activite ?? '', 
-            'dirigeant_nom'=> $client->dirigeant_nom ?? '',  
-            'dirigeant_prenom'=> $client->dirigeant_prenom ?? '',  
-            'dirigeant_fonction'=> $client->dirigeant_fonction ?? '', 
-            'contact_principal_nom'=> $client->contact_principal_nom ?? '',  
-            'contact_principal_prenom'=> $client->contact_principal_prenom ?? '', 
-            'contact_principal_fonction'=> $client->contact_principal_fonction ?? '', 
-            'contact_principal_email'=> $client->contact_principal_email ?? '', 
-            'contact_principal_telephone'=> $client->contact_principal_telephone ?? '', 
-            'nationalite'=> $client->nationalite ?? '',  
-            'regime_matrimonial'=> $client->regime_matrimonial ?? '',  
-            'nombre_associes'=> $client->nombre_associes ?? '',  
-            'repartition_capital'=> $client->repartition_capital ?? '', 
+            
+            // Informations professionnelles
+            'type_contrat' => $client->type_contrat ?? '',
+            'employeur' => $client->employeur ?? '',
+            
+            // Patrimoine (flags)
+            'residence_principale' => $client->residence_principale ? 'Oui' : 'Non',
+            'immobilier_locatif' => $client->immobilier_locatif ? 'Oui' : 'Non',
+            'assurance_vie' => $client->assurance_vie ? 'Oui' : 'Non',
+            'epargne_retraite' => $client->epargne_retraite ? 'Oui' : 'Non',
+            
+            // Entreprise
+            'statut_juridique' => $client->statut_juridique ?? '',
+            'chiffre_affaires' => $client->chiffre_affaires ?? '',
+            'effectifs' => $client->effectifs ?? '',
+            'secteur_activite' => $client->secteur_activite ?? '',
+            'nombre_associes' => $client->nombre_associes ?? '',
+            'repartition_capital' => $client->repartition_capital ?? '',
+            
+            // Dirigeant
+            'dirigeant_nom' => $client->dirigeant_nom ?? '',
+            'dirigeant_prenom' => $client->dirigeant_prenom ?? '',
+            'dirigeant_fonction' => $client->dirigeant_fonction ?? '',
+            
+            // Contact principal
+            'contact_principal_nom' => $client->contact_principal_nom ?? '',
+            'contact_principal_prenom' => $client->contact_principal_prenom ?? '',
+            'contact_principal_fonction' => $client->contact_principal_fonction ?? '',
+            'contact_principal_email' => $client->contact_principal_email ?? '',
+            'contact_principal_telephone' => $client->contact_principal_telephone ?? '',
+            
+            // Autres
+            'nationalite' => $client->nationalite ?? '',
+            
+            // Enfants - récupération depuis le JSON
+            'nb_enfants' => isset($client->enfants) && is_array($client->enfants) ? count($client->enfants) : 0,
         ];
+
+        // Ajouter les enfants s'ils existent
+        if (isset($client->enfants) && is_array($client->enfants)) {
+            foreach ($client->enfants as $index => $enfant) {
+                $num = $index + 1;
+                $baseData["enfant{$num}_nom"] = ($enfant['prenom'] ?? '') . ' ' . ($enfant['nom'] ?? '');
+                $baseData["enfant{$num}_date"] = $enfant['date_naissance'] ?? '';
+            }
+        }
 
         // Données spécifiques par template (valeurs par défaut vides)
         $templateDefaults = $this->getTemplateDefaults($template);
@@ -229,28 +271,120 @@ class DocumentController extends Controller
                 'date_document' => now()->format('Y-m-d'),
             ],  
             'mandat_financement_2' => [
-                'civilite_mandant' => '',
-                'nom_mandant' => '',
-                'prenom_mandant' => '',
-                'adresse_mandant' => '',
-                'date_naissance_mandant' => '',
-                'civilite_conjoint' => '',
-                'nom_conjoint' => '',
-                'prenom_conjoint' => '',
-                'adresse_conjoint' => '',
-                'date_naissance_conjoint' => '',
-                'montant_credit' => 0,
+                // Données du projet
+                'date_rdv' => now()->format('Y-m-d'),
+                'nature_projet' => '',
+                'destination_logement' => '',
+                
+                // Coût du projet
+                'prix_acquisition' => 0,
+                'frais_notaire' => 0,
+                'frais_agence' => 0,
+                'travaux' => 0,
+                'ira' => 0,
+                'frais_garantie' => 0,
+                'frais_banque' => 0,
+                'honoraires_courtage' => 0,
                 'apport_personnel' => 0,
+                'dont_epargne' => 0,
+                'dont_donation' => 0,
+                
+                // Échéance
+                'date_signature' => '',
+                'priorite' => '',
+                'projet_societe' => '',
+                
+                // Objectifs (11 objectifs)
+                'objectif_constituer_patrimoine' => false,
+                'objectif_constituer_patrimoine_commentaire' => '',
+                'objectif_revenus_complementaires' => false,
+                'objectif_revenus_complementaires_commentaire' => '',
+                'objectif_proteger_proches' => false,
+                'objectif_proteger_proches_commentaire' => '',
+                'objectif_aider_enfants' => false,
+                'objectif_aider_enfants_commentaire' => '',
+                'objectif_optimiser_fiscalite' => false,
+                'objectif_optimiser_fiscalite_commentaire' => '',
+                'objectif_preparer_retraite' => false,
+                'objectif_preparer_retraite_commentaire' => '',
+                'objectif_financer_achat' => false,
+                'objectif_financer_achat_commentaire' => '',
+                'objectif_preparer_transmission' => false,
+                'objectif_preparer_transmission_commentaire' => '',
+                'objectif_optimiser_rentabilite' => false,
+                'objectif_optimiser_rentabilite_commentaire' => '',
+                'objectif_proteger_conjoint' => false,
+                'objectif_proteger_conjoint_commentaire' => '',
+                'objectif_transmission_entreprise' => false,
+                'objectif_transmission_entreprise_commentaire' => '',
+                
+                // Informations personnelles Client 1
+                'client1_nom' => '',
+                'client1_nom_patronymique' => '',
+                'client1_situation' => '',
+                'client1_regime' => '',
+                'client1_date_naissance' => '',
+                'client1_lieu_naissance' => '',
+                'client1_nationalite' => '',
+                'client1_nb_enfants' => 0,
+                'client1_adresse' => '',
+                
+                // Informations personnelles Client 2
+                'client2_nom' => '',
+                'client2_nom_patronymique' => '',
+                'client2_situation' => '',
+                'client2_regime' => '',
+                'client2_date_naissance' => '',
+                'client2_lieu_naissance' => '',
+                'client2_nationalite' => '',
+                'client2_nb_enfants' => 0,
+                'client2_adresse' => '',
+                
+                // Mariage/Divorce/Pension
+                'date_mariage' => '',
+                'date_divorce' => '',
+                'pension_type' => '',
+                'pension_montant' => 0,
+                
+                // Logement actuel Client 1
+                'client1_logement_statut' => '',
+                'client1_type_logement' => '',
+                'client1_loyer' => 0,
+                'client1_depuis' => '',
+                
+                // Logement actuel Client 2
+                'client2_logement_statut' => '',
+                'client2_type_logement' => '',
+                'client2_loyer' => 0,
+                
+                // Enfants Client 1 (3 maximum)
+                'client1_enfant1_nom' => '',
+                'client1_enfant1_date' => '',
+                'client1_enfant2_nom' => '',
+                'client1_enfant2_date' => '',
+                'client1_enfant3_nom' => '',
+                'client1_enfant3_date' => '',
+                
+                // Enfants Client 2 (3 maximum)
+                'client2_enfant1_nom' => '',
+                'client2_enfant1_date' => '',
+                'client2_enfant2_nom' => '',
+                'client2_enfant2_date' => '',
+                'client2_enfant3_nom' => '',
+                'client2_enfant3_date' => '',
+                
+                // Commentaires
+                'commentaire_client1' => '',
+                'commentaire_client2' => '',
+                
+                // Mandat
+                'montant_credit' => 0,
                 'objet_financement' => 'Achat habitation principale',
                 'destination' => 'Achat résidence principale sans travaux',
                 'fait_a' => 'Paris',
-                'date_divorce' => '',
-                'pesnsion_type' => '',
                 'date_debut_mandat' => now()->format('Y-m-d'),
-                'date_signature' => now()->format('Y-m-d'),
                 'date_fin_mandat' => now()->addMonths(3)->format('Y-m-d'),
-                'pension_type'=>''
-            ],                               
+            ],                             
             // Ajoutez d'autres templates ici...
         ];
 
