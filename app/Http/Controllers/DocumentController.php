@@ -228,6 +228,7 @@ class DocumentController extends Controller
                 'objet_financement' => 'Achat habitation principale',
                 'destination' => 'Achat résidence principale sans travaux',
                 'fait_a' => 'Paris',
+                'date_divorce' => '',
                 'date_debut_mandat' => now()->format('Y-m-d'),
                 'date_signature' => now()->format('Y-m-d'),
                 'date_fin_mandat' => now()->addMonths(3)->format('Y-m-d'),
