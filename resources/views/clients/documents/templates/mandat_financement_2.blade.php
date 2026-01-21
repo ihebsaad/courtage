@@ -151,7 +151,7 @@
             </tr>
             <tr>
                 <td colspan="2">
-                    <strong>Date du mariage / PACS :</strong> <span class="field-value">{{ $data['date_mariage'] ? \Carbon\Carbon::parse($data['date_mariage'])->format('d/m/Y') : '' }}</span> 
+                    <strong>Date du mariage / PACS :</strong> <span class="field-value">{{ $data['conjoint_date_mariage'] ? \Carbon\Carbon::parse($data['conjoint_date_mariage'])->format('d/m/Y') : '' }}</span> 
                     <strong>Date du divorce :</strong> <span class="field-value">{{ $data['date_divorce'] ? \Carbon\Carbon::parse($data['date_divorce'])->format('d/m/Y') : 'NC' }}</span>
                     <strong>Pension alimentaire :</strong> <span class="field-value">{{ $data['pension_type'] ?? '' }} {{ $data['pension_montant'] ? number_format($data['pension_montant'], 0, ',', ' ') . ' €' : '' }}</span>
                 </td>
