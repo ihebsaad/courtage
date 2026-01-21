@@ -229,6 +229,7 @@ class DocumentController extends Controller
                 'destination' => 'Achat résidence principale sans travaux',
                 'fait_a' => 'Paris',
                 'date_debut_mandat' => now()->format('Y-m-d'),
+                'date_signature' => now()->format('Y-m-d'),
                 'date_fin_mandat' => now()->addMonths(3)->format('Y-m-d'),
             ],                               
             // Ajoutez d'autres templates ici...
