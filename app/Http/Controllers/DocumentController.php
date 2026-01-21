@@ -128,7 +128,23 @@ class DocumentController extends Controller
             'immobilier_locatif' => $client->immobilier_locatif ? 'Oui' : 'Non', 
             'assurance_vie' => $client->assurance_vie ? 'Oui' : 'Non', 
             'epargne_retraite'  => $client->epargne_retraite ? 'Oui' : 'Non',
- 
+            'employeur'=> $client->employeur ?? '', 
+            'statut_juridique'=> $client->statut_juridique  ?? '', 
+            'chiffre_affaires'=> $client->chiffre_affaires ?? '',  
+            'effectifs'=> $client->effectifs ?? '', 
+            'secteur_activite'=> $client->secteur_activite ?? '', 
+            'dirigeant_nom'=> $client->dirigeant_nom ?? '',  
+            'dirigeant_prenom'=> $client->dirigeant_prenom ?? '',  
+            'dirigeant_fonction'=> $client->dirigeant_fonction ?? '', 
+            'contact_principal_nom'=> $client->contact_principal_nom ?? '',  
+            'contact_principal_prenom'=> $client->contact_principal_prenom ?? '', 
+            'contact_principal_fonction'=> $client->contact_principal_fonction ?? '', 
+            'contact_principal_email'=> $client->contact_principal_email ?? '', 
+            'contact_principal_telephone'=> $client->contact_principal_telephone ?? '', 
+            'nationalite'=> $client->nationalite ?? '',  
+            'regime_matrimonial'=> $client->regime_matrimonial ?? '',  
+            'nombre_associes'=> $client->nombre_associes ?? '',  
+            'repartition_capital'=> $client->repartition_capital ?? '', 
         ];
 
         // Données spécifiques par template (valeurs par défaut vides)
@@ -229,9 +245,11 @@ class DocumentController extends Controller
                 'destination' => 'Achat résidence principale sans travaux',
                 'fait_a' => 'Paris',
                 'date_divorce' => '',
+                'pesnsion_type' => '',
                 'date_debut_mandat' => now()->format('Y-m-d'),
                 'date_signature' => now()->format('Y-m-d'),
                 'date_fin_mandat' => now()->addMonths(3)->format('Y-m-d'),
+                'pension_type'=>''
             ],                               
             // Ajoutez d'autres templates ici...
         ];
