@@ -14,7 +14,7 @@
                 <div class="row">
                     <div class="col-md-6 mb-3">
                         <label>Date du RDV</label>
-                        <input type="date" name="date_rdv" class="form-control" value="{{ $data['date_rdv'] ?? now()->format('Y-m-d') }}" required>
+                        <input type="date" name="date_rdv" class="form-control" value="{{ $data['date_rdv'] ?? now()->format(format: 'Y-m-d') }}" required>
                     </div>
                 </div>
             </div>

@@ -131,20 +131,20 @@
                     <strong>Nom patronymique :</strong> <span class="field-value">{{ $data['client1_nom_patronymique'] ?? '' }}</span><br>
                     <strong>Situation familiale :</strong> <span class="field-value">{{ $data['client1_situation'] ?? '' }}</span><br>
                     <strong>Régime matrimonial :</strong> <span class="field-value">{{ $data['client1_regime'] ?? '' }}</span><br>
-                    <strong>Date de naissance :</strong> <span class="field-value">{{ $data['client1_date_naissance'] ? \Carbon\Carbon::parse($data['client1_date_naissance'])->format('d/m/Y') : '' }}</span><br>
-                    <strong>Lieu de naissance :</strong> <span class="field-value">{{ $data['client1_lieu_naissance'] ?? '' }}</span><br>
-                    <strong>Nationalité :</strong> <span class="field-value">{{ $data['client1_nationalite'] ?? '' }}</span><br>
+                    <strong>Date de naissance :</strong> <span class="field-value">{{ $data['date_naissance'] ?? \Carbon\Carbon::parse($data['client1_date_naissance'])->format('d/m/Y')  }}</span><br>
+                    <strong>Lieu de naissance :</strong> <span class="field-value">{{ $data['lieu_naissance'] ?? '' }}</span><br>
+                    <strong>Nationalité :</strong> <span class="field-value">{{ $data['nationalite'] ?? '' }}</span><br>
                     <strong>Nb d'enfants à charge :</strong> <span class="field-value">{{ $data['client1_nb_enfants'] ?? '' }}</span><br>
-                    <strong>Adresse :</strong> <span class="field-value">{{ $data['client1_adresse'] ?? '' }}</span>
+                    <strong>Adresse :</strong> <span class="field-value">{{ $data['adresse'] ?? '' }}</span>
                 </td>
                 <td>
                     <strong>Prénom / Nom :</strong> <span class="field-value">{{ $data['client2_nom'] ?? '' }}</span><br>
                     <strong>Nom patronymique :</strong> <span class="field-value">{{ $data['client2_nom_patronymique'] ?? '' }}</span><br>
                     <strong>Situation familiale :</strong> <span class="field-value">{{ $data['client2_situation'] ?? '' }}</span><br>
                     <strong>Régime matrimonial :</strong> <span class="field-value">{{ $data['client2_regime'] ?? '' }}</span><br>
-                    <strong>Date de naissance :</strong> <span class="field-value">{{ $data['client2_date_naissance'] ? \Carbon\Carbon::parse($data['client2_date_naissance'])->format('d/m/Y') : '' }}</span><br>
-                    <strong>Lieu de naissance :</strong> <span class="field-value">{{ $data['client2_lieu_naissance'] ?? '' }}</span><br>
-                    <strong>Nationalité :</strong> <span class="field-value">{{ $data['client2_nationalite'] ?? '' }}</span><br>
+                    <strong>Date de naissance :</strong> <span class="field-value">{{ $data['conjoint_date_naissance'] ? \Carbon\Carbon::parse($data['client2_date_naissance'])->format('d/m/Y') : '' }}</span><br>
+                    <strong>Lieu de naissance :</strong> <span class="field-value">{{ $data['conjoint_lieu_naissance'] ?? '' }}</span><br>
+                    <strong>Nationalité :</strong> <span class="field-value">{{ $data['conjoint_nationalite'] ?? '' }}</span><br>
                     <strong>Nb d'enfants à charge :</strong> <span class="field-value">{{ $data['client2_nb_enfants'] ?? '' }}</span><br>
                     <strong>Adresse :</strong> <span class="field-value">{{ $data['client2_adresse'] ?? '' }}</span>
                 </td>
