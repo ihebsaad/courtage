@@ -30,7 +30,7 @@
     </div>
 
     <div class="title">FICHE DE CONNAISSANCE CLIENT⸱ES</div>
-    <div class="date-rdv">Date du RDV : {{ \Carbon\Carbon::parse($data['date_rdv'])->format('d/m/Y') }}</div>
+    <div class="date-rdv">Date du RDV : {{ $data['date_rdv'] ?? now()->format(format: 'Y-m-d') }}</div>
 
     <div class="section">
         <div class="section-title">Votre projet</div>
