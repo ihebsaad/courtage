@@ -15,6 +15,10 @@ class CreateDocumentTemplates extends Migration
     {
         Schema::create('document_templates', function (Blueprint $table) {
             $table->id();
+            $table->string('nom');
+            $table->string('code')->unique();
+            $table->text('description')->nullable();
+            $table->boolean('actif')->default(true);
             $table->timestamps();
         });
     }
