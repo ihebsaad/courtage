@@ -34,7 +34,7 @@
                     </div>
                 </div>
 
-                @if($client->conjoint_nom)
+            @if($client->conjoint_nom)
                 <hr>
                 <h6>Conjoint</h6>
                 <div class="row">
@@ -59,15 +59,14 @@
                         <input type="text" name="date_naissance_conjoint" class="form-control" value="{{ $client->conjoint_date_naissance ? \Carbon\Carbon::parse($client->conjoint_date_naissance)->format('d/m/Y') : '' }}" readonly>
                     </div>
                 </div>
-                @else
+            @else
                 <input type="hidden" name="civilite_conjoint" value="">
                 <input type="hidden" name="nom_conjoint" value="">
                 <input type="hidden" name="prenom_conjoint" value="">
                 <input type="hidden" name="adresse_conjoint" value="">
                 <input type="hidden" name="date_naissance_conjoint" value="">
-                </div>
-                @endif
             </div>
+            @endif
         </div>
 
         <div class="card mb-3">
