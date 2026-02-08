@@ -688,7 +688,14 @@ function addRevenu() {
     const html = `
         <div class="revenu-row border rounded p-3 mb-3 bg-light" data-index="${revenuIndex}">
             <div class="row">
-                <div class="col-md-5">
+                <div class="col-md-2">
+                    <label class="form-label font-weight-bold">Concerne</label>
+                    <select name="revenus_details[${revenuIndex}][titulaire]" class="form-control">
+                        <option value="client">Client</option>
+                        <option value="conjoint">Conjoint</option>
+                    </select>
+                </div>
+                <div class="col-md-4">
                     <label class="form-label font-weight-bold">Type de revenu</label>
                     <select name="revenus_details[${revenuIndex}][type]" class="form-control">
                         <option value="">Sélectionner</option>
@@ -696,11 +703,11 @@ function addRevenu() {
                         <option value="bic">BIC (Bénéfices Industriels et Commerciaux)</option>
                         <option value="bnc">BNC (Bénéfices Non Commerciaux)</option>
                         <option value="remuneration_gerance">Rémunération de gérance</option>
-                        <option value="revenus_fonciers">Revenus fonciers</option>Dividendes 
-                        <option value="dividendes">Dividendes</option> 
+                        <option value="revenus_fonciers">Revenus fonciers</option>
+                        <option value="dividendes">Dividendes</option>
                     </select>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-5">
                     <label class="form-label font-weight-bold">Montant annuel (€)</label>
                     <div class="input-group">
                         <input type="number" name="revenus_details[${revenuIndex}][montant]" step="0.01" class="form-control">

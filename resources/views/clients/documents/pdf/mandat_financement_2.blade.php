@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Annexe 1 - Mandat Spécial Recherche de Financement</title>
+    <title>Convention de Prestations d'assistance et de recherche en financement</title>
     <style>
         @page { margin: 80px 50px 100px 50px; }
         body { font-family: Arial, sans-serif; font-size: 9px; line-height: 1.4; }
@@ -29,7 +29,7 @@
         <img src="{{ asset('img/logo.png')}}" width="80" />
     </div>
 
-    <div class="title">ANNEXE 1<br>MANDAT SPECIAL<br>RECHERCHE DE FINANCEMENT</div>
+    <div class="title">Convention de Prestations d'assistance et de recherche en financement</div>
 
     <div class="parties">
         <p style="font-weight: bold; margin-bottom: 10px;">ENTRE LES SOUSSIGNES</p>

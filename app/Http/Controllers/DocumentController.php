@@ -17,7 +17,7 @@ class DocumentController extends Controller
         'mandat_immo_2' => 'Convention de Prestations d\'assistance et de recherche en financement - Mandat Immobilier',
         'mandat_immo_3' => 'Mandat de Recherche de Bien Immobilier - Mandat Immobilier',
         'mandat_financement_1' => '',
-        'mandat_financement_2' => 'Mandat Spécial Recherche de Financement',
+        'mandat_financement_2' => 'Convention de Prestations d\'assistance et de recherche en financement - Mandat Financement',
         'mandat_financement_3' => '',
         'prevoyance_collective_1' => '',
         'prevoyance_collective_2' => '',

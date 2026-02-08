@@ -543,7 +543,14 @@
                         @foreach($client->revenus_details as $index => $revenu)
                             <div class="revenu-row border rounded p-3 mb-3 bg-light" data-index="{{ $index }}">
                                 <div class="row">
-                                    <div class="col-md-5">
+                                    <div class="col-md-2">
+                                        <label class="form-label font-weight-bold">Concerne</label>
+                                        <select name="revenus_details[{{ $index }}][titulaire]" class="form-control">
+                                            <option value="client" {{ ($revenu['titulaire'] ?? 'client') == 'client' ? 'selected' : '' }}>Client</option>
+                                            <option value="conjoint" {{ ($revenu['titulaire'] ?? '') == 'conjoint' ? 'selected' : '' }}>Conjoint</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-4">
                                         <label class="form-label font-weight-bold">Type de revenu</label>
                                         <select name="revenus_details[{{ $index }}][type]" class="form-control">
                                             <option value="">Sélectionner</option>
@@ -555,7 +562,7 @@
                                             <option value="dividendes" {{ ($revenu['type'] ?? '') == 'dividendes' ? 'selected' : '' }}>Dividendes</option>
                                         </select>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-5">
                                         <label class="form-label font-weight-bold">Montant annuel (€)</label>
                                         <div class="input-group">
                                             <input type="number" name="revenus_details[{{ $index }}][montant]" value="{{ $revenu['montant'] ?? '' }}" step="0.01" class="form-control">

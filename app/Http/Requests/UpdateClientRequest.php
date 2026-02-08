@@ -53,6 +53,7 @@ class UpdateClientRequest extends FormRequest
                 'enfants.*.date_naissance' => 'nullable|date',
                 
                 'revenus_details' => 'nullable|array',
+                'revenus_details.*.titulaire' => 'nullable|in:client,conjoint',
                 'revenus_details.*.type' => 'nullable|string',
                 'revenus_details.*.montant' => 'nullable|numeric|min:0',
                 

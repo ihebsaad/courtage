@@ -464,6 +464,7 @@
                         <table class="table table-sm table-bordered">
                             <thead class="bg-light">
                                 <tr>
+                                    <th>Propriétaire</th>
                                     <th>Type de revenu</th>
                                     <th class="text-right">Montant annuel</th>
                                 </tr>
@@ -472,6 +473,15 @@
                                 @php $totalRevenus = 0; @endphp
                                 @foreach($client->revenus_details as $revenu)
                                 <tr>
+                                    <td>
+                                        @if(isset($revenu['titulaire']))
+                                            @if(($revenu['titulaire'] ?? 'client') == 'client')
+                                                <span class="badge badge-primary">Client</span>
+                                            @else
+                                                <span class="badge badge-info">Conjoint</span>
+                                            @endif
+                                        @endif
+                                    </td>                                    
                                     <td>
                                         @switch($revenu['type'] ?? '')
                                             @case('salaire') Salaire @break
