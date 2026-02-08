@@ -504,6 +504,7 @@
                                 </tr>
                                 @endforeach
                                 <tr class="font-weight-bold bg-light">
+                                    <td></td>
                                     <td>Total</td>
                                     <td class="text-right">{{ number_format($totalRevenus, 2, ',', ' ') }} €</td>
                                 </tr>
