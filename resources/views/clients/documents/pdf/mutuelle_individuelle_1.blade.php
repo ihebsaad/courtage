@@ -19,6 +19,9 @@
         td { padding: 5px; vertical-align: top; }
     </style>
 </head>
+
+<body>
+
     <script type="text/php">
 
     if (isset($pdf)) {
@@ -36,10 +39,7 @@
         $pdf->page_text($x, $y, $text, $font, $size, $color, $word_space, $char_space, $angle);
         //$pdf->page_text(30, $y,' ' , $font, $size, $color, $word_space, $char_space, $angle);
     }
-
     </script>
-<body>
-    <header>
     <div class="header-box">
         <img src="{{ asset('img/logo.png')}}" width="80" />
     </div>
