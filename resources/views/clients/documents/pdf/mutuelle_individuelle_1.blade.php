@@ -91,15 +91,11 @@
             avec lesquelles elle travaille sont les suivants :
         </p>
         <div class="compagnies">
-            • SWISSLIFE               • ZENIOO 
-            • MALAKOFF HUMANIS        • ACPS 
-            • AESIO                   • Ilona
-            • SPVIE                   • ECA 
-            • ZEPHIR                  • ENTORIA 
-            • ALPTIS                  • APICIL 
-            • CEGEMA                  • HUMINDIS
-            • MODULASSUR              • TUTASSUR 
-            • LUXIOR                  • ASAF AFPS            
+            • SWISSLIFE                • ZENIOO                 • MALAKOFF HUMANIS            • ACPS<br>
+            • AESIO                       • Ilona                • SPVIE                       • ECA     <br>
+            • ZEPHIR                      • ENTORIA                 • ALPTIS                      • APICIL     <br>
+            • CEGEMA                      • HUMINDIS                • MODULASSUR                  • TUTASSUR     
+            • LUXIOR                      • ASAF AFPS            
         </div>
     </div>
 
