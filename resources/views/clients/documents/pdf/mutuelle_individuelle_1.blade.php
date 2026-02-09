@@ -19,6 +19,25 @@
         td { padding: 5px; vertical-align: top; }
     </style>
 </head>
+    <script type="text/php">
+
+    if (isset($pdf)) {
+     //Shows number center-bottom of A4 page with $x,$y values
+        $x = 520;  //X-axis i.e. vertical position
+        $y = 820; //Y-axis horizontal position
+        $text = "Page {PAGE_NUM} / {PAGE_COUNT}";  //format of display message
+        $font =  $fontMetrics->get_font("helvetica", "bold");
+        $size = 8;
+        $color = array(0,0,0);
+        $color2 = array(136,136,136);
+        $word_space = 0.0;  //  default
+        $char_space = 0.0;  //  default
+        $angle = 0.0;   //  default
+        $pdf->page_text($x, $y, $text, $font, $size, $color, $word_space, $char_space, $angle);
+        //$pdf->page_text(30, $y,' ' , $font, $size, $color, $word_space, $char_space, $angle);
+    }
+
+    </script>
 <body>
     <header>
     <div class="header-box">
