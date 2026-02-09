@@ -43,6 +43,10 @@
     </div>
     <div class="title">DOCUMENT D'ENTRÉE EN RELATION</div>
 
+    <p style="margin-bottom: 15px;">
+        <strong>Client :</strong> {{ $client->civilite }} {{ $client->nom_complet }}<br>
+    </p>
+
     <p style="margin-bottom: 15px; font-style: italic;">
         Vous êtes entré en relation avec un intermédiaire en assurances dont l'activité est réglementée et contrôlée.
         La présente fiche comporte toutes les informations légales que cet intermédiaire doit vous communiquer lors de l'entrée en relation.
@@ -141,7 +145,7 @@
 
     <div class="signature-block">
         <p>
-            Je soussigné(e) <strong>{{ $client->nom_complet }}</strong> atteste avoir reçu, pris connaissance et 
+            Je soussigné(e) <strong>{{ $client->civilite }} {{ $client->nom_complet }}</strong> atteste avoir reçu, pris connaissance et 
             compris les informations données dans le cadre du présent document.
         </p>
         <p style="margin-top: 10px;">Établi en deux exemplaires, dont un remis au client</p>
