@@ -21,9 +21,7 @@
 </head>
 
 <body>
-
     <script type="text/php">
-
     if (isset($pdf)) {
      //Shows number center-bottom of A4 page with $x,$y values
         $x = 520;  //X-axis i.e. vertical position
