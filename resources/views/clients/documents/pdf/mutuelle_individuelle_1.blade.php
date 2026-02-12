@@ -66,7 +66,7 @@
         </p>
         <p>
             La société ParFiPro est assurée au titre de sa responsabilité civile professionnelle auprès de la 
-            compagnie <strong>AIG</strong>, contrats n° <strong>RD01452752A</strong>.
+            compagnie  <strong>AIG</strong>, contrats n° <strong>RD01452752A</strong>.
         </p>
         <p>
             La société ParFiPro est contrôlée par son Autorité de tutelle : l'Autorité de Contrôle Prudentiel et de 
@@ -94,7 +94,7 @@
             • SWISSLIFE                • ZENIOO                 • MALAKOFF HUMANIS            • ACPS<br>
             • AESIO                       • Ilona                • SPVIE                       • ECA     <br>
             • ZEPHIR                      • ENTORIA                 • ALPTIS                      • APICIL     <br>
-            • CEGEMA                      • HUMINDIS                • MODULASSUR                  • TUTASSUR     
+            • CEGEMA                      • HUMINDIS                • MODULASSUR                  • TUTASSUR     <br>
             • LUXIOR                      • ASAF AFPS            
         </div>
     </div>

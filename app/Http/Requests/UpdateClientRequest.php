@@ -40,7 +40,7 @@ class UpdateClientRequest extends FormRequest
                 'nombre_enfants' => 'integer|min:0|max:20',
                 'profession' => 'nullable|string|max:100',
                 'employeur' => 'nullable|string|max:100',
-                'type_contrat' => 'nullable|in:cdi,cdd,interim,freelance,retraite,chomage',
+                'type_contrat' => 'nullable',
                 'residence_principale' => 'boolean',
                 'immobilier_locatif' => 'boolean',
                 'assurance_vie' => 'boolean',

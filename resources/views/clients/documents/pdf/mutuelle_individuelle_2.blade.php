@@ -175,6 +175,29 @@
         </div>
         @endif
 
+        <b>Souhaitez-vous bénéficier des avantages du cadre Madelin ?</b><br>
+        [ ] Oui, je souhaite bénéficier des avantages du cadre fiscal Madelin. Le régime fiscal dont je relève en tant que travailleur indépendant me permet de bénéficier des déductions “Madelin”.<br>
+        [ ] Non<br>
+        Quel est votre Régime social ?<br>
+        [ ] Régime local Alsace Moselle<br>
+        [ ] Caisse Primaire d’Assurance Maladie (CPAM)<br>
+        [ ] Mutualité Sociale Agricole (MSA)<br>
+        [ ] Sécurité Sociale des Indépendants (SSI)<br>
+        Quelle est votre profession ?<br>
+        <br>
+
+        <div class="section-title">DESCRIPTION DU BESOIN EN ASSURANCE</div>
+        Quels sont les besoins des personnes à assurer sur les 5 postes clés ci-dessous ? (Exprimé selon l'importance du besoin sur une échelle de 1 à 5. 1 étant le besoin le plus faible et 5 le plus élevé).
+
+        <table style="margin-top: 10px; margin-bottom: 10px;">
+        <tr>
+        <tr><td></td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td></tr>
+        <tr><td>Hospitalisation</td><td>[]</td><td>[]</td><td>[]</td><td>[]</td><td>[]</td></tr>
+        <tr><td>Consultation</td><td>[]</td><td>[]</td><td>[]</td><td>[]</td><td>[]</td></tr>
+        <tr><td>Optique</td><td><<td>[]</td><td>[]</td><td>[]</td><td>[]</td><td>[]</td></tr>
+        <tr><td>Dentaire</td><td>[]</td><td>[]</td><td>[]</td><td>[]</td><td>[]</td></tr>
+        <tr><td>Prévention (médecines douces)</td><td>[]</td><td>[]</td><td>[]</td><td>[]</td><td>[]</td></tr>
+
         <div class="field">
             <span class="field-label">Avez-vous des besoins spécifiques ?</span>
             <span class="field-value">{{ $data['besoins_specifiques'] ?? '' }}</span>
