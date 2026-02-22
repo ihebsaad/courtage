@@ -76,14 +76,14 @@
         <p>
             La société ParFiPro est adhérente à la <strong>CNCEF Assurance</strong>, association professionnelle.
         </p>
+        <p>
+            L'intermédiaire n'entretient pas de relation significative de nature capitalistique ou commerciale 
+            avec une entreprise d'assurance (participation > à 10 % des droits de vote ou du capital).
+        </p>        
     </div>
 
     <div class="section">
         <div class="section-title">Informations préalables relatives à la fourniture du contrat</div>
-        <p>
-            L'intermédiaire n'entretient pas de relation significative de nature capitalistique ou commerciale 
-            avec une entreprise d'assurance (participation > à 10 % des droits de vote ou du capital).
-        </p>
         <p>
             La société ParFiPro n'est pas soumis(e) à une obligation contractuelle de travailler exclusivement 
             avec une ou plusieurs entreprises d'assurance. Pour ce contrat, la société ParFiPro fonde son analyse 
@@ -120,6 +120,9 @@
             <li>Par mail : rjacob.parfipro@gmail.com</li>
         </ul>
         <p>Personne à contacter en charge du suivi des réclamations : <strong>Monsieur Raphaël JACOB</strong>.</p>
+        <p>Pour les clients consommateurs, le médiateur de la consommation peut en tout état de cause être
+        saisi deux mois après l’envoi d’une première réclamation écrite, quel que soit l’interlocuteur ou le service
+        auprès duquel elle a été formulée et qu’il y ait été ou non répondu.</p>
 
         <p><strong>Saisine du médiateur de la consommation :</strong></p>
         <p>
@@ -131,19 +134,13 @@
             consommation@cmap.fr
         </p>
         <p>
-            Pour les clients consommateurs, le médiateur de la consommation peut en tout état de cause être saisi 
-            deux mois après l'envoi d'une première réclamation écrite, quel que soit l'interlocuteur ou le service 
-            auprès duquel elle a été formulée et qu'il y ait été ou non répondu.
+            Le consommateur doit saisir le Médiateur soit en utilisant le formulaire en ligne (https://www.cmap.fr/contact/), soit par courrier électronique (consommation@cmap.fr), soit par courrier postal (39 avenue F.D. Roosevelt 75008 Paris)
         </p>
         <p style="font-size: 9px; font-style: italic;">
             Cette saisine ne peut intervenir qu'après épuisement des voies de recours internes, doit préciser l'objet 
             du litige et être accompagnée des pièces justificatives.
         </p>
-        <p>
-            Le consommateur doit saisir le Médiateur soit en utilisant le formulaire en ligne 
-            (https://www.cmap.fr/contact/), soit par courrier électronique (consommation@cmap.fr), soit par courrier 
-            postal (39 avenue F.D. Roosevelt 75008 Paris)
-        </p>
+
     </div>
 
     <div class="signature-block">
