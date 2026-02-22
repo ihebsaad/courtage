@@ -217,6 +217,12 @@ class DocumentController extends Controller
                 'besoins_specifiques' => '',
                 'description_besoin' => '',
                 'type_souscription' => '',
+                'note_hospitalisation' => '',
+                'note_consultation'    => '',
+                'note_optique'         => '',
+                'note_dentaire'        => '',
+                'note_prevention'      => '',
+                'ppe' => '',
             ],
             'mutuelle_individuelle_3' => [
                 'besoins_specifiques' => '',

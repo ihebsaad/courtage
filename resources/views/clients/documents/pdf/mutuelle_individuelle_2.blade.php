@@ -17,7 +17,10 @@
         .field-value { display: inline-block; border-bottom: 1px solid #000; min-width: 300px; }
         table { width: 100%; border-collapse: collapse; }
         td { padding: 5px; vertical-align: top; }
-
+        .notes-table { width: 100%; border-collapse: collapse; margin: 8px 0; }
+        .notes-table td { border: 1px solid #999; padding: 4px 6px; font-size: 8px; text-align: center; }
+        .notes-table td:first-child { text-align: left; width: 45%; }
+        .notes-table .checked { font-size: 11px; }
     </style>
 </head>
 <body>
@@ -162,17 +165,33 @@
         <div class="section-title">DESCRIPTION DU BESOIN EN ASSURANCE</div>
         Quels sont les besoins des personnes à assurer sur les 5 postes clés ci-dessous ? (Exprimé selon l'importance du besoin sur une échelle de 1 à 5. 1 étant le besoin le plus faible et 5 le plus élevé).
 
-        <table style="margin-top: 10px; margin-bottom: 10px;">
-        <tr>
-        <tr><td></td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td></tr>
-        <tr><td>Hospitalisation</td><td>[]</td><td>[]</td><td>[]</td><td>[]</td><td>[]</td></tr>
-        <tr><td>Consultation</td><td>[]</td><td>[]</td><td>[]</td><td>[]</td><td>[]</td></tr>
-        <tr><td>Optique</td><td><<td>[]</td><td>[]</td><td>[]</td><td>[]</td><td>[]</td></tr>
-        <tr><td>Dentaire</td><td>[]</td><td>[]</td><td>[]</td><td>[]</td><td>[]</td></tr>
-        <tr><td>Prévention (médecines douces)</td><td>[]</td><td>[]</td><td>[]</td><td>[]</td><td>[]</td></tr>
-        </tr>
+        <table class="notes-table" style="margin-top: 10px; margin-bottom: 10px;">
+            <tr>
+                <td></td>
+                @for($i = 1; $i <= 5; $i++)<td><strong>{{ $i }}</strong></td>@endfor
+            </tr>
+            @foreach([
+                'note_hospitalisation' => 'Hospitalisation',
+                'note_consultation'    => 'Consultation',
+                'note_optique'         => 'Optique',
+                'note_dentaire'        => 'Dentaire',
+                'note_prevention'      => 'Prévention (médecines douces)',
+            ] as $field => $label)
+            <tr>
+                <td>{{ $label }}</td>
+                @for($i = 1; $i <= 5; $i++)
+                <td>
+                    @if(($data[$field] ?? '') == $i)
+                        <span class="checked">&#10003;</span>
+                    @else
+                        &nbsp;
+                    @endif
+                </td>
+                @endfor
+            </tr>
+            @endforeach
         </table>
-        
+
         <div class="field">
             <span class="field-label">Avez-vous des besoins spécifiques ?</span>
             <span class="field-value">{{ $data['besoins_specifiques'] ?? '' }}</span>
