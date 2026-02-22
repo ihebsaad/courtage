@@ -182,7 +182,7 @@
                 @for($i = 1; $i <= 5; $i++)
                 <td>
                     @if(($data[$field] ?? '') == $i)
-                        <span class="checked">&#10003;</span>
+                        <span class="checked">X</span>
                     @else
                         &nbsp;
                     @endif
