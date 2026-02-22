@@ -114,6 +114,36 @@
             <div class="card-header">Besoins en assurance</div>
             <div class="card-body">
                 <div class="mb-3">
+                    <label class="fw-bold">Besoins (1 = faible, 5 = élevé)</label>
+                    <table class="table table-bordered table-sm mt-2">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Poste</th>
+                                @for($i = 1; $i <= 5; $i++)<th class="text-center">{{ $i }}</th>@endfor
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach([
+                                'note_hospitalisation' => 'Hospitalisation',
+                                'note_consultation'    => 'Consultation',
+                                'note_optique'         => 'Optique',
+                                'note_dentaire'        => 'Dentaire',
+                                'note_prevention'      => 'Prévention (médecines douces)',
+                            ] as $field => $label)
+                            <tr>
+                                <td>{{ $label }}</td>
+                                @for($i = 1; $i <= 5; $i++)
+                                <td class="text-center">
+                                    <input type="radio" name="{{ $field }}" value="{{ $i }}"
+                                        {{ ($data[$field] ?? '') == $i ? 'checked' : '' }}>
+                                </td>
+                                @endfor
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>                
+                <div class="mb-3">
                     <label>En cas de décès</label>
                     <textarea name="besoins_deces" class="form-control" rows="2" required>{{ $data['besoins_deces'] ?? '' }}</textarea>
                 </div>
