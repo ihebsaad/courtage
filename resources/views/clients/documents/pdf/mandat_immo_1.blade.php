@@ -203,40 +203,44 @@
     <div class="signature-area">
         <p>Fait à {{ $data['fait_a'] }}, le {{ \Carbon\Carbon::parse($data['date_document'])->format('d/m/Y') }}</p>
         <div style="width:100%">
-            <table class="signatures" style="width:50%">
-                <tr>
-                    <td>
-                        <strong>[Conseiller] - Raphaël JACOB</strong><br>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Signature précédée de "Lu et approuvé"<br><br><br><br><br>
-                    </td>
-                </tr>
-            </table>
-            <table class="signatures" style="width:50%;float:right">
-                <tr>
-                    <td>
-                        <strong>[Client] -</strong><br>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Signature précédée de "Lu et approuvé"<br><br><br><br><br>
-                    </td>
-                </tr>            
-                <tr>
-                    <td>
-                        <strong>[Client] -</strong><br>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Signature précédée de "Lu et approuvé"<br><br><br><br><br>
-                    </td>
-                </tr>            
-            </table>
+            <div style="width:50%;float:left;text-align:center;">
+                <table   style="">
+                    <tr>
+                        <td>
+                            <strong>[Conseiller] - Raphaël JACOB</strong><br>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Signature précédée de "Lu et approuvé"<br><br><br><br><br>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div style="width:50%;float:right;text-align:center;">
+                <table   style="">
+                    <tr>
+                        <td>
+                            <strong>[Client] -</strong><br>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Signature précédée de "Lu et approuvé"<br><br><br><br><br>
+                        </td>
+                    </tr>            
+                    <tr>
+                        <td>
+                            <strong>[Client] -</strong><br>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Signature précédée de "Lu et approuvé"<br><br><br><br><br>
+                        </td>
+                    </tr>            
+                </table>
+            </div>
         </div>
     </div>
 
