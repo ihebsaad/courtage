@@ -18,9 +18,54 @@
         li { margin-bottom: 3px; }
         .partner-list { columns: 2; -webkit-columns: 2; -moz-columns: 2; font-size: 8px; }
         .box { border: 1px solid #000; padding: 8px; margin: 10px 0; }
-        .signature-area { margin-top: 30px; }
-        table.signatures { width: 100%; }
-        table.signatures td { width: 33.33%; text-align: center; padding: 5px; }
+        .signature-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .signature-table td {
+            border: 1px solid #000;
+            vertical-align: top;
+            padding: 0;
+            width: 50%;
+        }
+
+        .cell-header {
+            background-color: #000;
+            color: #fff;
+            padding: 4px 8px;
+            font-weight: normal;
+        }
+
+        .cell-body {
+            padding: 6px 8px;
+            min-height: 80px;
+            display: block;
+        }
+
+        /* Colonne gauche : une seule cellule sur 2 lignes */
+        .left-col {
+            vertical-align: top;
+        }
+
+        /* Colonne droite : divisée en deux blocs */
+        .right-col {
+            padding: 0;
+        }
+
+        .right-block {
+            border-bottom: 1px solid #000;
+        }
+
+        .right-block:last-child {
+            border-bottom: none;
+        }
+
+        .block-body {
+            padding: 6px 8px;
+            min-height: 70px;
+            display: block;
+        }
     </style>
 </head>
 <body>
@@ -166,7 +211,7 @@
             couvertures sont notamment conformes aux exigences du code monétaire et financier et du code des assurances. Elles
             sont souscrites auprès de AIG sous le numéro de polices : RD01452752A
         </p>
-        <table  style="width: 100%; margin: 10px 0; font-size: 8px; border-collapse: collapse;">
+        <table  style="width: 60%; margin: 10px 0; font-size: 8px; border: 1px solid #000;text-align: center;">
             <tr><th>Pour des montants de </th><th>IOBSP</th><th>IAS</th></tr>
             <tr><td>RCP</td><td colspan="2">1.564.610 € par sinistre et 2.315.610 € par période d'assurance.</td></tr>
             <tr><td>Garantie financière</td><td>500.000€ par sinistre Limité à 800.000€ par an</td><td>1.500.000€ par sinistre Limité à 2.000.000€ par an</td></tr>
@@ -184,67 +229,114 @@
 
      <div class="section">
         <div class="section-title">Procédure de réclamation – médiation</div>
+        En cas de désaccord, une solution amiable sera envisagée en premier lieu après la réception
+        d’une réclamation sur support durable adressée à :<br>
+        <div style="width:100%">
+            <div style="width:50%;float:left;">
+                Par courrier à l’adresse suivante :<br>
+                173 Boulevard Pereire – 75017 Paris<br>
+            </div>
+            <div style="width:50%;float:right;">
+            Par courriel à l’adresse suivante :<br>
+                rjacob.parfipro@gmail.com<br>
+            </div>
+        </div>
+        Nous nous  engageons à accuser réception de la réclamation dans un délai de dix jours ouvrables puis
+        à y répondre dans un délai de deux mois à compter de la réception de la réclamation. En cas de litige
+        et si la réponse apportée à sa réclamation ne lui apparaît pas satisfaisante, le client consommateur
+        peut ensuite saisir le médiateur de la consommation suivant en vue de sa résolution amiable :<br>
+        <div style="width:100%">
+            <div style="width:50%;float:left;">
+                Par courrier à l’adresse suivante :<br>
+                CMAP – Service Médiation de la consommation<br>
+                39 avenue F.D. Roosevelt<br>
+                75008 Paris
+            </div>
+            <div style="width:50%;float:right;">
+                Par courriel à l’adresse suivante :<br>
+                consommation@cmap.fr
+            </div>
+        </div>
      </div>
 
     <div class="section">
         <div class="section-title">Traitement des données personnelles</div>
+            En application des dispositions de la loi n° 78-17 du 6 janvier 1978 et du Règlement 2016/679 du
+            Parlement européen et du Conseil du 27 avril 2016 relatif à la protection des personnes
+            physiques à l'égard du traitement des données à caractère personnel et à la libre circulation de
+            ces données, le cabinet s’engage à ne collecter et traiter les données recueillies qu’au regard des
+            finalités de traitement convenues entre le cabinet et son client, à préserver leur sécurité et
+            intégrité, à ne communiquer ces informations qu’à des tiers auxquels il serait nécessaire de les
+            transmettre en exécution des prestations convenues, et plus généralement à agir dans le cadre des
+            exigences réglementaires auxquelles il est soumis. Le client est informé qu’il a le droit de demander
+            au responsable de traitement l’accès aux données à caractère personnel, leurs catégories et leurs
+            destinataires, la durée de leur conservation ou, à défaut, les critères utilisés pour déterminer
+            cette durée, leur rectification, leur effacement et leur portabilité, ainsi que le droit de demander
+            une limitation du traitement de ses données à caractère personnel, sur simple demande sur support
+            durable (courrier, email, etc…).<br>    
+            L’identité et les coordonnées du responsable de traitement au sein du cabinet sont les suivantes :<br>
+            -Raphaël JACOB – 06-34-68-07-95 – rjacob.parfipro@gmail.com<br>
+            L’identité et les coordonnées du délégué à la protection des données au sein du cabinet sont les suivantes :<br>
+            -Raphaël JACOB – 06-34-68-07-95 – rjacob.parfipro@gmail.com<br>
+            Le client a le droit d’introduire une réclamation auprès de la Commission Nationale de l’Informatique<br>
+            et des Libertés (CNIL) à l’adresse suivante : <br>
+            <p style="text-align:center;">Commission Nationale de l’Informatique et des Libertés (CNIL)<br>
+                3 Place de Fontenoy<br>
+                TSA 80715<br>
+                75334 PARIS CEDEX 07
+            </p>
+
      </div>
 
     <div class="section">
         <div class="section-title">Autorité de tutelle</div>
+        ACPR – Autorité de Contrôle Prudentiel et de Résolution - 61 rue Taitbout 75009 Paris
+
      </div>
 
     <div class="section">
         <div class="section-title">Registre</div>
+        ORIAS – Organisme pour le registre unique des intermédiaires en assurance, banque et finance – 1 rue Jules Lefebvre 75009 Paris - www.orias.fr       
      </div>
     <div class="section">
         <div class="section-title">Mise à jour</div>
+            Le Conseiller fait parvenir au client toute mise à jour de ces différentes informations, en lui communiquant par mail.<br>
+            Le client peut également obtenir à tout moment ces informations sur simple demande auprès du conseiller.<br>
+            Un crédit vous engage et doit être remboursé. Vérifiez vos capacités de remboursement avant de vous engager.<br>
+            Aux termes de l’article L. 519-6 du Code monétaire et financier, « il est interdit à toute personne physique ou morale
+            qui apporte son concours, à quelque titre que ce soit et de quelque manière que ce soit, directement ou
+            indirectement, à l'obtention ou à l'octroi d'un prêt d'argent, de percevoir une somme représentative de
+            provision, de commissions, de frais de recherche, de démarches, de constitution de dossier ou d'entremise
+            quelconque, avant le versement effectif des fonds prêtés. Il lui est également interdit, avant la remise
+            des fonds et de la copie de l'acte, de présenter à l'acceptation de l'emprunteur des lettres de change, ou de lui faire
+            souscrire des billets à ordre, en recouvrement des frais d'entremise ou des commissions mentionnés à l'alinéa précédent.<br>
+            Les infractions aux dispositions des premier et deuxième alinéa du présent article sont recherchées et constatées
+            dans les conditions fixées à l'article L. 353-5 et sont punies des peines prévues à l'article L. 353-1 ». La diminution du
+            montant des mensualités entraîne l'allongement de la durée de remboursement et majore le coût total du crédit.<br>
+            La réduction dépend de la durée restante des prêts rachetés.         
     </div>
-<!--
-    <div class="signature-area">
-        <p>Fait à {{ $data['fait_a'] }}, le {{ \Carbon\Carbon::parse($data['date_document'])->format('d/m/Y') }}</p>
-        <div style="width:100%">
-            <div style="width:50%;float:left;text-align:center;">
-                <table   style="border:2px solid #000; padding:10px;">
-                    <tr>
-                        <td>
-                            <strong>[Conseiller] - Raphaël JACOB</strong><br>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            Signature précédée de "Lu et approuvé"<br><br><br><br><br>
-                        </td>
-                    </tr>
-                </table>
+        <table class="signature-table">
+        <tr>
+            <!-- Colonne gauche -->
+            <td class="left-col" rowspan="2">
+            <div class="cell-header">[Conseiller] - Raphaël JACOB</div>
+            <div class="cell-body">Signature précédée de <strong>"Lu et approuvé"</strong></div>
+            </td>
+
+            <!-- Colonne droite - premier client -->
+            <td class="right-col">
+            <div class="right-block">
+                <div class="cell-header">[Client] -</div>
+                <div class="block-body">Signature précédée de <strong>"Lu et approuvé"</strong></div>
             </div>
-            <div style="width:50%;float:right;text-align:center;">
-                <table   style="border:2px solid #000; padding:10px;">
-                    <tr>
-                        <td>
-                            <strong>[Client] -</strong><br>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            Signature précédée de "Lu et approuvé"<br><br><br><br><br>
-                        </td>
-                    </tr>            
-                    <tr>
-                        <td>
-                            <strong>[Client] -</strong><br>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            Signature précédée de "Lu et approuvé"<br><br><br><br><br>
-                        </td>
-                    </tr>            
-                </table>
+            <!-- Second client -->
+            <div class="right-block">
+                <div class="cell-header">[Client] -</div>
+                <div class="block-body">Signature précédée de <strong>"Lu et approuvé"</strong></div>
             </div>
-        </div>
-    </div>
--->
+            </td>
+        </tr>
+        </table>
 
     <footer>
         <table style="text-align: center; width: 70%;margin-left:15% ;">
