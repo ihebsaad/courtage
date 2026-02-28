@@ -30,6 +30,10 @@
                         <label>Nom du client</label>
                         <input type="text" name="nom_client" class="form-control" value="{{  $client->nom_complet }}" required>
                     </div>
+                    <div class="col-md-12 mb-3">
+                        <label>Nom du conjoint</label>
+                        <input type="text" name="nom_conjoint" class="form-control" value="{{  $client->conjoint_nom }}" required>
+                    </div>
                 </div>
             </div>
         </div>

@@ -315,29 +315,32 @@
             montant des mensualités entraîne l'allongement de la durée de remboursement et majore le coût total du crédit.<br>
             La réduction dépend de la durée restante des prêts rachetés.         
     </div>
+
+    <div class="section">
+
         <table class="signature-table">
         <tr>
             <!-- Colonne gauche -->
             <td class="left-col" rowspan="2">
-            <div class="cell-header">[Conseiller] - Raphaël JACOB</div>
+            <div class="cell-header">[Conseiller] - {{ $data['nom_conseiller'] }}</div>
             <div class="cell-body">Signature précédée de <strong>"Lu et approuvé"</strong></div>
             </td>
 
             <!-- Colonne droite - premier client -->
             <td class="right-col">
             <div class="right-block">
-                <div class="cell-header">[Client] -</div>
+                <div class="cell-header">[Client] - {{  $client->nom_complet }}</div>
                 <div class="block-body">Signature précédée de <strong>"Lu et approuvé"</strong></div>
             </div>
             <!-- Second client -->
             <div class="right-block">
-                <div class="cell-header">[Client] -</div>
+                <div class="cell-header">[Client] - {{ $client->conjoint_prenom }} {{ $client->conjoint_nom }}</div>
                 <div class="block-body">Signature précédée de <strong>"Lu et approuvé"</strong></div>
             </div>
             </td>
         </tr>
         </table>
-
+    </div>
     <footer>
         <table style="text-align: center; width: 70%;margin-left:15% ;">
             <tr>
