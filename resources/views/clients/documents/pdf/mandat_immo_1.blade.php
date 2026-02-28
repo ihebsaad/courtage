@@ -59,8 +59,10 @@
         <span class="checkbox {{ $data['type_client'] === 'ENTREPRISE' ? 'checked' : '' }}"></span> ENTREPRISE
     </p>
 
+    <h2 style="font-size:18px;margin-bottom:15px">STATUTS LEGAUX ET AUTORITES DE TUTELLE </h2>
+
     <div class="section">
-        <div class="section-title">STATUTS LEGAUX ET AUTORITES DE TUTELLE</div>
+        <div class="section-title">Intermédiation en opérations de banque et service de paiement</div>
         <p>
             ParFiPro, SAS au capital de 1000€ domicilié au 173 Boulevard Pereire – 75017 Paris<br>
             SIREN : 880 874 466 RCS Paris NAF/APE : 6619B<br>
@@ -73,10 +75,6 @@
             <strong>Intermédiation en opérations de banque et service de paiement</strong><br>
             Courtier en opérations de banque et service de paiement (IOB)
         </p>
-    </div>
-
-    <div class="section">
-        <div class="section-title">Intermédiation en opérations de banque et service de paiement</div>
 
         
         <p style="margin-top: 8px;"><strong>Partenaires bancaires et en services de paiement du mandant</strong></p>
@@ -205,7 +203,7 @@
     <div class="signature-area">
         <p>Fait à {{ $data['fait_a'] }}, le {{ \Carbon\Carbon::parse($data['date_document'])->format('d/m/Y') }}</p>
         <div style="width:100%">
-            <table class="signatures" style="width:50%;float:left">
+            <table class="signatures" style="width:50%">
                 <tr>
                     <td>
                         <strong>[Conseiller] - Raphaël JACOB</strong><br>
@@ -217,7 +215,7 @@
                     </td>
                 </tr>
             </table>
-            <table class="signatures" style="width:50%;float:left">
+            <table class="signatures" style="width:50%;float:right">
                 <tr>
                     <td>
                         <strong>[Client] -</strong><br>
@@ -231,12 +229,10 @@
                 <tr>
                     <td>
                         <strong>[Client] -</strong><br>
-                        Signature précédée de "Lu et approuvé"<br><br><br><br><br>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <strong>[Client] -</strong><br>
                         Signature précédée de "Lu et approuvé"<br><br><br><br><br>
                     </td>
                 </tr>            
