@@ -200,11 +200,12 @@
     <div class="section">
         <div class="section-title">Mise à jour</div>
     </div>
+<!--
     <div class="signature-area">
         <p>Fait à {{ $data['fait_a'] }}, le {{ \Carbon\Carbon::parse($data['date_document'])->format('d/m/Y') }}</p>
         <div style="width:100%">
             <div style="width:50%;float:left;text-align:center;">
-                <table   style="">
+                <table   style="border:2px solid #000; padding:10px;">
                     <tr>
                         <td>
                             <strong>[Conseiller] - Raphaël JACOB</strong><br>
@@ -218,7 +219,7 @@
                 </table>
             </div>
             <div style="width:50%;float:right;text-align:center;">
-                <table   style="">
+                <table   style="border:2px solid #000; padding:10px;">
                     <tr>
                         <td>
                             <strong>[Client] -</strong><br>
@@ -243,6 +244,7 @@
             </div>
         </div>
     </div>
+-->
 
     <footer>
         <table style="text-align: center; width: 70%;margin-left:15% ;">
