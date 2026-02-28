@@ -71,19 +71,16 @@
             nous vous avons remis les documents suivants :
         </p>
         <div class="checkbox-list">
-            <div class="checkbox-item">- Étude comparative {{ isset($data['doc_etude_comparative']) && $data['doc_etude_comparative'] ? '☑' : '' }}</div>
-            <div class="checkbox-item">- Devis {{ isset($data['doc_devis']) && $data['doc_devis'] ? '☑' : '' }}</div>
-            <div class="checkbox-item">- Conditions générales {{ isset($data['doc_conditions_generales']) && $data['doc_conditions_generales'] ? '☑' : '' }}</div>
-            <div class="checkbox-item">- IPID {{ isset($data['doc_ipid']) && $data['doc_ipid'] ? '☑' : '' }}</div>
-            <div class="checkbox-item">- FSI {{ isset($data['doc_fsi']) && $data['doc_fsi'] ? '☑' : '' }}</div>
+            <div class="checkbox-item">{{ isset($data['doc_etude_comparative']) && $data['doc_etude_comparative'] ? '- Étude comparative' : '' }}</div>
+            <div class="checkbox-item"> {{ isset($data['doc_devis']) && $data['doc_devis'] ? '- Devis' : '' }}</div>
+            <div class="checkbox-item"> {{ isset($data['doc_conditions_generales']) && $data['doc_conditions_generales'] ? '- Conditions générales' : '' }}</div>
+            <div class="checkbox-item">{{ isset($data['doc_ipid']) && $data['doc_ipid'] ? '- IPID' : '' }}</div>
+            <div class="checkbox-item">{{ isset($data['doc_fsi']) && $data['doc_fsi'] ? '- FSI' : '' }}</div>
         </div>
     </div>
 
     <div class="section">
         <div class="section-title">II – Phase de justification</div>
-        
-        <div class="subsection-title">Nous vous proposons de souscrire le contrat :</div>
-        <p>{{ $data['produit_preconise'] ?? '' }}</p>
 
         <div class="box">
             <div class="subsection-title">Motivation du conseil</div>
