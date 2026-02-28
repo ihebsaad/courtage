@@ -329,12 +329,12 @@
             <!-- Colonne droite - premier client -->
             <td class="right-col">
             <div class="right-block">
-                <div class="cell-header">[Client] - {{  $client->nom_complet }}</div>
+                <div class="cell-header">[Client] - {{   $data['nom_client'] }}</div>
                 <div class="block-body">Signature précédée de <strong>"Lu et approuvé"</strong></div>
             </div>
             <!-- Second client -->
             <div class="right-block">
-                <div class="cell-header">[Client] - {{ $client->conjoint_prenom }} {{ $client->conjoint_nom }}</div>
+                <div class="cell-header">[Client] - {{ $data['nom_conjoint'] }}</div>
                 <div class="block-body">Signature précédée de <strong>"Lu et approuvé"</strong></div>
             </div>
             </td>

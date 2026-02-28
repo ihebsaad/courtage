@@ -231,7 +231,7 @@ class DocumentController extends Controller
                 'civilite' => '',
                 'type_client' => '',
                 'nom_client' => '',
-                'conjoint_nom' => '',
+                'nom_conjoint' => '',
                 'nom_conseiller' => 'Raphaël JACOB',
                 'fait_a' => 'Paris',
             ],
