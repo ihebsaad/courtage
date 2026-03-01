@@ -32,7 +32,7 @@
                     </div>
                     <div class="col-md-12 mb-3">
                         <label>Nom du conjoint</label>
-                        <input type="text" name="nom_conjoint" class="form-control" value="{{  $client->conjoint_nom }}" required>
+                        <input type="text" name="nom_conjoint" class="form-control" value="{{  $client->conjoint_civilite }} {{  $client->conjoint_prenom }} {{  $client->conjoint_nom }}" required>
                     </div>
                 </div>
             </div>

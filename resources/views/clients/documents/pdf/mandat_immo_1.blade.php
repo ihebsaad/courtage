@@ -30,6 +30,10 @@
             width: 50%;
         }
 
+        .signature-table {
+            table-layout: fixed;
+        }
+
         .cell-header {
             background-color: #000;
             color: #fff;
@@ -317,26 +321,25 @@
     </div>
 
     <div class="section">
-
+       
         <table class="signature-table">
         <tr>
-            <!-- Colonne gauche -->
+            <!-- Colonne gauche : s'étend sur 2 lignes -->
             <td class="left-col" rowspan="2">
-            <div class="cell-header">[Conseiller] - {{ $data['nom_conseiller'] }}</div>
+            <div class="cell-header">[Conseiller] - Raphaël JACOB</div>
             <div class="cell-body">Signature précédée de <strong>"Lu et approuvé"</strong></div>
             </td>
-
             <!-- Colonne droite - premier client -->
-            <td class="right-col">
-            <div class="right-block">
-                <div class="cell-header">[Client] - {{   $data['nom_client'] }}</div>
-                <div class="block-body">Signature précédée de <strong>"Lu et approuvé"</strong></div>
-            </div>
-            <!-- Second client -->
-            <div class="right-block">
-                <div class="cell-header">[Client] - {{ $data['nom_conjoint'] }}</div>
-                <div class="block-body">Signature précédée de <strong>"Lu et approuvé"</strong></div>
-            </div>
+            <td>
+            <div class="cell-header">[Client] - {{   $data['nom_client'] }}</div>
+            <div class="block-body">Signature précédée de <strong>"Lu et approuvé"</strong></div>
+            </td>
+        </tr>
+        <tr>
+            <!-- Colonne droite - second client -->
+            <td>
+            <div class="cell-header">[Client] - {{ $data['nom_conjoint'] }}</div>
+            <div class="block-body">Signature précédée de <strong>"Lu et approuvé"</strong></div>
             </td>
         </tr>
         </table>
