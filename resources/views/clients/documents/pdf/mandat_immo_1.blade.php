@@ -250,6 +250,7 @@
         à y répondre dans un délai de deux mois à compter de la réception de la réclamation. En cas de litige
         et si la réponse apportée à sa réclamation ne lui apparaît pas satisfaisante, le client consommateur
         peut ensuite saisir le médiateur de la consommation suivant en vue de sa résolution amiable :<br>
+        <div class="clearfix"></div>
         <div style="width:100%">
             <div style="width:50%;float:left;">
                 Par courrier à l’adresse suivante :<br>
@@ -263,7 +264,7 @@
             </div>
         </div>
      </div>
-
+<div class="clearfix"></div>
     <div class="section">
         <div class="section-title">Traitement des données personnelles</div>
             En application des dispositions de la loi n° 78-17 du 6 janvier 1978 et du Règlement 2016/679 du
