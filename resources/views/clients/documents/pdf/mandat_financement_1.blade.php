@@ -94,7 +94,7 @@
     <div class="header-box">
         <img src="{{ asset('img/logo.png')}}" width="80" />
     </div>
-    <div class="title">Document d'entrée en relation</div>
+    <div class="title">Document d'entrée en relation - Financement</div>
 
     <p style="margin-bottom: 10px;">
         En application des différentes législations auxquelles nos activités sont soumises, nous vous prions de trouver ci-après les 
