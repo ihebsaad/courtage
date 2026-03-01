@@ -18,6 +18,7 @@
         li { margin-bottom: 3px; }
         .partner-list { columns: 2; -webkit-columns: 2; -moz-columns: 2; font-size: 8px; }
         .box { border: 1px solid #000; padding: 8px; margin: 10px 0; }
+        .table td{ border: 1px solid #000; padding: 4px; }
         .signature-table {
             width: 100%;
             border-collapse: collapse;
@@ -215,7 +216,7 @@
             couvertures sont notamment conformes aux exigences du code monétaire et financier et du code des assurances. Elles
             sont souscrites auprès de AIG sous le numéro de polices : RD01452752A
         </p>
-        <table  style="width: 60%; margin: 10px 0; font-size: 8px; border: 1px solid #000;text-align: center;">
+        <table  style="width: 80%; margin: 10px 0; font-size: 8px; border: 1px solid #000;text-align: center;" class="table">
             <tr><th>Pour des montants de </th><th>IOBSP</th><th>IAS</th></tr>
             <tr><td>RCP</td><td colspan="2">1.564.610 € par sinistre et 2.315.610 € par période d'assurance.</td></tr>
             <tr><td>Garantie financière</td><td>500.000€ par sinistre Limité à 800.000€ par an</td><td>1.500.000€ par sinistre Limité à 2.000.000€ par an</td></tr>
